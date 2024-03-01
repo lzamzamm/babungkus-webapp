@@ -148,7 +148,6 @@ Response Body Success:
 ```json
 {
   "status": "success",
-  "message": "user berhasil di update",
   "data": {
     "username": "arip",
     "nama_lengkap": "arip muhammad",
