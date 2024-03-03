@@ -24,6 +24,7 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil dibuat",
   "data": {
+    "_id": "6555934b9a9948b77c1edb41",
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
@@ -68,6 +69,7 @@ Response Body Success:
 ```json
 {
   "status": "success",
+  "token": "NEW_TOKEN",
   "message": "berhasil login"
 }
 ```
@@ -113,6 +115,7 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil di update",
   "data": {
+    "_id": "6555934b9a9948b77c1edb41",
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
@@ -149,6 +152,7 @@ Response Body Success:
 {
   "status": "success",
   "data": {
+    "_id": "6555934b9a9948b77c1edb41",
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
@@ -188,6 +192,7 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil di update",
   "data": {
+    "_id": "6555934b9a9948b77c1edb41",
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
