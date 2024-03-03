@@ -8,7 +8,7 @@ Request Body :
 
 ```json
 {
-  "user_id": 1,
+  "user_id": "6555934b9a9948b77c1edb41",
   "pesan": "Agung ingin membeli produkmu",
   "is_read": false
 }
@@ -21,8 +21,8 @@ Response Body Success:
   "status": "success",
   "message": "notifikasi berhasil dibuat",
   "data": {
-    "_id": 1,
-    "user_id": 1,
+    "_id": "654b56d6e41758d9ce775f49",
+    "user_id": "6555934b9a9948b77c1edb41",
     "pesan": "Agung ingin membeli produkmu",
     "is_read": false
   }
@@ -58,8 +58,8 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": 1,
-      "user_id": 1,
+      "_id": "654b56d6e41758d9ce775f49",
+      "user_id": "6555934b9a9948b77c1edb41",
       "pesan": "Agung ingin membeli produkmu",
       "is_read": false
     },
@@ -108,8 +108,8 @@ Response Body Success:
   "status": "success",
   "message": "notifikasi berhasil dibuat",
   "data": {
-    "_id": 1,
-    "user_id": 1,
+    "_id": "654b56d6e41758d9ce775f49",
+    "user_id": "6555934b9a9948b77c1edb41",
     "pesan": "Agung ingin membeli produkmu",
     "is_read": true
   }

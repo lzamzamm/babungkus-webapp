@@ -8,7 +8,7 @@ Request Body :
 
 ```json
 {
-  "toko_id": 1,
+  "toko_id": "655593858bc234dd084da5fa",
   "nama": "Roti",
   "harga": 25000,
   "kategori": "roti",
@@ -26,8 +26,8 @@ Response Body Success:
   "status": "success",
   "message": "produk berhasil dibuat",
   "data": {
-    "_id": 1,
-    "toko_id": 1,
+    "_id": "654cb955a6899def83534cbb",
+    "toko_id": "655593858bc234dd084da5fa",
     "nama": "Roti",
     "harga": 25000,
     "kategori": "roti",
@@ -67,8 +67,8 @@ Response Body Success:
 {
   "status": "success",
   "data": {
-    "_id": 1,
-    "toko_id": 1,
+    "_id": "654cb955a6899def83534cbb",
+    "toko_id": "655593858bc234dd084da5fa",
     "nama": "Roti",
     "harga": 25000,
     "kategori": "roti",
@@ -117,8 +117,8 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": 1,
-      "toko_id": 1,
+      "_id": "654cb955a6899def83534cbb",
+      "toko_id": "655593858bc234dd084da5fa",
       "nama": "Roti",
       "harga": 25000,
       "kategori": "roti",
@@ -128,7 +128,7 @@ Response Body Success:
       "lokasi": "Yogyakarta"
     },
     {
-      "_id": 2
+      "_id": "654cb955a6899def83536uhj"
       // ...
     }
   ]
@@ -164,8 +164,8 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": 1,
-      "toko_id": 1,
+      "_id": "654cb955a6899def83534cbb",
+      "toko_id": "655593858bc234dd084da5fa",
       "nama": "Roti",
       "harga": 25000,
       "kategori": "roti",
@@ -175,7 +175,7 @@ Response Body Success:
       "lokasi": "Yogyakarta"
     },
     {
-      "_id": 2
+      "_id": "654cb955a6899def83534uhj"
       // ...
     }
   ]
@@ -219,8 +219,8 @@ Response Body Success:
   "status": "success",
   "message": "produk berhasil dibuat",
   "data": {
-    "_id": 1,
-    "toko_id": 1,
+    "_id": "654cb955a6899def83534cbb",
+    "toko_id": "655593858bc234dd084da5fa",
     "nama": "Bread",
     "harga": 25000,
     "kategori": "roti",

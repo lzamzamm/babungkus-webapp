@@ -8,7 +8,7 @@ Request Body :
 
 ```json
 {
-  "user_id": 1,
+  "user_id": "6555934b9a9948b77c1edb41",
   "status": "pending",
   "pesan": "tes",
   "harga_total": 30000
@@ -22,6 +22,7 @@ Response Body Success:
   "status": "success",
   "message": "pesanan berhasil dibuat",
   "data": {
+    "_id": "654cb952407d9d81ab448f16",
     "status": "pending",
     "pesan": "tes",
     "harga_total": 30000
@@ -57,6 +58,7 @@ Response Body Success:
 {
   "status": "success",
   "data": {
+    "_id": "654cb952407d9d81ab448f16",
     "status": "pending",
     "pesan": "tes",
     "harga_total": 30000
@@ -101,6 +103,7 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil dibuat",
   "data": {
+    "_id": "654cb952407d9d81ab448f16",
     "status": "success",
     "pesan": "tes",
     "harga_total": 30000
