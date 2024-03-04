@@ -8,6 +8,7 @@ Request Body :
 
 ```json
 {
+  "user_id": 1,
   "nama": "arip",
   "deskripsi": "nasi goreng",
   "is_confirmed": false,
@@ -25,13 +26,13 @@ Response Body Success:
   "status": "success",
   "message": "Menunggu konfirmasi admin",
   "data": {
-    "_id": "655593858bc234dd084da5fa",
+    "toko_id": 1,
     "nama": "arip",
     "deskripsi": "nasi goreng",
     "image": "jpg",
     "is_confirmed": false,
     "jam_operasional": "10.00 sampai 11.000",
-    "loksi": "sapen",
+    "lokasi": "sapen",
     "no_telp": "098080"
   }
 }
@@ -66,7 +67,7 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": "655593858bc234dd084da5fa",
+      "toko_id": 1,
       "nama": "arip",
       "deskripsi": "nasi goreng",
       "image": "jpg",
@@ -106,12 +107,12 @@ Response Body Success:
 {
   "status": "success",
   "data": {
-    "_id": "655593858bc234dd084da5fa",
+    "toko_id": 1,
     "nama": "arip",
     "deskripsi": "nasi goreng",
     "image": "jpg",
     "jam_operasional": "10.00 sampai 11.000",
-    "loksi": "sapen",
+    "lokasi": "sapen",
     "no_telp": "098080"
   }
 }
@@ -144,12 +145,7 @@ Request Body :
 ```json
 {
   "nama": "arip",
-  "deskripsi": "nasi goreng",
-  "image": "jpg",
-  "is_confirmed": true,
-  "jam_operasional": "10.00 sampai 11.000",
-  "loksi": "sapen",
-  "no_telp": "098080"
+  "deskripsi": "nasi goreng"
 }
 ```
 
@@ -160,7 +156,7 @@ Response Body Success:
   "status": "success",
   "message": "toko berhasil di update",
   "data": {
-    "_id": "655593858bc234dd084da5fa",
+    "toko_id": 1,
     "nama": "arip",
     "deskripsi": "nasi goreng",
     "image": "jpg",

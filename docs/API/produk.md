@@ -8,14 +8,13 @@ Request Body :
 
 ```json
 {
-  "toko_id": "655593858bc234dd084da5fa",
+  "toko_id": 1,
   "nama": "Roti",
   "harga": 25000,
   "kategori": "roti",
   "jumlah": 30,
   "deskripsi": "Makanan sisa penjualan",
-  "image": "foto.png",
-  "lokasi": "Yogyakarta"
+  "image": "foto.png"
 }
 ```
 
@@ -26,15 +25,14 @@ Response Body Success:
   "status": "success",
   "message": "produk berhasil dibuat",
   "data": {
-    "_id": "654cb955a6899def83534cbb",
-    "toko_id": "655593858bc234dd084da5fa",
+    "produk_id": 1,
+    "toko_id": 1,
     "nama": "Roti",
     "harga": 25000,
     "kategori": "roti",
-    "jumlah": 30,
+    "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png",
-    "lokasi": "Yogyakarta"
+    "image": "foto.png"
   }
 }
 ```
@@ -67,15 +65,14 @@ Response Body Success:
 {
   "status": "success",
   "data": {
-    "_id": "654cb955a6899def83534cbb",
-    "toko_id": "655593858bc234dd084da5fa",
+    "produk_id": 1,
+    "toko_id": 1,
     "nama": "Roti",
     "harga": 25000,
     "kategori": "roti",
-    "jumlah": 30,
+    "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png",
-    "lokasi": "Yogyakarta"
+    "image": "foto.png"
   }
 }
 ```
@@ -117,19 +114,14 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": "654cb955a6899def83534cbb",
-      "toko_id": "655593858bc234dd084da5fa",
+      "produk_id": 1,
+      "toko_id": 1,
       "nama": "Roti",
       "harga": 25000,
       "kategori": "roti",
-      "jumlah": 30,
+      "stok": 30,
       "deskripsi": "Makanan sisa penjualan",
-      "image": "foto.png",
-      "lokasi": "Yogyakarta"
-    },
-    {
-      "_id": "654cb955a6899def83536uhj"
-      // ...
+      "image": "foto.png"
     }
   ]
 }
@@ -164,19 +156,14 @@ Response Body Success:
   "status": "success",
   "data": [
     {
-      "_id": "654cb955a6899def83534cbb",
-      "toko_id": "655593858bc234dd084da5fa",
+      "produk_id": 1,
+      "toko_id": 1,
       "nama": "Roti",
       "harga": 25000,
       "kategori": "roti",
-      "jumlah": 30,
+      "stok": 30,
       "deskripsi": "Makanan sisa penjualan",
-      "image": "foto.png",
-      "lokasi": "Yogyakarta"
-    },
-    {
-      "_id": "654cb955a6899def83534uhj"
-      // ...
+      "image": "foto.png"
     }
   ]
 }
@@ -219,15 +206,14 @@ Response Body Success:
   "status": "success",
   "message": "produk berhasil dibuat",
   "data": {
-    "_id": "654cb955a6899def83534cbb",
-    "toko_id": "655593858bc234dd084da5fa",
+    "produk_id": 1,
+    "toko_id": 1,
     "nama": "Bread",
     "harga": 25000,
     "kategori": "roti",
-    "jumlah": 30,
+    "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png",
-    "lokasi": "Yogyakarta"
+    "image": "foto.png"
   }
 }
 ```

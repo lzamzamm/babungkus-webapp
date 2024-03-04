@@ -12,8 +12,7 @@ Request Body :
   "nama_lengkap": "arip muhammad",
   "email": "arip@gmail.com",
   "password": 123,
-  "no_telp": "080707",
-  "role": "user"
+  "no_telp": "080707"
 }
 ```
 
@@ -24,11 +23,12 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil dibuat",
   "data": {
-    "_id": "6555934b9a9948b77c1edb41",
+    "user_id": 1,
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
-    "no_telp": "080707"
+    "no_telp": "080707",
+    "role": "user"
   }
 }
 ```
@@ -115,7 +115,7 @@ Response Body Success:
   "status": "success",
   "message": "user berhasil di update",
   "data": {
-    "_id": "6555934b9a9948b77c1edb41",
+    "user_id": 1,
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
@@ -152,51 +152,13 @@ Response Body Success:
 {
   "status": "success",
   "data": {
-    "_id": "6555934b9a9948b77c1edb41",
+    "user_id": 1,
     "username": "arip",
     "nama_lengkap": "arip muhammad",
     "email": "arip@gmail.com",
     "password": 123,
     "no_telp": "080707",
     "role": "user"
-  }
-}
-```
-
-Response Body Failed:
-
-```json
-{
-  "status": "fail",
-  "message": "request body error"
-}
-```
-
-Process Failed:
-
-```json
-{
-  "status": "error",
-  "message": "system error"
-}
-```
-
-## get user by id
-
-Endpoint: GET /api/user/:id
-
-Response Body Success:
-
-```json
-{
-  "status": "success",
-  "message": "user berhasil di update",
-  "data": {
-    "_id": "6555934b9a9948b77c1edb41",
-    "username": "arip",
-    "nama_lengkap": "arip muhammad",
-    "email": "arip@gmail.com",
-    "no_telp": "080707"
   }
 }
 ```
