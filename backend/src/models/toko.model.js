@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
 const tokoSchema = mongoose.Schema({
-  tokoId: {
-    type: String,
+  toko_id: {
+    type: Number,
+    unique: true,
+  },
+  user_id: {
+    type: Number,
     required: true,
   },
   nama: {
@@ -13,7 +17,7 @@ const tokoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  isConfirmed: {
+  is_confirmed: {
     type: Boolean,
     required: true,
   },
@@ -21,7 +25,7 @@ const tokoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  jamOperasional: {
+  jam_operasional: {
     type: String,
     required: true,
   },
@@ -29,7 +33,7 @@ const tokoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  noTelp: {
+  no_telp: {
     type: String,
     required: true,
   },
@@ -38,24 +42,24 @@ const tokoSchema = mongoose.Schema({
 tokoSchema.pre("save", async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
-  // console.log("tes middleware");
+  console.log("tes middleware");
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
-    const lastDoc = await mongoose
-      .model("Siswa")
+    const last_doc = await mongoose
+      .model("Toko")
       .findOne()
-      .sort("-tokoId")
+      .sort("-toko_id")
       .exec();
-    console.log(lastDoc);
+    console.log(last_doc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
-    doc.tokoId = (lastDoc ? lastDoc.tokoId : 1) + 1;
+    doc.toko_id = (last_doc ? last_doc.toko_id : 0) + 1;
     next();
   } catch (err) {
     return next(err);
   }
 });
 
-const Siswa = mongoose.model("Toko", tokoSchema);
+const Toko = mongoose.model("Toko", tokoSchema);
 
-export default tokoSchema;
+export default Toko;

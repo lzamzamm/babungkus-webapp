@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import { PORT, mongoDBURL } from "./configs/db.config.js";
+import toko_routes from "./routes/toko.routes.js";
+import { notFound, errorHandler } from "./middleware/error.middleware.js";
 
 import Cors from "cors";
 
@@ -20,6 +22,12 @@ app.get("/", (req, res) => {
   console.log(req);
   return res.status(234).send("hello");
 });
+
+// API Toko
+app.use("/api/toko", toko_routes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 mongoose.connect(mongoDBURL).then(() => {
   console.log("App connected to database");
