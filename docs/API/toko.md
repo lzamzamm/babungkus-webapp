@@ -162,7 +162,7 @@ Response Body Success:
     "image": "jpg",
     "is_confirmed": true,
     "jam_operasional": "10.00 sampai 11.000",
-    "loksi": "sapen",
+    "lokasi": "sapen",
     "no_telp": "098080"
   }
 }

@@ -12,9 +12,10 @@ Request Body :
   "nama": "Roti",
   "harga": 25000,
   "kategori": "roti",
-  "jumlah": 30,
+  "stok": 30,
   "deskripsi": "Makanan sisa penjualan",
-  "image": "foto.png"
+  "image": "foto.png",
+  "expire_at": "2023-10-20"
 }
 ```
 
@@ -32,7 +33,8 @@ Response Body Success:
     "kategori": "roti",
     "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png"
+    "image": "foto.png",
+    "expire_at": "2023-10-20"
   }
 }
 ```
@@ -69,10 +71,11 @@ Response Body Success:
     "toko_id": 1,
     "nama": "Roti",
     "harga": 25000,
-    "kategori": "roti",
+    "kategori": "Makanan",
     "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png"
+    "image": "foto.png",
+    "expire_at": "2023-10-20"
   }
 }
 ```
@@ -103,7 +106,7 @@ Request Body :
 
 ```json
 {
-  "kategori": "roti"
+  "kategori": "Makanan"
 }
 ```
 
@@ -118,10 +121,11 @@ Response Body Success:
       "toko_id": 1,
       "nama": "Roti",
       "harga": 25000,
-      "kategori": "roti",
+      "kategori": "Makanan",
       "stok": 30,
       "deskripsi": "Makanan sisa penjualan",
-      "image": "foto.png"
+      "image": "foto.png",
+      "expire_at": "2023-10-20"
     }
   ]
 }
@@ -163,7 +167,8 @@ Response Body Success:
       "kategori": "roti",
       "stok": 30,
       "deskripsi": "Makanan sisa penjualan",
-      "image": "foto.png"
+      "image": "foto.png",
+      "expire_at": "2023-10-20"
     }
   ]
 }
@@ -213,7 +218,8 @@ Response Body Success:
     "kategori": "roti",
     "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
-    "image": "foto.png"
+    "image": "foto.png",
+    "expire_at": "2023-10-20"
   }
 }
 ```
