@@ -9,11 +9,13 @@ Request Body :
 ```json
 {
   "user_id": 1,
+  "produk_id": 1,
   "status_penjual": "pending",
   "status_pembeli": "pending",
   "jumlah": 1,
   "pesan": "tes",
-  "harga_total": 30000
+  "harga_total": 30000,
+  "expire_at": "2023-11-24T10:39:58.606Z"
 }
 ```
 
@@ -25,6 +27,8 @@ Response Body Success:
   "message": "pesanan berhasil dibuat",
   "data": {
     "pesanan_id": 1,
+    "user_id": 1,
+    "produk_id": 1,
     "status_penjual": "pending",
     "status_pembeli": "pending",
     "jumlah": 1,
@@ -63,6 +67,8 @@ Response Body Success:
   "status": "success",
   "data": {
     "pesanan_id": 1,
+    "user_id": 1,
+    "produk_id": 1,
     "status_penjual": "pending",
     "status_pembeli": "pending",
     "jumlah": 1,
@@ -110,6 +116,8 @@ Response Body Success:
   "message": "user berhasil dibuat",
   "data": {
     "pesanan_id": 1,
+    "user_id": 1,
+    "produk_id": 1,
     "status_penjual": "success",
     "status_pembeli": "pending",
     "jumlah": 1,

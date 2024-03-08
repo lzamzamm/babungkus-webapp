@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { PORT, mongoDBURL } from './configs/db.config.js';
 import toko_routes from './routes/toko.routes.js';
 import produk_routes from './routes/produk.routes.js';
+import pesanan_routes from './routes/pesanan.routes.js';
+import laporan_routes from './routes/laporan.routes.js';
 import { notFound, errorHandler } from './middleware/error.middleware.js';
 
 import Cors from 'cors';
@@ -27,6 +29,8 @@ app.get('/', (req, res) => {
 // API Toko
 app.use('/api/toko', toko_routes);
 app.use('/api/produk', produk_routes);
+app.use('/api/pesanan', pesanan_routes);
+app.use('/api/laporan', laporan_routes);
 
 app.use(notFound);
 app.use(errorHandler);
