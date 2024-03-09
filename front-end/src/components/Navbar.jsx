@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
+import Babungkus from '/assets/images/babungkuz.svg';
+
 function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false)
@@ -10,8 +12,10 @@ function Navbar() {
     <div class=' w-full fixed font-poppins text-[14px] sm:text-[22px] flex justify-center items-center sm:pt-[1%] sm:pb-[1%] pt-[2%] pl-[5%] pr-[5%] pb-[2%] shadow-mini-xlx sm:shadow-xlx'>
       <div class='flex justify-between w-full'>
         <div class='flex items-center gap-[10%] w-[55%]'>
-          <div class='w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] '>
-            <div class='w-full h-full rounded-[50%] bg-abu-abu' />
+          <div class='w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] flex justify-center items-center '>
+            <img src={Babungkus} class='w-full h-full rounded-[50%] '>
+              
+            </img>
           </div>
           <div class='hover:bg-[#d6d4d4] flex items-center justify-center'>
             <button
