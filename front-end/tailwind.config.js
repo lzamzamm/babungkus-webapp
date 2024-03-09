@@ -19,6 +19,9 @@ export default {
       },
       colors: {
         'abu-abu': '#D9D9D9'
+      },
+      screens: {
+        'hp': '375px'
       }
     },
   },

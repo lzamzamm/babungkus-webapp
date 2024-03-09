@@ -9,10 +9,10 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div class=' w-full fixed font-poppins text-[14px] sm:text-[22px] flex justify-center items-center sm:pt-[1%] sm:pb-[1%] pt-[2%] pl-[5%] pr-[5%] pb-[2%] shadow-mini-xlx sm:shadow-xlx'>
+    <div class=' w-full font-poppins hp:text-[1.75vmax] flex justify-center items-center pt-[0.5%] pl-[5%] pr-[5%] pb-[0.5%] shadow-mini-xlx sm:shadow-xlx'>
       <div class='flex justify-between w-full'>
-        <div class='flex items-center gap-[10%] w-[55%]'>
-          <div class='w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] flex justify-center items-center '>
+        <div class='flex items-center gap-[10%] w-[60%]'>
+          <div class='hp:w-[7vw] flex justify-center items-center '>
             <img src={Babungkus} class='w-full h-full rounded-[50%] '>
               
             </img>
@@ -38,11 +38,11 @@ function Navbar() {
           <Link to='/' class='hover:bg-[#d6d4d4]'>Outlet</Link>
           <Link to='/' class='hover:bg-[#d6d4d4]'>Kontak</Link>
         </div>
-        <div class=' font-inter w-[25%] flex items-center justify-between'>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
+        <div class=' font-inter text-[] w-[25%] flex items-center justify-between'>
+          <Link to='/' class=' hover:bg-[#d6d4d4] w-[10vw] p-[3%] text-center bg-abu-abu rounded-md'>
             Masuk
           </Link>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
+          <Link to='/' class=' hover:bg-[#d6d4d4] w-[10vw] p-[3%] text-center bg-abu-abu rounded-md'>
             Daftar
           </Link>
         </div>
