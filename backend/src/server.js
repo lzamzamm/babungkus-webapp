@@ -33,7 +33,7 @@ app.use("/api/produk", produk_routes);
 app.use("/api/pesanan", pesanan_routes);
 app.use("/api/laporan", laporan_routes);
 app.use("/api/pesanan", pesanan_routes);
-app.use("/api/user", laporan_routes);
+app.use("/api/user", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -50,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ user_id: req.userInfo.user_id });
+  const user = await User.findOne({ user_id: req.user.user_id });
 
   if (!user) {
     res.status(400);
@@ -64,8 +64,8 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  //const { user_id } = req.user;
-  var { user_id, username, nama_lengkap, password, email, no_telp } = req.body;
+  const { user_id } = req.user;
+  var { username, nama_lengkap, password, email, no_telp } = req.body;
 
   if (!username && !nama_lengkap && !password && !email && !no_telp) {
     res.status(400);
