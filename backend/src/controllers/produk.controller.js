@@ -9,6 +9,12 @@ const createProduk = asyncHandler(async (req, res) => {
     throw new Error('isi semua data');
   }
 
+  var updateFields = { ...req.body };
+
+  if (req.file) {
+    updateFields.image = req.file.filename;
+  }
+
   const new_produk = {
     toko_id: toko_id,
     nama: nama,

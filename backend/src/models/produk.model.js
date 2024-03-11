@@ -1,43 +1,47 @@
 import mongoose from 'mongoose';
 
-const produkSchema = mongoose.Schema({
-  produk_id: {
-    type: Number,
-    unique: true,
+const produkSchema = mongoose.Schema(
+  {
+    produk_id: {
+      type: Number,
+      unique: true,
+    },
+    toko_id: {
+      type: Number,
+      required: true,
+    },
+    nama: {
+      type: String,
+      required: true,
+    },
+    harga: {
+      type: Number,
+      required: true,
+    },
+    kategori: {
+      type: String,
+      enum: ['Makanan', 'Minuman', 'Makanan & Minuman'],
+      required: true,
+    },
+    stok: {
+      type: Number,
+      required: true,
+    },
+    deskripsi: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    expired_at: {
+      type: Date,
+      required: true,
+    },
   },
-  toko_id: {
-    type: Number,
-    required: true,
-  },
-  nama: {
-    type: String,
-    required: true,
-  },
-  harga: {
-    type: Number,
-    required: true,
-  },
-  kategori: {
-    type: String,
-    required: true,
-  },
-  stok: {
-    type: Number,
-    required: true,
-  },
-  deskripsi: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  expire_at: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 produkSchema.pre('save', async function (next) {
   const doc = this;
@@ -55,6 +59,13 @@ produkSchema.pre('save', async function (next) {
     return next(err);
   }
 });
+
+produkSchema.methods.toJSON = function () {
+  const obj = this.toObject();
+  // Format the date to dd-mm-yyyy
+  obj.expired_at = obj.expired_at ? obj.expired_at.toISOString().slice(0, 10).split('-').reverse().join('-') : null;
+  return obj;
+};
 
 const Produk = mongoose.model('Produk', produkSchema);
 
