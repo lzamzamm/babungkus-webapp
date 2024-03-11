@@ -1,43 +1,46 @@
 import mongoose from "mongoose";
 
-const tokoSchema = mongoose.Schema({
-  toko_id: {
-    type: Number,
-    unique: true,
+const tokoSchema = mongoose.Schema(
+  {
+    toko_id: {
+      type: Number,
+      unique: true,
+    },
+    user_id: {
+      type: Number,
+      required: true,
+    },
+    nama: {
+      type: String,
+      required: true,
+    },
+    deskripsi: {
+      type: String,
+      required: true,
+    },
+    is_confirmed: {
+      type: Boolean,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    jam_operasional: {
+      type: String,
+      required: true,
+    },
+    lokasi: {
+      type: String,
+      required: true,
+    },
+    no_telp: {
+      type: String,
+      required: true,
+    },
   },
-  user_id: {
-    type: Number,
-    required: true,
-  },
-  nama: {
-    type: String,
-    required: true,
-  },
-  deskripsi: {
-    type: String,
-    required: true,
-  },
-  is_confirmed: {
-    type: Boolean,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  jam_operasional: {
-    type: String,
-    required: true,
-  },
-  lokasi: {
-    type: String,
-    required: true,
-  },
-  no_telp: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 tokoSchema.pre("save", async function (next) {
   const doc = this;
