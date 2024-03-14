@@ -45,7 +45,7 @@ const tokoSchema = mongoose.Schema(
 tokoSchema.pre("save", async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
-  console.log("tes middleware");
+  //console.log("tes middleware");
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
     const last_doc = await mongoose
@@ -53,7 +53,7 @@ tokoSchema.pre("save", async function (next) {
       .findOne()
       .sort("-toko_id")
       .exec();
-    console.log(last_doc);
+    //console.log(last_doc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
     doc.toko_id = (last_doc ? last_doc.toko_id : 0) + 1;
