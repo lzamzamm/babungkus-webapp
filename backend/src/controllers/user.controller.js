@@ -3,44 +3,13 @@ import generateToken from "../utils/token.util.js";
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 
+import { registerUserService } from "../service/user/register.service.js";
+import { getUserService } from "../service/user/get.service.js";
+import { loginUserService } from "../service/user/auth.service.js";
+import { updateUserService } from "../service/user/update.service.js";
+
 const registerUser = asyncHandler(async (req, res) => {
-  var { username, nama_lengkap, password, email, no_telp } = req.body;
-
-  if (!username || !nama_lengkap || !password || !email || !no_telp) {
-    res.status(400);
-    throw new Error("Isi semua data");
-  }
-  //   Object.values(req.body).forEach((value) => {
-  //     if (!value) {
-  //       res.status(400);
-  //       throw new Error("Isi semua data");
-  //     }
-  //   });
-
-  const cekUsername = await User.findOne({ username: username });
-
-  if (cekUsername) {
-    res.status(400);
-    throw new Error("Username sudah terpakai");
-  }
-  const cekEmail = await User.findOne({ email: email });
-
-  if (cekEmail) {
-    res.status(400);
-    throw new Error("Email sudah terpakai");
-  }
-
-  password = await bcrypt.hash(password, 10);
-
-  const newUser = {
-    username: username,
-    nama_lengkap: nama_lengkap,
-    password: password,
-    email: email,
-    no_telp: no_telp,
-  };
-
-  const user = await User.create(newUser);
+  const user = await registerUserService(res, req.body);
 
   return res.status(200).json({
     status: "Success",
@@ -50,12 +19,8 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ user_id: req.user.user_id });
-
-  if (!user) {
-    res.status(400);
-    throw new Error("User tidak ditemukan");
-  }
+  //console.log(req);
+  const user = await getUserService(res, req.user.user_id);
 
   return res.status(200).json({
     status: "Success",
@@ -64,82 +29,28 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { user_id } = req.user;
-  var { username, nama_lengkap, password, email, no_telp } = req.body;
-
-  if (!username && !nama_lengkap && !password && !email && !no_telp) {
-    res.status(400);
-    throw new Error("Tidak ada kolom yang terisi");
-  }
-
-  const cekUsername = await User.findOne({ username: username });
-
-  if (cekUsername) {
-    res.status(400);
-    throw new Error("Username sudah terpakai");
-  }
-
-  const cekEmail = await User.findOne({ email: email });
-
-  if (cekEmail) {
-    res.status(400);
-    throw new Error("Email sudah terpakai");
-  }
-
-  if (password) {
-    password = await bcrypt.hash(password, 10);
-  }
-
-  const updateFields = {
-    username: username,
-    nama_lengkap: nama_lengkap,
-    password: password,
-    email: email,
-    no_telp: no_telp,
-  };
-  //console.log(user_id);
-
-  const user = await User.findOneAndUpdate(
-    { user_id: user_id },
-    { $set: updateFields }
-  );
-  if (!user) {
-    res.status(400);
-    throw new Error("User tidak ditemukan.");
-  }
-
-  const newUser = await User.findOne({ user_id: user_id });
+  const user = await updateUserService(res, req.user, req.body);
 
   return res.status(200).json({
     status: "Success",
     message: "USer berhasil di update",
-    data: newUser,
+    data: user,
   });
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  var { username, password } = req.body;
+  var user = await loginUserService(res, req.body);
 
-  var user = await User.findOne({ username: username });
-
-  //console.log(user);
-  if (user && (await user.matchPassword(password))) {
-    generateToken(res, user.user_id);
-
-    res.status(200).json({
-      status: "Success",
-      message: "User berhasil login",
-      data: {
-        user_id: user.user_id,
-        username: username,
-        nama_lengkap: user.nama_lengkap,
-        email: user.email,
-      },
-    });
-  } else {
-    res.status(400);
-    throw new Error("Username atau password salah");
-  }
+  res.status(200).json({
+    status: "Success",
+    message: "User berhasil login",
+    data: {
+      user_id: user.user_id,
+      username: user.username,
+      nama_lengkap: user.nama_lengkap,
+      email: user.email,
+    },
+  });
 });
 
 const logoutUser = asyncHandler(async (req, res) => {

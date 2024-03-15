@@ -6,6 +6,7 @@ export const getTokoAllService = asyncHandler(async () => {
 
   return result;
 });
+
 export const getTokoIdService = asyncHandler(async (res, { id }) => {
   const result = await findWithId(id);
 

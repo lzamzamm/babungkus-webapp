@@ -21,6 +21,7 @@ const protect = asyncHandler(async (req, res, next) => {
   req.user = await User.findOne({ user_id: decoded.user_id }).select(
     "-password"
   );
+  //console.log(decoded, process.env.JWT_SECRET);
   next();
 });
 
