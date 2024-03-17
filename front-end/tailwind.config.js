@@ -18,6 +18,13 @@ export default {
         'xlx': '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
       },
       colors: {
+        'primary' : '#43766C',
+        'secondary' : '#76463C',
+        'tertiary' : '#EFE6DA',
+        'onCloseContainer' : '#6A1212',
+        'CloseContainer' : '#EDB9B9',
+        'onOpenContainer' : '#436A12',
+        'OpenContainer' : '#BAEDB9',
         'abu-abu': '#D9D9D9'
       },
       screens: {
