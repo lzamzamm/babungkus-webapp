@@ -5,13 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'poppins': ['Poppins', 'sans-serif'],
+    },
     extend: {
       spacing: {
         
-      },
-      fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
-        'inter': ['Inter', 'sans-serif']
       },
       boxShadow: {
         'mini-xlx': '0px 2px 2px 0px rgba(0, 0, 0, 0.25)',
@@ -19,6 +18,7 @@ export default {
       },
       colors: {
         'primary' : '#43766C',
+        'primary-dark' : '#2f534c',
         'secondary' : '#76463C',
         'tertiary' : '#EFE6DA',
         'onCloseContainer' : '#6A1212',

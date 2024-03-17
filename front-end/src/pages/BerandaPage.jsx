@@ -1,15 +1,19 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Hero from '../../public/assets/images/hero-element.jpg'
 
 function BerandaPage() {
   return (
     <div class='font-poppins'>
       <Navbar />
-      <div class='pl-[9%] pt-[10%] pb-[10%] bg-[#D9D9D9]'>
-        <div class='hp:text-[4vmax] font-semibold'>Babungkus</div>
-        <div class='font-inter text-[2vmax]'>Selamatkan Makanan dan Jadilah Bagian dari Gerakan!</div>
+      <div class='flex text-white relative overflow-hidden h-[350px]'>
+        <img src={Hero} class='brightness-50 h-full w-full object-cover'></img>
+        <div class='flex flex-col absolute inset-0 justify-center px-[5%]'>
+          <p class='hp:text-[4vmax] font-semibold'>Babungkus</p>
+          <p class='text-[2vmax]'>Selamatkan Makanan dan Jadilah Bagian dari Gerakan!</p>
+        </div>
       </div>
-      <div class='hp:text-[1.6vmax] lg:text-[2.25vmax] font-inter flex pt-[7.5%] pl-[10%] pr-[10%] pb-[7.5%]'>
+      <div class='hp:text-[1.6vmax] lg:text-[2.25vmax] flex pt-[7.5%] pl-[10%] pr-[10%] pb-[7.5%]'>
         <div class='  hp:w-[20vmax] lg:w-[30vmax]'>
           <div class='w-full lg:h-[17.5vmax] hp:h-[12.5vmax] bg-slate-300 rounded-[1.5vmax]' />
           <div class='w-full hp:h-[2vmax] bg-white' />

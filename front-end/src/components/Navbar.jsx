@@ -18,10 +18,10 @@ function Navbar() {
   ];
 
   return (
-    <div className='w-full font-poppins hp:text-[1.75vmax] flex justify-center items-center py-4 px-[5%] shadow-mini-xlx sm:shadow-xlx'>
+    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] shadow-mini-xlx sm:shadow-xlx'>
       <div className='flex justify-between w-full'>
         <div className='flex items-center gap-[10%] w-[60%]'>
-          <div className='hp:w-[7vw] flex justify-center items-center'>
+          <div className='flex justify-center items-center w-[50px]'>
             <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
           </div>
           <div className='hover:text-primary flex items-center justify-center'>
@@ -36,7 +36,7 @@ function Navbar() {
               )}
             </button>
             {isOpen && (
-              <div className='absolute p-[1%] mt-[15%] bg-slate-400'>
+              <div className='absolute p-[10%] bg-slate-400'>
                 {navItems[0].subItems.map((item, index) => (
                   <Link key={index} to={item.href}>{item.label}</Link>
                 ))}
@@ -47,9 +47,9 @@ function Navbar() {
             <Link key={index} to={item.href} className='hover:text-primary'>{item.label}</Link>
           ))}
         </div>
-        <div className='font-inter text-[] w-[25%] flex items-center justify-between'>
+        <div className='w-[25%] flex items-center justify-between transition duration-300 ease-in-out'>
           {buttonItems.map((item, index) => (
-            <Link key={index} to={item.href} className='hover:bg-[#d6d4d4] w-[10vw] p-[3%] text-center bg-abu-abu rounded-md'>
+            <Link key={index} to={item.href} className='hover:bg-primary w-[10vw] p-[3%] text-white text-center bg-primary rounded-md'>
               {item.label}
             </Link>
           ))}
