@@ -1,50 +1,62 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import LogoBabungkus from '/assets/images/logo.png';
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const navItems = [
+    { label: 'Produk', href: '/', subItems: [{ label: 'Makanan', href: '/' }, { label: 'Minuman', href: '/' }] },
+    { label: 'Outlet', href: '/' },
+    { label: 'Kontak', href: '/' }
+  ];
 
-  const [isOpen, setIsOpen] = useState(false)
+  const buttonItems = [
+    { label: 'Masuk', href: '/login' },
+    { label: 'Daftar', href: '/register' }
+  ];
 
   return (
-    <div class=' w-full fixed font-poppins text-[14px] sm:text-[22px] flex justify-center items-center sm:pt-[1%] sm:pb-[1%] pt-[2%] pl-[5%] pr-[5%] pb-[2%] shadow-mini-xlx sm:shadow-xlx'>
-      <div class='flex justify-between w-full'>
-        <div class='flex items-center gap-[10%] w-[55%]'>
-          <div class='w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] '>
-            <div class='w-full h-full rounded-[50%] bg-abu-abu' />
+    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] shadow-mini-xlx sm:shadow-xlx'>
+      <div className='flex justify-between w-full'>
+        <div className='flex items-center gap-[10%] w-[60%]'>
+          <div className='flex justify-center items-center w-[50px]'>
+            <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
           </div>
-          <div class='hover:bg-[#d6d4d4] flex items-center justify-center'>
+          <div className='hover:text-primary flex items-center justify-center'>
             <button
               onClick={() => setIsOpen((prev) => !prev)}
-              class='flex items-center justify-center'>
+              className='flex items-center justify-center'>
               Produk
               {!isOpen ? (
-                <IoIosArrowDown class='pl-[10%]' />
+                <IoIosArrowDown className='pl-[10%]' />
               ) : (
-                <IoIosArrowUp class='pl-[10%]' />
+                <IoIosArrowUp className='pl-[10%]' />
               )}
             </button>
             {isOpen && (
-              <div class='absolute p-[1%] mt-[15%] bg-slate-400'>
-                <Link to='/'>Makanan</Link>
-                <Link to='/'>Minuman</Link>
+              <div className='absolute p-[10%] bg-slate-400'>
+                {navItems[0].subItems.map((item, index) => (
+                  <Link key={index} to={item.href}>{item.label}</Link>
+                ))}
               </div>
             )}
           </div>
-          <Link to='/' class='hover:bg-[#d6d4d4]'>Outlet</Link>
-          <Link to='/' class='hover:bg-[#d6d4d4]'>Kontak</Link>
+          {navItems.slice(1).map((item, index) => (
+            <Link key={index} to={item.href} className='hover:text-primary'>{item.label}</Link>
+          ))}
         </div>
-        <div class=' font-inter w-[25%] flex items-center justify-between'>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
-            Masuk
-          </Link>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
-            Daftar
-          </Link>
+        <div className='w-[25%] flex items-center justify-between transition duration-300 ease-in-out'>
+          {buttonItems.map((item, index) => (
+            <Link key={index} to={item.href} className='hover:bg-primary w-[10vw] p-[3%] text-white text-center bg-primary rounded-md'>
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
