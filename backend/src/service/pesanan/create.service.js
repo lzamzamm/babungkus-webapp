@@ -2,9 +2,6 @@ import asyncHandler from 'express-async-handler';
 import { create } from '../../repository/pesanan.repository.js';
 
 export const createPesananService = asyncHandler(async (pesanan) => {
-  // const newExpiredAt = pesanan.expired_at.toISOString().slice(0, 10).split('-').reverse().join('-');
-  // console.log(newExpiredAt);
-
   const new_pesanan = {
     user_id: pesanan.user_id,
     produk_id: pesanan.produk_id,
