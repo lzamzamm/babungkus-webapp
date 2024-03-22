@@ -5,14 +5,14 @@ export default function Footer() {
   return (
     <footer className="bg-white-200 text-center text-neutral-800 dark:bg-neutral-600 border-t-2 border-gray-200 dark:border-gray-700" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="container mx-auto px-4 py-9" style={{ maxWidth: '1140px', width: '100%' }}>
-        <div className="flex justify-center items-center mb-5 flex-col lg:flex-row" style={{ gap: '1rem', width: '100%' }} >
+        <div className="flex justify-center items-center mb-5 flex-col lg:flex-row lg:justify-start" style={{ gap: '1rem', width: '100%' }} >
           <img src={LogoBabungkus} alt="Logo Babungkus" style={{ height: '50px' }} />
           <h2 className="text-2xl ml-3" style={{ fontWeight: 700 }}>Babungkus</h2>
         </div>
         <div className="flex flex-col lg:flex-row justify-between items-start w-full">
           <div className="w-full lg:w-2/3 px-4 mb-6 lg:mb-0">
             <p>
-              Temukan hidangan favoritmu dengan harga terbaik dan bergabunglah bersama Babungkus dalam misi kita untuk melindungi bumi. Mari bersama-sama membuat pilihan berkelanjutan yang menguntungkan dan menjaga rumah kita.
+              Temukan hidangan favoritmu dengan harga terbaik dan bergabunglah bersama Babungkus dalam misi kita untuk melindungi bumi. Mari bersama-sama membuat pilihan berkelanjutan untuk menjaga rumah kita.
             </p>
             <div className="mt-4">
               <a href="https://github.com/lzamzamm/babungkus-webapp/tree/main/front-end/src" target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
