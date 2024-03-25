@@ -52,14 +52,14 @@ export default function LoginPage() {
                 <div className="mt-4 flex items-center justify-end gap-x-2">
                   <button
                     type="submit"
-                    className={`w-full text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-150 ease-in-out ${isDataValid ? "bg-primary hover:primary focus:ring-amber-500" : "bg-amber-200"
+                    className={`w-full text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-150 ease-in-out ${isDataValid ? "bg-primary  focus:ring-neutral-400" : "bg-amber-200"
                       } ${buttonLoading ? "opacity-50" : ""}`}
                   >
                     {buttonLoading ? "Memverifikasi..." : "Masuk"}
                   </button>
                 </div>
               </form>
-              <div className="text-l leading-6 tracking-tighter text-center">Belum punya akun? <Link className="text-primary ml-2" to="/Register">Daftar</Link></div>
+              <div className="text-l leading-6 tracking-tighter text-center mt-2">Belum punya akun? <Link className="text-primary ml-1" to="/Register">Daftar</Link></div>
             </div>
           </div>
         </div>
