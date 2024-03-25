@@ -28,9 +28,15 @@ export default function RegisPage() {
       <Navbar />
       <div className="bg-white flex min-h-screen items-center justify-center" >
         <div className="flex gap-10">
-          <img src={LogoDaftar} alt="Babungkus Logo" className="w-90" />
+        <div className="flex flex-col items-center">
+            <img src={LogoDaftar} alt="Babungkus Logo" className="w-90" />
+            <div className="text-center mt-4">
+              <p className="text-xl">Manfaatkan Makanan Sisa</p>
+              <p className="text-l">Bersama-sama Selamatkan Bumi</p>
+            </div>
+            </div>
           <div className="border border-gray-300 shadow-lg rounded-lg p-6 w-96">
-            <h3 className="text-xl font-semibold leading-6 tracking-tighter text-center mb-8">Masuk</h3>
+            <h3 className="text-xl font-semibold leading-6 tracking-tighter text-center mb-8">Daftar</h3>
             <div className="p-6 pt-0">
               <form onSubmit={handleLoginUser}>
                 <div className="group relative rounded-lg border focus-within:border-green-300 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-blue-300/30 flex items-center">
