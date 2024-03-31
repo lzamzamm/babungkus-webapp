@@ -9,7 +9,7 @@ function Navbar() {
   const navItems = [
     { label: 'Produk', href: '/', subItems: [{ label: 'Makanan', href: '/' }, { label: 'Minuman', href: '/' }] },
     { label: 'Outlet', href: '/' },
-    { label: 'Kontak', href: '/' }
+    { label: 'Kontak', href: '/contact' }
   ];
 
   const buttonItems = [
