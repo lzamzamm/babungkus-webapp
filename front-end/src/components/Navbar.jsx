@@ -24,7 +24,7 @@ function Navbar() {
           <div className='flex justify-center items-center w-[50px]'>
             <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
           </div>
-          <div className='hover:text-primary flex items-center justify-center'>
+          <div className='flex items-center justify-center hover:text-primary'>
             <button
               onClick={() => setIsOpen((prev) => !prev)}
               className='flex items-center justify-center'>
