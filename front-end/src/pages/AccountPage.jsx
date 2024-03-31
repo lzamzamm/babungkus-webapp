@@ -8,8 +8,6 @@ import StoreForm from '../components/StoreForm';
 import AddProduct from '../components/AddProductForm'; 
 import ProductSaya from '../components/ProductSaya';
 
-
-
 function AccountPage() {
   return (
     <div>

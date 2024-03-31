@@ -13,6 +13,7 @@ const ProdukSaya = () => {
       setData(data); // Set data produk ke state
     };
 
+    
     fetchData();
   }, []); // Kode ini akan dijalankan sekali setelah komponen dimuat
 

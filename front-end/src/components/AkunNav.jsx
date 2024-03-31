@@ -40,4 +40,5 @@ const AccountNavbar = () => {
     );
 };
 
+
 export default AccountNavbar;

@@ -7,7 +7,6 @@ export default function AkunLock() {
   const toggleLock = () => {
     setIsLocked(!isLocked);
   };
-
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg my-5">
       <div className="bg-cover bg-center h-56 p-4 flex justify-between items-start" style={{ backgroundImage: "url('https://via.placeholder.com/500')" }}>

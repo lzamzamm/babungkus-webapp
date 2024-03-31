@@ -25,7 +25,7 @@ const StoreForm = () => {
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="alamat"
                         name="alamat"
-                        rows="4" 
+                        rows="4"
                     ></textarea>
                 </div>
                 <div className="mb-2">
@@ -91,5 +91,6 @@ const StoreForm = () => {
         </div>
     );
 };
+
 
 export default StoreForm;
