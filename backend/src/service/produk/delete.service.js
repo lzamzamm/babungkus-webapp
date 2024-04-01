@@ -5,8 +5,9 @@ export const deleteProdukService = asyncHandler(async (id) => {
   const produk = await findOne(id);
 
   if (!produk) {
-    res.status(404);
-    throw new Error('Produk tidak ditemukan');
+    const error = new Error('Produk tidak ditemukan');
+    error.status = 404;
+    throw error;
   }
 
   return await deleteOne(id);

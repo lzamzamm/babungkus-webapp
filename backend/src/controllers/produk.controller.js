@@ -6,9 +6,9 @@ import { updateProdukService } from '../service/produk/update.service.js';
 import { deleteProdukService } from '../service/produk/delete.service.js';
 
 const createProduk = asyncHandler(async (req, res) => {
-  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expire_at } = req.body;
+  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
 
-  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expire_at) {
+  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expired_at) {
     res.status(400);
     throw new Error('isi semua data');
   }
@@ -56,9 +56,9 @@ const getProdukByKategori = asyncHandler(async (req, res) => {
 const UpdateProduk = asyncHandler(async (req, res) => {
   var { id } = req.params;
 
-  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expire_at } = req.body;
+  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
 
-  if (!toko_id && !nama && !deskripsi && !image && !harga && !kategori && !stok && !expire_at) {
+  if (!toko_id && !nama && !deskripsi && !image && !harga && !kategori && !stok && !expired_at) {
     res.status(400);
     throw new Error('Tidak ada data yang terisi');
   }

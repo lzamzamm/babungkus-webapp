@@ -5,8 +5,9 @@ export const deleteLaporanService = asyncHandler(async (id) => {
   const laporan = await findOne(id);
 
   if (!laporan) {
-    res.status(404);
-    throw new Error('Laporan tidak ditemukan');
+    const error = new Error('Laporan tidak ditemukan');
+    error.status = 404;
+    throw error;
   }
 
   return await deleteOne(id);

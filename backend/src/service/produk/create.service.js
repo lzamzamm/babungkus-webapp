@@ -1,16 +1,16 @@
 import asyncHandler from 'express-async-handler';
 import { create } from '../../repository/produk.repository.js';
 
-export const createProdukService = asyncHandler(async (produk) => {
+export const createProdukService = asyncHandler(async (data) => {
   const produk = {
-    toko_id: produk.toko_id,
-    nama: produk.nama,
-    harga: produk.harga,
-    kategori: produk.kategori,
-    stok: produk.stok,
-    deskripsi: produk.deskripsi,
-    image: produk.image,
-    expire_at: produk.expire_at,
+    toko_id: data.toko_id,
+    nama: data.nama,
+    harga: data.harga,
+    kategori: data.kategori,
+    stok: data.stok,
+    deskripsi: data.deskripsi,
+    image: data.image,
+    expired_at: data.expired_at,
   };
 
   const result = await create(produk);
