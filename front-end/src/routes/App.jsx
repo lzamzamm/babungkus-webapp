@@ -1,7 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-
 import BerandaPage from '../pages/BerandaPage'
+import LoginPage from '../pages/LoginPage'
+import RegisPage from '../pages/RegisPage'
+import AccountPage from '../pages/AccountPage'
 import ContactPage from '../pages/ContactPage'
 import LoginPage from '../pages/LoginPage'
 import RegisPage from '../pages/RegisPage'
@@ -11,12 +13,13 @@ function App() {
     <div>
       <Routes>
         <Route path='/' Component={BerandaPage} />
-        <Route path='/contact' Component={ContactPage} />
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisPage} />
+        <Route path='/akun/*' Component={AccountPage} />
       </Routes>
     </div>
   )
 }
+
 
 export default App
