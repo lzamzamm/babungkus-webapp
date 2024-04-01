@@ -84,8 +84,9 @@ export const getLaporanByIdService = asyncHandler(async (id) => {
   const result = await aggregate(pipeline);
 
   if (!result || result.length === 0) {
-    res.status(404);
-    throw new Error('Laporan tidak ditemukan');
+    const error = new Error('Laporan tidak ditemukan');
+    error.status = 404;
+    throw error;
   }
 
   return result[0];
