@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 
 import BerandaPage from '../pages/BerandaPage'
 import ContactPage from '../pages/ContactPage'
-import LoginPage from '../pages/ContactPage'
-import RegisPage from '../pages/ContactPage'
+import LoginPage from '../pages/LoginPage'
+import RegisPage from '../pages/RegisPage'
 
 function App() {
   return (
