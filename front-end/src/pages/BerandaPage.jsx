@@ -58,6 +58,9 @@ function BerandaPage() {
           </div>
         </div>
       </div>
+      <div class=''>
+        
+      </div>
       <Footer />
     </div>
   )

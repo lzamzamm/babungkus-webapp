@@ -4,9 +4,10 @@ import BerandaPage from '../pages/BerandaPage'
 import LoginPage from '../pages/LoginPage'
 import RegisPage from '../pages/RegisPage'
 import AccountPage from '../pages/AccountPage'
+import Detail_ProductPage from '../pages/Detail_ProductPage'
+import RiwayatPage from '../pages/RiwayatPage'
+
 import ContactPage from '../pages/ContactPage'
-import LoginPage from '../pages/LoginPage'
-import RegisPage from '../pages/RegisPage'
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisPage} />
         <Route path='/akun/*' Component={AccountPage} />
+        <Route path='/detail-product' Component={Detail_ProductPage} />
+        <Route path='/riwayat' Component={RiwayatPage} />
       </Routes>
     </div>
   )
