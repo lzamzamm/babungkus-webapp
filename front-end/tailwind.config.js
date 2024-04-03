@@ -29,6 +29,11 @@ export default {
       },
       screens: {
         'hp': '375px'
+      },
+      borderRadius: {
+        '2': '2px',
+        '5': '5px',
+        '10': '10px'
       }
     },
   },
