@@ -94,7 +94,7 @@ Process Failed:
 
 ## update user
 
-Endpoint: PUT /api/user/current
+Endpoint: PATCH /api/user/current
 
 Request Body :
 

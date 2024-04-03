@@ -1,26 +1,17 @@
 import asyncHandler from 'express-async-handler';
 import Pesanan from '../models/pesanan.model.js';
+import { createPesananService } from '../service/pesanan/create.service.js';
+import { getPesananAllService } from '../service/pesanan/get-all.service.js';
 
 const createPesanan = asyncHandler(async (req, res) => {
-  const { user_id, produk_id, status_penjual, status_pembeli, jumlah, pesan, harga_total, expire_at } = req.body;
+  const { user_id, produk_id, status_penjual, status_pembeli, jumlah, pesan, harga_total, expired_at } = req.body;
 
-  if (!user_id || !produk_id || !status_penjual || !status_pembeli || !harga_total || !jumlah || !pesan || !expire_at) {
+  if (!user_id || !produk_id || !status_penjual || !status_pembeli || !harga_total || !jumlah || !pesan || !expired_at) {
     res.status(400);
     throw new Error('isi semua data');
   }
 
-  const new_pesanan = {
-    user_id: user_id,
-    produk_id: produk_id,
-    status_penjual: status_penjual,
-    status_pembeli: status_pembeli,
-    jumlah: jumlah,
-    pesan: pesan,
-    harga_total: harga_total,
-    expire_at: expire_at,
-  };
-
-  const pesanan = await Pesanan.create(new_pesanan);
+  const pesanan = await createPesananService(req.body);
 
   return res.status(200).json({
     status: 'success',
@@ -30,7 +21,7 @@ const createPesanan = asyncHandler(async (req, res) => {
 });
 
 const getPesananAll = asyncHandler(async (req, res) => {
-  const pesanan = await Pesanan.find({});
+  const pesanan = await getPesananAllService();
 
   return res.status(200).json({
     status: 'success',
