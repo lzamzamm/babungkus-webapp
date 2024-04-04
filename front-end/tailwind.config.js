@@ -29,6 +29,9 @@ export default {
       },
       screens: {
         'hp': '375px'
+      },
+      backgroundImage: {
+        'contoh': "url('/assets/images/beranda/food-1.jpg')"
       }
     },
   },

@@ -6,7 +6,6 @@ import RegisPage from '../pages/RegisPage'
 import AccountPage from '../pages/AccountPage'
 import Detail_ProductPage from '../pages/Detail_ProductPage'
 import RiwayatPage from '../pages/RiwayatPage'
-
 import ContactPage from '../pages/ContactPage'
 
 function App() {
@@ -16,6 +15,7 @@ function App() {
         <Route path='/' Component={BerandaPage} />
         <Route path='/login' Component={LoginPage} />
         <Route path='/register' Component={RegisPage} />
+        <Route path='/contact' Component={ContactPage} />
         <Route path='/akun/*' Component={AccountPage} />
         <Route path='/detail-product' Component={Detail_ProductPage} />
         <Route path='/riwayat' Component={RiwayatPage} />
