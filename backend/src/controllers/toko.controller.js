@@ -6,6 +6,7 @@ import {
   getTokoIdService,
 } from "../service/toko/get.service.js";
 import { updateTokoService } from "../service/toko/update.service.js";
+import { updateStatusTokoService } from "../service/toko/update.service.js";
 
 const createToko = asyncHandler(async (req, res) => {
   const toko = await createTokoService(res, req.body);
@@ -45,4 +46,14 @@ const UpdateToko = asyncHandler(async (req, res) => {
   });
 });
 
-export { createToko, getTokoAll, getTokoById, UpdateToko };
+const updateStatusToko = asyncHandler(async (req, res) => {
+  const toko = await updateStatusTokoService(res, req.body);
+
+  res.status(200).json({
+    status: "Success",
+    message: "Toko berhasil di freeze",
+    data: toko,
+  });
+});
+
+export { createToko, getTokoAll, getTokoById, UpdateToko, updateStatusToko };

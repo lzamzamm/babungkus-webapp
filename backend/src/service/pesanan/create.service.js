@@ -1,7 +1,18 @@
-import asyncHandler from 'express-async-handler';
-import { create } from '../../repository/pesanan.repository.js';
+import asyncHandler from "express-async-handler";
+import { create } from "../../repository/pesanan.repository.js";
+import { findWithUserId } from "../../repository/toko.repository.js";
 
-export const createPesananService = asyncHandler(async (pesanan) => {
+export const createPesananService = asyncHandler(async (res, pesanan) => {
+  // const newExpiredAt = pesanan.expired_at.toISOString().slice(0, 10).split('-').reverse().join('-');
+  // console.log(newExpiredAt);
+
+  const toko = await findWithUserId({ user_id: pesanan.user_id });
+
+  if (toko.status != "Active") {
+    res.status(404);
+    throw new Error("Toko sedang tidak aktif");
+  }
+
   const new_pesanan = {
     user_id: pesanan.user_id,
     produk_id: pesanan.produk_id,
