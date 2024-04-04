@@ -30,8 +30,10 @@ export default {
       screens: {
         'hp': '375px'
       },
-      backgroundImage: {
-        'contoh': "url('/assets/images/beranda/food-1.jpg')"
+      borderRadius: {
+        '2': '2px',
+        '5': '5px',
+        '10': '10px'
       }
     },
   },
