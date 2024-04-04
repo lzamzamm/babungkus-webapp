@@ -2,9 +2,9 @@ import asyncHandler from 'express-async-handler';
 import Produk from '../models/produk.model.js';
 
 const createProduk = asyncHandler(async (req, res) => {
-  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expire_at } = req.body;
+  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
 
-  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expire_at) {
+  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expired_at) {
     res.status(400);
     throw new Error('isi semua data');
   }
@@ -23,7 +23,7 @@ const createProduk = asyncHandler(async (req, res) => {
     stok: stok,
     deskripsi: deskripsi,
     image: image,
-    expire_at: expire_at,
+    expired_at: expired_at,
   };
 
   const produk = await Produk.create(new_produk);
