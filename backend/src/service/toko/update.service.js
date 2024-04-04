@@ -38,3 +38,35 @@ export const updateTokoService = asyncHandler(
     return result;
   }
 );
+
+export const updateStatusTokoService = asyncHandler(async (res, toko) => {
+  var id = toko["toko_id"];
+  var status = toko["status"];
+  if (!id || !status) {
+    res.status(404);
+    throw new Error("Data tidak lengkap");
+  }
+  const timeNow = new Date();
+
+  if (status == "Active") {
+    var result = await findOneAndUpdate(id, { status: "Active" });
+  } else if (status == "Freeze") {
+    var result = await findOneAndUpdate(id, {
+      status: "Freeze",
+      freeze_at: timeNow,
+    });
+  } else {
+    var result = await findOneAndUpdate(id, {
+      status: "Banned",
+    });
+  }
+
+  if (!result) {
+    res.status(404);
+    throw new Error("Toko tidak ditemukan");
+  }
+
+  result = findWithId(id);
+
+  return result;
+});
