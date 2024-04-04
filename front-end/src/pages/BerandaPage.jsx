@@ -52,7 +52,7 @@ function BerandaPage() {
         <div class="flex lg:flex-row pt-[2%] gap-x-[2%] h-full justify-center text-white">
           <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
             <div class="w-full h-full flex justify-center items-center ">
-              <div class="  object- hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
+              <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
                 <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full ">
                   Pakan
                 </p>
@@ -62,7 +62,7 @@ function BerandaPage() {
           </div>
           <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
             <div class="w-full h-full flex justify-center items-center ">
-              <div class="  object- hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
+              <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
                 <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full">
                   Minuman
                 </p>
@@ -72,7 +72,7 @@ function BerandaPage() {
           </div>
           <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
             <div class="w-full h-full flex justify-center items-center ">
-              <div class="  object- hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
+              <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
                 <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full">
                   Makanan
                 </p>
@@ -82,7 +82,38 @@ function BerandaPage() {
           </div>
         </div>
       </div>
-      <div class=""></div>
+      <div class="lg:p-[5%] hp:p-[10%] hp:h-[60vmax] lg:h-[45vmax] font-semibold flex hp:flex-col hp:justify-center hp:items-center hp:gap-[3%] lg:gap-[5%]">
+        <p className="text-center lg:text-[3vmax]">Berbagai Outlet</p>
+        <div className="flex hp:flex-col lg:flex-row gap-[5%] h-[50%] hp:w-[60%] text-white lg:justify-center text-[2vmax]">
+          <div className=" bg-slate-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
+            <div className="relative flex items-center justify-center w-full h-full">
+              <p className="z-10">Kedai</p>
+              <img className="absolute w-full h-full " src={Food_1} />
+            </div>
+            {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
+          </div>
+          <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
+            <div className="relative flex items-center justify-center w-full h-full ">
+              <p className="z-10">Restoran</p>
+              <img className="absolute w-full h-full" src={Food_1} />
+            </div>
+          </div>
+        </div>
+        <div className="flex hp:flex-col lg:flex-row gap-[5%] h-[50%] hp:w-[60%] text-white lg:justify-center text-[2vmax]">
+          <div className="bg-stone-600 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
+            <div className="relative flex items-center justify-center w-full h-full">
+              <p className="z-10">Toko</p>
+              <img className="absolute w-full h-full" src={Food_1} />
+            </div>
+          </div>
+          <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
+            <div className="relative flex items-center justify-center w-full h-full ">
+              <p className="z-10">Warung</p>
+              <img className="absolute w-full h-full" src={Food_1} />
+            </div>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );

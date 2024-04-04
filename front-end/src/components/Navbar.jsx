@@ -56,6 +56,7 @@ function Navbar() {
         </div>
         <Link to='/detail-product'>det pro</Link>
         <Link to='/riwayat'>det riw</Link>
+        <Link to='/akun'>det ak</Link>
       </div>
     </div>
   );
