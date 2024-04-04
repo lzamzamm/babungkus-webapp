@@ -5,10 +5,18 @@ import { FaRegCircleUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Detail_ProductPage() {
-  useEffect(async () => {
-    const response = await axios.get('http://localhost:5555/api/produk/1');
-    console.log(response);
+function DetailProductPage() {
+  const [data, setData] = useState({});
+
+  const getProduk = async () => {
+    const id = 1;
+    const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
+    setData(response.data.data);
+    console.log(response.data.data);
+  };
+
+  useEffect(() => {
+    getProduk();
   }, []);
 
   return (
@@ -21,11 +29,11 @@ function Detail_ProductPage() {
             <div className="flex hp:flex-row gap-[2%] lg:gap-[7.5%] hp:w-full lg:w-[25vmax] lg:flex-col">
               <div className=" flex flex-col gap-[1%] w-full h-full p-[1.5%] lg:p-[5%] rounded-[0.5vmax] bg-white">
                 <div className="flex flex-row justify-between">
-                  <div className="pl-[2%] text-[1.5vmax] lg:text-[1.75vmax] font-semibold"> Rp 100.000 </div>
+                  <div className="pl-[2%] text-[1.5vmax] lg:text-[1.75vmax] font-semibold"> Rp {data.harga}</div>
                   <GoShareAndroid className="lg:text-[1.5vmax]" />
                 </div>
-                <div className="pl-[2%] font-light text-[1vmax]">Makanan - Nasi Goreng</div>
-                <div className="pl-[2%] font-light text-[0.75vmax]">10 hijriah 2077</div>
+                <div className="pl-[2%] font-light text-[1vmax]">Makanan - {data.nama}</div>
+                <div className="pl-[2%] font-light text-[0.75vmax]">{data.expired_at}</div>
               </div>
               <div className="flex flex-col gap-[1%] w-full h-full rounded-[0.5vmax] p-[1.5%] lg:p-[5%] bg-white">
                 <div className="flex flex-row pl-[2%] gap-[2%]">
@@ -57,4 +65,4 @@ function Detail_ProductPage() {
   );
 }
 
-export default Detail_ProductPage;
+export default DetailProductPage;
