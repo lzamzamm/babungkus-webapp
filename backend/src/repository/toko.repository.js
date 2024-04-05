@@ -11,6 +11,10 @@ export async function find() {
 export async function findWithId(id) {
   return await Toko.findOne({ toko_id: id });
 }
+
+export async function findWithStatus(status) {
+  return await Toko.findOne({ toko_id: status });
+}
 export async function findWithUserId(id) {
   return await Toko.findOne({ user_id: id });
 }

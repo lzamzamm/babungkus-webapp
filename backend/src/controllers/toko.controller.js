@@ -4,6 +4,7 @@ import { createTokoService } from "../service/toko/create.service.js";
 import {
   getTokoAllService,
   getTokoIdService,
+  getTokoByStatusService,
 } from "../service/toko/get.service.js";
 import { updateTokoService } from "../service/toko/update.service.js";
 import { updateStatusTokoService } from "../service/toko/update.service.js";
@@ -20,6 +21,14 @@ const createToko = asyncHandler(async (req, res) => {
 
 const getTokoAll = asyncHandler(async (req, res) => {
   const toko = await getTokoAllService();
+
+  res.status(200).json({
+    status: "Success",
+    data: toko,
+  });
+});
+const getTokoByStatus = asyncHandler(async (req, res) => {
+  const toko = await getTokoByStatusService(req.body.status);
 
   res.status(200).json({
     status: "Success",
