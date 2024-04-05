@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaEdit } from 'react-icons/fa'; // Pastikan Anda telah mengimpor ini
 import { MdDelete } from 'react-icons/md'; // Pastikan Anda telah mengimpor ini
+import axios from 'axios';
 
 const ProdukSaya = () => {
   const [data, setData] = useState([]); // State untuk menyimpan data produk
@@ -8,12 +9,11 @@ const ProdukSaya = () => {
   useEffect(() => {
     // Contoh fungsi untuk memuat data (gantikan dengan logika pengambilan data Anda)
     const fetchData = async () => {
-      const response = await fetch('URL_API_ANDA');
-      const data = await response.json();
-      setData(data); // Set data produk ke state
+      const response = await axios.get('http://localhost:5555/api/produk');
+      // const data = await response.json();
+      setData(response.data); // Set data produk ke state
     };
 
-    
     fetchData();
   }, []); // Kode ini akan dijalankan sekali setelah komponen dimuat
 
@@ -45,18 +45,12 @@ const ProdukSaya = () => {
             <p>Tanggal Kadaluarsa: {item.tanggal_kadaluarsa}</p>
             <p>Jenis Makanan: {item.jenis_makanan}</p>
             <div className="flex justify-between items-center mt-4">
-                <button 
-                  onClick={() => handleEdit(item.id)}
-                  className="text-green-500 hover:text-blue-500 mr-2"
-                >
-                  <FaEdit />
-                </button>
-                <button 
-                  onClick={() => handleDelete(item.id)}
-                  className="text-red-500 hover:text-red-700"
-                >
-                  <MdDelete />
-                </button>
+              <button onClick={() => handleEdit(item.id)} className="text-green-500 hover:text-blue-500 mr-2">
+                <FaEdit />
+              </button>
+              <button onClick={() => handleDelete(item.id)} className="text-red-500 hover:text-red-700">
+                <MdDelete />
+              </button>
             </div>
           </div>
         ))}

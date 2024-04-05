@@ -11,7 +11,7 @@ Request Body :
   "user_id": 1,
   "nama": "arip",
   "deskripsi": "nasi goreng",
-  "is_confirmed": false,
+  "status": "Pending",
   "image": "jpg",
   "jam_operasional": "10.00 sampai 11.000",
   "lokasi": "sapen",
@@ -30,7 +30,7 @@ Response Body Success:
     "nama": "arip",
     "deskripsi": "nasi goreng",
     "image": "jpg",
-    "is_confirmed": false,
+    "status": "Pending",
     "jam_operasional": "10.00 sampai 11.000",
     "lokasi": "sapen",
     "no_telp": "098080"
@@ -58,7 +58,7 @@ Process Failed:
 
 ## get toko all
 
-Endpoint: GET /api/toko
+Endpoint: GET /api/toko/all
 
 Response Body Success:
 
@@ -160,7 +160,106 @@ Response Body Success:
     "nama": "arip",
     "deskripsi": "nasi goreng",
     "image": "jpg",
-    "is_confirmed": true,
+    "status": "Pending",
+    "jam_operasional": "10.00 sampai 11.000",
+    "lokasi": "sapen",
+    "no_telp": "098080"
+  }
+}
+```
+
+Response Body Failed:
+
+```json
+{
+  "status": "fail",
+  "message": "request body error"
+}
+```
+
+Process Failed:
+
+```json
+{
+  "status": "error",
+  "message": "system error"
+}
+```
+
+## update status toko
+
+Endpoint: PUT /api/toko/status
+
+Request Body :
+
+```json
+{
+  "toko_id": 1,
+  "status": "Confirm"
+}
+```
+
+Response Body Success:
+
+```json
+{
+  "status": "success",
+  "message": "Status toko berhasil diupdate",
+  "data": {
+    "toko_id": 1,
+    "nama": "arip",
+    "deskripsi": "nasi goreng",
+    "image": "jpg",
+    "status": "Active",
+    "jam_operasional": "10.00 sampai 11.000",
+    "lokasi": "sapen",
+    "no_telp": "098080"
+  }
+}
+```
+
+Response Body Failed:
+
+```json
+{
+  "status": "fail",
+  "message": "request body error"
+}
+```
+
+Process Failed:
+
+```json
+{
+  "status": "error",
+  "message": "system error"
+}
+```
+
+## get toko by status
+
+Endpoint: GET /api/toko/
+
+Request Body :
+
+```json
+{
+  "status": "Active"
+}
+```
+
+Response Body Success:
+
+```json
+{
+  "status": "success",
+  "message": "Status toko berhasil diupdate",
+  "data": {
+    "toko_id": 1,
+    "nama": "arip",
+    "deskripsi": "nasi goreng",
+    "image": "jpg",
+    "status": "Active",
     "jam_operasional": "10.00 sampai 11.000",
     "lokasi": "sapen",
     "no_telp": "098080"

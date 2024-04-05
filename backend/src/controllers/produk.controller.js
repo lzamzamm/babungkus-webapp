@@ -1,45 +1,29 @@
-import asyncHandler from 'express-async-handler';
-import Produk from '../models/produk.model.js';
+import asyncHandler from "express-async-handler";
+import Produk from "../models/produk.model.js";
+import { createProdukService } from "../service/produk/create.service.js";
+import {
+  getProdukAllService,
+  getProdukByIdService,
+  getProdukByKategoriService,
+} from "../service/produk/get.service.js";
+import { updateProdukService } from "../service/produk/update.service.js";
+import { deleteProdukService } from "../service/produk/delete.service.js";
 
 const createProduk = asyncHandler(async (req, res) => {
-  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expire_at } = req.body;
-
-  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expire_at) {
-    res.status(400);
-    throw new Error('isi semua data');
-  }
-
-  var updateFields = { ...req.body };
-
-  if (req.file) {
-    updateFields.image = req.file.filename;
-  }
-
-  const new_produk = {
-    toko_id: toko_id,
-    nama: nama,
-    harga: harga,
-    kategori: kategori,
-    stok: stok,
-    deskripsi: deskripsi,
-    image: image,
-    expire_at: expire_at,
-  };
-
-  const produk = await Produk.create(new_produk);
+  const produk = await createProdukService(res, req.body);
 
   return res.status(200).json({
-    status: 'success',
-    message: 'Produk berhasil dibuat',
+    status: "success",
+    message: "Produk berhasil dibuat",
     data: produk,
   });
 });
 
 const getProdukAll = asyncHandler(async (req, res) => {
-  const produk = await Produk.find({});
+  const produk = await getProdukAllService();
 
   return res.status(200).json({
-    status: 'success',
+    status: "success",
     data: produk,
   });
 });
@@ -47,15 +31,10 @@ const getProdukAll = asyncHandler(async (req, res) => {
 const getProdukById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const produk = await Produk.findOne({ produk_id: id });
-
-  if (!produk) {
-    res.status(404);
-    throw new Error('Produk tidak ditemukan');
-  }
+  const produk = await getProdukByIdService(id);
 
   return res.status(200).json({
-    status: 'success',
+    status: "success",
     data: produk,
   });
 });
@@ -63,10 +42,10 @@ const getProdukById = asyncHandler(async (req, res) => {
 const getProdukByKategori = asyncHandler(async (req, res) => {
   const { kategori } = req.body;
 
-  const produk = await Produk.find({ kategori: kategori });
+  const produk = await getProdukByKategoriService(kategori);
 
   return res.status(200).json({
-    status: 'success',
+    status: "success",
     data: produk,
   });
 });
@@ -74,11 +53,21 @@ const getProdukByKategori = asyncHandler(async (req, res) => {
 const UpdateProduk = asyncHandler(async (req, res) => {
   var { id } = req.params;
 
-  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expire_at } = req.body;
+  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } =
+    req.body;
 
-  if (!toko_id && !nama && !deskripsi && !image && !harga && !kategori && !stok && !expire_at) {
+  if (
+    !toko_id &&
+    !nama &&
+    !deskripsi &&
+    !image &&
+    !harga &&
+    !kategori &&
+    !stok &&
+    !expired_at
+  ) {
     res.status(400);
-    throw new Error('Tidak ada data yang terisi');
+    throw new Error("Tidak ada data yang terisi");
   }
 
   var updateFields = { ...req.body };
@@ -87,38 +76,31 @@ const UpdateProduk = asyncHandler(async (req, res) => {
     updateFields.image = req.file.filename;
   }
 
-  const produk = await Produk.findOneAndUpdate({ produk_id: id }, { $set: updateFields });
-
-  if (!produk) {
-    res.status(404);
-    throw new Error('Produk tidak ditemukan');
-  }
-
-  const produkNew = await Produk.findOne({ produk_id: id });
+  const produk = await updateProdukService(id, updateFields);
 
   res.status(200).json({
-    status: 'Success',
-    message: 'Produk berhasil diupdate',
-    data: produkNew,
+    status: "Success",
+    message: "Produk berhasil diupdate",
+    data: produk,
   });
 });
 
 const deleteProduk = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const produk = await Produk.findOne({ produk_id: id });
-
-  if (!produk) {
-    res.status(404);
-    throw new Error('Produk tidak ditemukan');
-  }
-
-  await Produk.deleteOne({ produk_id: id });
+  await deleteProdukService(id);
 
   return res.status(200).json({
-    status: 'success',
-    message: 'Produk berhasil dihapus',
+    status: "success",
+    message: "Produk berhasil dihapus",
   });
 });
 
-export { createProduk, getProdukAll, getProdukById, getProdukByKategori, UpdateProduk, deleteProduk };
+export {
+  createProduk,
+  getProdukAll,
+  getProdukById,
+  getProdukByKategori,
+  UpdateProduk,
+  deleteProduk,
+};

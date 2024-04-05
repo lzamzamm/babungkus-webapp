@@ -1,5 +1,7 @@
 import asyncHandler from 'express-async-handler';
-import Laporan from '../models/laporan.model.js';
+import { createLaporanService } from '../service/laporan/create.service.js';
+import { getLaporanAllService, getLaporanByIdService } from '../service/laporan/get.service.js';
+import { deleteLaporanService } from '../service/laporan/delete.service.js';
 
 const createLaporan = asyncHandler(async (req, res) => {
   const { user_id, toko_id, judul, alasan, image } = req.body;
@@ -9,15 +11,7 @@ const createLaporan = asyncHandler(async (req, res) => {
     throw new Error('isi semua data');
   }
 
-  const new_laporan = {
-    user_id: user_id,
-    toko_id: toko_id,
-    judul: judul,
-    alasan: alasan,
-    image: image,
-  };
-
-  const laporan = await Laporan.create(new_laporan);
+  const laporan = await createLaporanService(req.body);
 
   return res.status(200).json({
     status: 'success',
@@ -27,39 +21,7 @@ const createLaporan = asyncHandler(async (req, res) => {
 });
 
 const getLaporanAll = asyncHandler(async (req, res) => {
-  const laporan = await Laporan.aggregate([
-    {
-      $lookup: {
-        from: 'tokos',
-        localField: 'toko_id',
-        foreignField: 'toko_id',
-        as: 'info_toko',
-      },
-    },
-    {
-      $unwind: '$info_toko',
-    },
-    {
-      $project: {
-        _id: 0,
-        laporan_id: 1,
-        user_id: 1,
-        toko_id: 1,
-        judul: 1,
-        alasan: 1,
-        image: 1,
-        info_toko: {
-          nama: '$info_toko.nama',
-          deskripsi: '$info_toko.deskripsi',
-          image_toko: '$info_toko.image',
-          is_confirmed: '$info_toko.is_confirmed',
-          jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
-          no_telp: '$info_toko.no_telp',
-        },
-      },
-    },
-  ]);
+  const laporan = await getLaporanAllService();
 
   return res.status(200).json({
     status: 'success',
@@ -70,67 +32,18 @@ const getLaporanAll = asyncHandler(async (req, res) => {
 const getLaporanById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const laporan = await Laporan.aggregate([
-    {
-      $match: {
-        laporan_id: parseInt(id),
-      },
-    },
-    {
-      $lookup: {
-        from: 'tokos',
-        localField: 'toko_id',
-        foreignField: 'toko_id',
-        as: 'info_toko',
-      },
-    },
-    {
-      $unwind: '$info_toko',
-    },
-    {
-      $project: {
-        _id: 0,
-        laporan_id: 1,
-        user_id: 1,
-        toko_id: 1,
-        judul: 1,
-        alasan: 1,
-        image: 1,
-        info_toko: {
-          nama: '$info_toko.nama',
-          deskripsi: '$info_toko.deskripsi',
-          image_toko: '$info_toko.image',
-          is_confirmed: '$info_toko.is_confirmed',
-          jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
-          no_telp: '$info_toko.no_telp',
-        },
-      },
-    },
-  ]);
-
-  if (!laporan || laporan.length === 0) {
-    res.status(404);
-    throw new Error('Laporan tidak ditemukan');
-  }
+  const laporan = await getLaporanByIdService();
 
   return res.status(200).json({
     status: 'success',
-    data: laporan[0],
+    data: laporan,
   });
 });
 
 const deleteLaporan = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const laporan = await Laporan.findOne({ laporan_id: id });
-
-  if (!laporan) {
-    res.status(404);
-    throw new Error('Laporan tidak ditemukan');
-  }
-
-  await Laporan.deleteOne({ laporan_id: id });
+  await deleteLaporanService(id);
 
   return res.status(200).json({
     status: 'success',

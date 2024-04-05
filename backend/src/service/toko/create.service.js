@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { create } from "../../repository/toko.repository.js";
-import { findWithId } from "../../repository/user.repository.js";
+import { findWithId } from "../../repository/toko.repository.js";
 
 export const createTokoService = asyncHandler(async (res, toko) => {
   const requiredFields = [
@@ -17,7 +17,8 @@ export const createTokoService = asyncHandler(async (res, toko) => {
     throw new Error("Isi semua data");
   }
 
-  const cekUser = findWithId(toko["user_id"]);
+  const cekUser = await findWithId(toko["user_id"]);
+  // console.log(toko);
   if (cekUser) {
     res.status(400);
     throw new Error("User sudah membuat toko");
