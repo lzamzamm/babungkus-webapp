@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom';
 
 import Food_1 from '../../public/assets/images/beranda/food-1.jpg'
 import { RiRecycleLine } from "react-icons/ri";
@@ -9,10 +10,10 @@ function RiwayatPage() {
   return (
     <div className='font-poppins'>
       <Navbar />
-      <div className='flex hp:flex-col lg:flex-row p-[5%] h-auto bg-slate-400 gap-[2vh]'>
+      <div className='flex hp:flex-col lg:flex-row p-[5%] h-auto bg-slate-400 gap-[2vh] '>
         <div className='lg:h-[35vmax] lg:w-[20%] bg-white hidden lg:block rounded-[0.5vmax]'>
           <div className='flex flex-col items-center w-full h-full gap-[5%] overflow-hidden'>
-            <FaRegCircleUser className='text-[7.5vmax] pt-[10%] ' />
+            <FaRegCircleUser className='text-[7.5vmax] pt-[10%]' />
             <div className='font-semibold text-[2vmax] p-[0.5%] w-full text-center'>UIN Sunan Kalijaga Yogyakarta</div>
             <div className='font-light text-[1.75vmax] p-[0.5%] w-full text-center'>uinsuka @student.ac.id</div>
             <div className='font-light text-[1.75vmax] p-[0.5%] w-full text-center'>081245892378</div>
@@ -29,16 +30,18 @@ function RiwayatPage() {
                 </div>
                 <div className='text-[1.25vmax] pt-[0.5%] pb-[0.5%] pl-[1%] pr-[1%] bg-orange-300 rounded-[0.5vmax]'>Pending</div>
               </div>
-              <div className='h-[80%] p-[3%]'>
-                <div className='flex flex-row h-[80%]'>
-                  <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
-                  <div className='flex flex-col pl-[5%] w-[75%]'>
-                    <p className='font-light text-[1.75vmax]'>Nasi Goreng</p>
-                    <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
+              <Link to='/'>
+                <div className='h-[80%] p-[3%] hover:bg-slate-200'>
+                  <div className='flex flex-row h-[80%]'>
+                    <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
+                    <div className='flex flex-col pl-[5%] w-[75%]'>
+                      <p className='font-light text-[1.75vmax]'>Nasi Goreng</p>
+                      <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
+                    </div>
                   </div>
-                </div>
-                <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp 40.000 </p>
-              </div>
+                  <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp 40.000 </p>
+                </div> 
+              </Link>
             </li>
           </ul>
         </div>
@@ -53,16 +56,18 @@ function RiwayatPage() {
                 </div>
                 <div className='text-[1.25vmax] pt-[0.5%] pb-[0.5%] pl-[1%] pr-[1%] bg-orange-300 rounded-[0.5vmax]'>Pending</div>
               </div>
-              <div className='h-[80%] p-[3%]'>
-                <div className='flex flex-row h-[80%]'>
-                  <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
-                  <div className='flex flex-col pl-[5%] w-[75%]'>
-                    <p className='font-light text-[1.75vmax]'>Nasi Goreng</p>
-                    <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
+              <Link to='/'>
+                <div className='h-[80%] p-[3%] hover:bg-slate-200'>
+                  <div className='flex flex-row h-[80%]'>
+                    <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
+                    <div className='flex flex-col pl-[5%] w-[75%]'>
+                      <p className='font-light text-[1.75vmax]'>Nasi Goreng</p>
+                      <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
+                    </div>
                   </div>
+                  <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp 40.000 </p>
                 </div>
-                <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp 40.000 </p>
-              </div>
+              </Link>
             </li>
           </ul>
         </div>
