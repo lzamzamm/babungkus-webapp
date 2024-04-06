@@ -29,9 +29,7 @@ const getProdukAll = asyncHandler(async (req, res) => {
 });
 
 const getProdukById = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-
-  const produk = await getProdukByIdService(id);
+  const produk = await getProdukByIdService(req.params);
 
   return res.status(200).json({
     status: "success",
@@ -40,9 +38,15 @@ const getProdukById = asyncHandler(async (req, res) => {
 });
 
 const getProdukByKategori = asyncHandler(async (req, res) => {
-  const { kategori } = req.body;
+  const produk = await getProdukByKategoriService(req.body);
 
-  const produk = await getProdukByKategoriService(kategori);
+  return res.status(200).json({
+    status: "success",
+    data: produk,
+  });
+});
+const getProdukByToko = asyncHandler(async (req, res) => {
+  const produk = await getProdukByKategoriService(req.body);
 
   return res.status(200).json({
     status: "success",
