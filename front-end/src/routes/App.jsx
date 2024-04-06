@@ -6,7 +6,6 @@ import RegisPage from '../pages/RegisPage'
 import AccountPage from '../pages/AccountPage'
 import Detail_ProductPage from '../pages/Detail_ProductPage'
 import RiwayatPage from '../pages/RiwayatPage'
-
 import ContactPage from '../pages/ContactPage'
 
 function App() {

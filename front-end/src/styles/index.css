@@ -4,3 +4,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+  
+.dropdown-menu a:hover {
+  background-color: #F3F4F6;
+  color: #43766C;
+}  
