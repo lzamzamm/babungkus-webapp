@@ -4,7 +4,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+ 
+body {
+  font-family: 'Poppins', 'sans-serif';
+}
 .dropdown-menu a:hover {
   background-color: #F3F4F6;
   color: #43766C;

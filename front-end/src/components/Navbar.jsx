@@ -7,17 +7,16 @@ import LogoBabungkus from '/assets/images/logo.png';
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   
   const navItems = [
     { label: 'Produk', href: '/produk', subItems: [{ label: 'Makanan', href: '/produk/makanan' }, { label: 'Minuman', href: '/produk/minuman' }, { label: 'Pakan', href: '/produk/pakan' }] },
-    { label: 'Outlet', href: '/' },
+    { label: 'Toko', href: '/toko' },
     { label: 'Tentang Kami', href: '/tentangkami' }
   ];
 
   const buttonItems = [
-    { label: 'Masuk', href: '/login' },
-    { label: 'Daftar', href: '/register' }
+    { label: 'Masuk', href: '/masuk' },
+    { label: 'Daftar', href: '/daftar' }
   ];
 
   return (
@@ -37,7 +36,7 @@ function Navbar() {
               {navItems.map((item, index) => (
                 <div key={index} className="relative">
                 {item.label === 'Produk' ? (
-                  <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex w-full items-center px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
+                  <button onClick={() => setDropdownOpen((prev) => !prev)} className="flex w-full items-center px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
                   {item.label}
                   <IoIosArrowDown className={`inline w-4 h-4 ml-4 transition-transform duration-200 transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
                 </button>

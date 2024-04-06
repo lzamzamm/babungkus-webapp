@@ -13,8 +13,8 @@ function App() {
     <div>
       <Routes>
         <Route path='/' Component={BerandaPage} />
-        <Route path='/login' Component={LoginPage} />
-        <Route path='/register' Component={RegisPage} />
+        <Route path='/masuk' Component={LoginPage} />
+        <Route path='/daftar' Component={RegisPage} />
         <Route path='/akun/*' Component={AccountPage} />
         <Route path='/detail-product' Component={Detail_ProductPage} />
         <Route path='/riwayat' Component={RiwayatPage} />
