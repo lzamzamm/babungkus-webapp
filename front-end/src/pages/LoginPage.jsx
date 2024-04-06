@@ -1,36 +1,57 @@
+import { Navigate } from 'react-router-dom';
+
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FaUserAlt, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import LogoLogin from '/assets/images/logoLogin.jpeg';
+import axios from 'axios';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isDataValid, setIsDataValid] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const togglePassword = () => setShowPassword(!showPassword);
 
   const handleLoginUser = async (event) => {
     event.preventDefault();
     setButtonLoading(true);
-    setTimeout(() => {
-      console.log("Login berhasil");
-      setButtonLoading(false);
+    setErrorMessage('');
+
+    const userData = {
+      username: event.target.username.value,
+      password: event.target.password.value,
+    };
+
+    try {
+      const response = await axios.post('http://localhost:5555/api/login', userData);
+      console.log("Login berhasil", response.data);
       setIsDataValid(true);
-    }, 2000);
+      localStorage.setItem('token', response.data.token);
+      navigate('/');
+    } catch (error) {
+      console.error("Error login", error.response ? error.response.data : "Network error");
+      setErrorMessage(error.response ? error.response.data.message : "Network error");
+      setIsDataValid(false);
+    } finally {
+      setButtonLoading(false);
+    }
   };
 
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }}>
       <Navbar />
-      <div className="bg-white text-gray-700 flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0" >
+      <div className="bg-white text-gray-700 flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
         <a href="#" className="text-center">
           <img src={LogoLogin} alt="Babungkus Logo" className="h-60" />
         </a>
         <div className="mt-12 w-full max-w-lg sm:mt-10">
-          <div className="relative -mb-px h-px w-full bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
           <div className="mx-5 border border-gray-200 shadow-lg rounded-lg">
             <div className="flex flex-col p-6">
               <h3 className="text-xl font-semibold leading-6 tracking-tighter text-center">MASUK</h3>
@@ -49,6 +70,7 @@ export default function LoginPage() {
                     {showPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />}
                   </button>
                 </div>
+                {errorMessage && <div className="text-red-500 text-center mt-2">{errorMessage}</div>}
                 <div className="mt-4 flex items-center justify-end gap-x-2">
                   <button
                     type="submit"
@@ -59,7 +81,7 @@ export default function LoginPage() {
                   </button>
                 </div>
               </form>
-              <div className="text-l leading-6 tracking-tighter text-center mt-2">Belum punya akun? <Link className="text-primary ml-1" to="/Register">Daftar</Link></div>
+              <div className="text-l leading-6 tracking-tighter text-center mt-2">Belum punya akun? <Link className="text-primary ml-1" to="/register">Daftar</Link></div>
             </div>
           </div>
         </div>

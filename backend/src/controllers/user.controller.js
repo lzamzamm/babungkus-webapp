@@ -33,7 +33,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     status: "Success",
-    message: "USer berhasil di update",
+    message: "User berhasil di update",
     data: user,
   });
 });

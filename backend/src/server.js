@@ -8,7 +8,7 @@ import laporan_routes from "./routes/laporan.routes.js";
 import userRoutes from "./routes/user.route.js";
 import { notFound, errorHandler } from "./middleware/error.middleware.js";
 
-import Cors from "cors";
+import cors from "cors";
 
 export const app = express();
 
@@ -19,6 +19,7 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
