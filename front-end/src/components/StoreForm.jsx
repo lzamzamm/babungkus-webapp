@@ -3,17 +3,15 @@ import React, { useState } from 'react';
 const StoreUpdateForm = () => {
     const [storeImagePreview, setStoreImagePreview] = useState('');
 
-    // Fungsi untuk menangani perubahan pada input file
     const handleImageChange = (e) => {
-        const file = e.target.files[0]; // Mengambil file pertama
+        const file = e.target.files[0]; 
         if (file && file.type.startsWith("image/")) {
-            setStoreImagePreview(URL.createObjectURL(file)); // Membuat URL untuk preview
+            setStoreImagePreview(URL.createObjectURL(file)); 
         }
     };
 
-    // Fungsi untuk menghapus preview gambar
     const handleRemoveImagePreview = () => {
-        setStoreImagePreview(''); // Menghapus URL preview
+        setStoreImagePreview(''); 
     };
 
     return (
@@ -44,8 +42,6 @@ const StoreUpdateForm = () => {
                         </div>
                     )}
                 </div>
-                {/* Input fields untuk detail toko */}
-                {/* Ulangi pola input ini untuk setiap detail toko yang diperlukan */}
                 <div className="mb-4">
                     <label className="block text-gray-700 text-l mb-2" htmlFor="storeName">Nama Toko</label>
                     <input
