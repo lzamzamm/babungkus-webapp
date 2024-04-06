@@ -13,7 +13,7 @@ const createPesanan = asyncHandler(async (req, res) => {
     throw new Error('isi semua data');
   }
 
-  const pesanan = await createPesananService(req.body);
+  const pesanan = await createPesananService(res, req.body);
 
   return res.status(200).json({
     status: 'success',
