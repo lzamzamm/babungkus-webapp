@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import { aggregate, find, findByKategori, findOne } from '../../repository/produk.repository.js';
+import { aggregate, find, findByKategori } from '../../repository/produk.repository.js';
 
 export const getProdukAllService = asyncHandler(async () => {
   const result = await find();
@@ -40,7 +40,7 @@ export const getProdukByIdService = asyncHandler(async (id) => {
           image_toko: '$info_toko.image',
           is_confirmed: '$info_toko.is_confirmed',
           jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
+          lokasi: '$info_toko.lokasi',
           no_telp: '$info_toko.no_telp',
         },
       },
