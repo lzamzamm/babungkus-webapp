@@ -21,7 +21,7 @@ const AccountNavbar = () => {
                         onClick={() => setIsNavVisible(false)}>
                     <FaTimes className="text-2xl" /> {/* Mengganti ikon dengan FaTimes untuk tutup */}
                 </button>
-                <div className="p-10">
+                <div className="p-10 mt-12">
                     <h1 className="text-2xl mb-6">Pengaturan</h1>
                     <ul className="text-xl">
                         <li className="mb-5 hover:bg-neutral-300">
