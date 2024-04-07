@@ -6,7 +6,8 @@ import RegisPage from '../pages/RegisPage';
 import AccountPage from '../pages/AccountPage';
 import DetailProductPage from '../pages/DetailProductPage';
 import RiwayatPage from '../pages/RiwayatPage';
-
+import TokoPage from '../pages/TokoPage';
+import ProdukPage from '../pages/ProdukPage';
 import ContactPage from '../pages/ContactPage';
 
 function App() {
