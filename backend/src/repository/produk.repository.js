@@ -23,3 +23,7 @@ export async function findOneAndUpdate(id, updateFields) {
 export async function deleteOne(id) {
   return await Produk.deleteOne({ produk_id: id });
 }
+
+export async function aggregate(pipeline) {
+  return await Produk.aggregate(pipeline);
+}
