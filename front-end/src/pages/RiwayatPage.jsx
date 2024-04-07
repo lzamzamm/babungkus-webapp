@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{ useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,22 @@ import Food_1 from '../../public/assets/images/beranda/food-1.jpg'
 import { RiRecycleLine } from "react-icons/ri";
 import { FaRegCircleUser } from "react-icons/fa6";
 
+import axios from 'axios';
+
 function RiwayatPage() {
+
+ const [data, setData] = useState({});
+
+ const getData = async () => {
+  const response = await axios.get('http://localhost:5555/api/pesanan');
+  setData(response.data.data);
+  console.log(response.data.data)
+ };
+
+ useEffect(() => {
+  getData();
+}, []);
+
   return (
     <div className='font-poppins'>
       <Navbar />
@@ -28,7 +43,7 @@ function RiwayatPage() {
                   <RiRecycleLine className='lg:text-[2.5vmax]' />
                   <div className='text-[1.5vmax] pl-[5%]'>12 Feb 2024</div>
                 </div>
-                <div className='text-[1.25vmax] pt-[0.5%] pb-[0.5%] pl-[1%] pr-[1%] bg-orange-300 rounded-[0.5vmax]'>Pending</div>
+                <div className='text-[1.25vmax] pt-[0.5%] pb-[0.5%] pl-[1%] pr-[1%] bg-orange-300 rounded-[0.5vmax]'>{data.status_pembeli}</div>
               </div>
               <Link to='/'>
                 <div className='h-[80%] p-[3%] hover:bg-slate-200'>
@@ -39,7 +54,7 @@ function RiwayatPage() {
                       <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
                     </div>
                   </div>
-                  <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp 40.000 </p>
+                  <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> {data.harga_total} </p>
                 </div> 
               </Link>
             </li>

@@ -20,6 +20,11 @@ export const updateTokoService = asyncHandler(
       throw new Error("Tidak ada data yang terisi");
     }
 
+    if (toko.status != "Active") {
+      res.status(400);
+      throw new Error("Toko sedang tidak aktif");
+    }
+
     const newToko = { ...toko };
 
     if (imageFile) {

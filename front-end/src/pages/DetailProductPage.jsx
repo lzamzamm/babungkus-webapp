@@ -23,7 +23,7 @@ function DetailProductPage() {
     <div className="font-poppins">
       <Navbar />
       <div className="flex hp:flex-col lg:flex-row gap-[2%] p-[5%] hp:h-[60vmax] w-full bg-slate-600">
-        <div className="h-[50%] lg:h-[60%] lg:w-[60%] bg-white rounded-[1vmax]"></div>
+        <img className="h-[50%] lg:h-[60%] lg:w-[60%] bg-white rounded-[1vmax]"></img>
         <div className="lg:flex lg:flex-col h-[50%] lg:gap-[5%]">
           <div className="flex hp:flex-row lg:flex-col">
             <div className="flex hp:flex-row gap-[2%] lg:gap-[7.5%] hp:w-full lg:w-[25vmax] lg:flex-col">
@@ -56,9 +56,14 @@ function DetailProductPage() {
               </div>
             </div>
           </div>
-          <Link to="/">
-            <button className="bg-white  text-[1.5vmax] hp:rounded-[0.5vmax] lg:w-full p-[1vmax] hover:bg-[#d9d9d9] hover:transition-all duration-300">Pesan</button>
-          </Link>
+          <div className='flex flex-row w-full hp:gap-[2.5%] lg:justify-between'>
+            <Link className='lg:w-[45%]' to="/">
+              <button className="bg-white  text-[1.5vmax] hp:rounded-[0.5vmax] lg:w-full p-[1vmax] hover:bg-[#d9d9d9] hover:transition-all duration-300">Pesan</button>
+            </Link>
+            <Link className='lg:w-[45%]' to="/contact">
+              <button className="bg-white  text-[1.5vmax] hp:rounded-[0.5vmax] lg:w-full p-[1vmax] hover:bg-[#d9d9d9] hover:transition-all duration-300">Lapor</button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

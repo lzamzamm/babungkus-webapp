@@ -51,6 +51,57 @@ Process Failed:
 }
 ```
 
+## register Admin
+
+Endpoint: POST /api/user/admin
+
+Request Body :
+
+```json
+{
+  "username": "arip",
+  "nama_lengkap": "arip muhammad",
+  "email": "arip@gmail.com",
+  "password": 123,
+  "no_telp": "080707"
+}
+```
+
+Response Body Success:
+
+```json
+{
+  "status": "success",
+  "message": "user berhasil dibuat",
+  "data": {
+    "user_id": 1,
+    "username": "arip",
+    "nama_lengkap": "arip muhammad",
+    "email": "arip@gmail.com",
+    "no_telp": "080707",
+    "role": "admin"
+  }
+}
+```
+
+Response Body Failed:
+
+```json
+{
+  "status": "fail",
+  "message": "request body error"
+}
+```
+
+Process Failed:
+
+```json
+{
+  "status": "error",
+  "message": "system error"
+}
+```
+
 ## login user
 
 Endpoint: POST /api/login

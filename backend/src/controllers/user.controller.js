@@ -3,7 +3,10 @@ import generateToken from "../utils/token.util.js";
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 
-import { registerUserService } from "../service/user/register.service.js";
+import {
+  registerUserService,
+  registerAdminService,
+} from "../service/user/register.service.js";
 import { getUserService } from "../service/user/get.service.js";
 import { loginUserService } from "../service/user/auth.service.js";
 import { updateUserService } from "../service/user/update.service.js";
@@ -15,6 +18,15 @@ const registerUser = asyncHandler(async (req, res) => {
     status: "Success",
     message: "User berhasil dibuat",
     data: user,
+  });
+});
+const registerAdmin = asyncHandler(async (req, res) => {
+  const admin = await registerAdminService(res, req.body);
+
+  return res.status(200).json({
+    status: "Success",
+    message: "User berhasil dibuat",
+    data: admin,
   });
 });
 
@@ -33,7 +45,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     status: "Success",
-    message: "USer berhasil di update",
+    message: "User berhasil di update",
     data: user,
   });
 });
@@ -49,6 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
       username: user.username,
       nama_lengkap: user.nama_lengkap,
       email: user.email,
+      role: user.role,
     },
   });
 });
@@ -65,4 +78,11 @@ const logoutUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { registerUser, updateUser, loginUser, logoutUser, getCurrentUser };
+export {
+  registerUser,
+  updateUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+  registerAdmin,
+};

@@ -56,7 +56,7 @@ export const getProdukByIdService = asyncHandler(async (id) => {
   return result;
 });
 
-export const getProdukByKategoriService = asyncHandler(async (kategori) => {
+export const getProdukByKategoriService = asyncHandler(async ({ kategori }) => {
   const result = await findByKategori(kategori);
 
   if (!result) {

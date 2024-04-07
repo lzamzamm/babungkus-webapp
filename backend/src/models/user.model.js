@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = mongoose.Schema(
   {
@@ -21,6 +21,11 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    role: {
+      type: String,
+      enum: ["Admin", "User"],
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -37,12 +42,16 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
-    const lastDoc = await mongoose.model('User').findOne().sort('-user_id').exec();
+    const lastDoc = await mongoose
+      .model("User")
+      .findOne()
+      .sort("-user_id")
+      .exec();
     // console.log(lastDoc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
@@ -53,6 +62,6 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
