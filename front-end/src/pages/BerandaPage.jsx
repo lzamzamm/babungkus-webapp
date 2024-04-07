@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Hero from "../../public/assets/images/hero-element.jpg";
 import Food_1 from "../../public/assets/images/beranda/food-1.jpg";
@@ -9,10 +9,20 @@ import Food_2 from "../../public/assets/images/beranda/food-2.jpg";
 import axios from "axios";
 
 function BerandaPage() {
-  useEffect(async () => {
-    const response = await axios.get("http://localhost:5555/api/produk/1");
-    console.log(response);
+
+  const [data, setData] = useState({});
+
+  const getData = async () => {
+    const id = 1;
+    const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
+    setData(response.data.data);
+    console.log(response.data.data);
+  }
+
+  useEffect(() => {
+    getData();
   }, []);
+
   return (
     <div class="font-poppins">
       <Navbar />

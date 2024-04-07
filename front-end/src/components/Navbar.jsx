@@ -18,7 +18,7 @@ function Navbar() {
   ];
 
   return (
-    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] fixed shadow-mini-xlx sm:shadow-xlx z-50 bg-white'>
+    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] shadow-mini-xlx sm:shadow-xlx z-50 bg-white'>
       <div className='flex justify-between w-full'>
         <div className='flex items-center gap-[10%] w-[60%]'>
           <div className='flex justify-center items-center w-[50px]'>
@@ -47,9 +47,9 @@ function Navbar() {
             <Link key={index} to={item.href} className='hover:text-primary'>{item.label}</Link>
           ))}
         </div>
-        <div className='flex items-center justify-between text-white gap-5'>
+        <div className='flex items-center justify-between gap-5 text-white'>
           {buttonItems.map((item, index) => (
-            <Link key={index} to={item.href} className='hover:bg-primary-dark px-5 py-2 text-center bg-primary rounded-5 transition duration-300 ease-in-out'>
+            <Link key={index} to={item.href} className='px-5 py-2 text-center transition duration-300 ease-in-out hover:bg-primary-dark bg-primary rounded-5'>
               {item.label}
             </Link>
           ))}
