@@ -1,31 +1,34 @@
 import React, { useState } from 'react';
 
-const StoreUpdateForm = () => {
+const CreateStoreForm = () => {
     const [storeImagePreview, setStoreImagePreview] = useState('');
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0]; 
-        if (file && file.type.startsWith("image/")) {
-            setStoreImagePreview(URL.createObjectURL(file)); 
+        const file = e.target.files[0]; // Hanya mengambil satu file
+        if (file && file.type.substr(0, 5) === "image") {
+            setStoreImagePreview(URL.createObjectURL(file)); // Membuat URL untuk preview
         }
     };
 
     const handleRemoveImagePreview = () => {
-        setStoreImagePreview(''); 
+        setStoreImagePreview(''); // Menghapus preview gambar
     };
 
     return (
         <div className="p-5 w-full text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <h2 className="text-2xl mb-2">Data Tokomu!</h2>
+            <h2 className="text-2xl mb-2">Buka Tokomu Sekarang!</h2>
+            <p className="text-xl mb-2">Bersama-Sama Selamatkan Bumi dan Atasi Kelaparan</p>
             <hr className="mb-10" style={{ height: '2px', backgroundColor: '#000', border: 'none' }} />
             <form className="max-w-2xl">
                 <div className="mb-4">
-                    <label htmlFor="storeImage" className="block text-gray-700 text-l mb-2">Foto Toko</label>
+                    <label className="block text-gray-700 text-l mb-2" htmlFor="storeImage">
+                        Foto Toko
+                    </label>
                     <input
-                        type="file"
+                        className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="storeImage"
                         name="storeImage"
-                        className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
                         onChange={handleImageChange}
                     />
                     {storeImagePreview && (
@@ -33,8 +36,8 @@ const StoreUpdateForm = () => {
                             <img src={storeImagePreview} alt="Preview" className="w-full h-full object-cover" />
                             <button
                                 type="button"
-                                onClick={handleRemoveImagePreview}
                                 className="absolute top-0 right-0 bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-full"
+                                onClick={handleRemoveImagePreview}
                                 style={{ top: '5px', right: '5px' }}
                             >
                                 &times;
@@ -118,14 +121,14 @@ const StoreUpdateForm = () => {
                         rows="5"
                     ></textarea>
                 </div>
-                {/* Lanjutkan untuk field lainnya */}
+                {/* Add additional fields for alamat toko, nomor telepon toko, jam operasional toko, and deskripsi singkat toko here */}
                 
                 <button className="bg-primary hover:bg-amber-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Perbarui
+                    Buka Toko
                 </button>
             </form>
         </div>
     );
 };
 
-export default StoreUpdateForm;
+export default CreateStoreForm;
