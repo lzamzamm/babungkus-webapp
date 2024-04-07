@@ -9,10 +9,6 @@ import Food_2 from "../../public/assets/images/beranda/food-2.jpg";
 import axios from "axios";
 
 function BerandaPage() {
-  useEffect(async () => {
-    const response = await axios.get("http://localhost:5555/api/produk/1");
-    console.log(response);
-  }, []);
   return (
     <div class="font-poppins">
       <Navbar />
