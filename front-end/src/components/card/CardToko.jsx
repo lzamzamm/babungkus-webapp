@@ -12,7 +12,7 @@ function CardToko() {
             <div className='flex flex-col items-start px-5 bg-tertiary'>
                 <a href='/toko' className='flex font-semibold truncate text-xl pt-5 hover:text-primary'>Nama Toko</a>
                 <a href='' className='flex items-center truncate pt-1 pb-3'><MdLocationOn className='text-red-600'/> Alamat Toko</a>
-                <p className='text-sm py-1 px-3 rounded-md bg-secondary text-white mb-5'>Makanan</p>
+                <p className='text-sm text-left line-clamp-2 mb-5'>Deskripsi Toko yang lumayan panjang untuk mengecek apakah ini aman untuk deskripsi tokonya</p>
             </div>
         </div>
     )

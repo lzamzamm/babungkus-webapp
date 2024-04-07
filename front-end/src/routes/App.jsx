@@ -7,6 +7,7 @@ import AccountPage from '../pages/AccountPage'
 import Detail_ProductPage from '../pages/Detail_ProductPage'
 import RiwayatPage from '../pages/RiwayatPage'
 import TokoPage from '../pages/TokoPage'
+import ProdukPage from '../pages/ProdukPage'
 
 import ContactPage from '../pages/ContactPage'
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/detail-product' Component={Detail_ProductPage} />
         <Route path='/riwayat' Component={RiwayatPage} />
         <Route path='/toko' Component={TokoPage} />
+        <Route path='/produk' Component={ProdukPage} />
       </Routes>
     </div>
   )
