@@ -25,7 +25,7 @@ Response Body Success:
   "data": {
     "user_id": 1,
     "toko_id": 1,
-    "toko_id": "655593858bc234dd084da5fa",
+    "laporan_id": 1,
     "judul": "Laporan penipuan",
     "alasan": "Tokonya menjual barang yang tidak sesuai",
     "image": "image1.png"
@@ -72,7 +72,7 @@ Response Body Success:
         "nama": "arip",
         "deskripsi": "nasi goreng",
         "image": "jpg",
-        "is_confirmed": true,
+        "status": "Active",
         "jam_operasional": "10.00 sampai 11.000",
         "loksi": "sapen",
         "no_telp": "098080"
@@ -120,7 +120,7 @@ Response Body Success:
       "nama": "arip",
       "deskripsi": "nasi goreng",
       "image": "jpg",
-      "is_confirmed": true,
+      "status": "Active",
       "jam_operasional": "10.00 sampai 11.000",
       "loksi": "sapen",
       "no_telp": "098080"

@@ -11,7 +11,6 @@ const router = express.Router();
 
 router.post("/", createToko);
 
-router.get("/all", getTokoAll);
 router.get("/", getTokoAll);
 
 router.get("/:id", getTokoById);
