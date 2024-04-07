@@ -17,7 +17,6 @@ const ReportPage = () => {
     const updatedReports = reports.filter(report => report.id !== reportId);
     setReports(updatedReports);
   };
-
   return (
     <div className="p-5 w-full text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <h2 className="text-2xl mb-4">Laporan Toko Bermasalah</h2>

@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import DashboardNavbar from '../components/DashboardNav';
-import ReportPage from '../components/Laporan';
-import ActionPage from '../components/Tindakan';
-import ActionHistoryPage from '../components/HistoryLaporan';
+import DashboardNavbar from '../admin/DashboardNav';
+import ReportPage from '../admin/Laporan';
+import ActionPage from '../admin/Tindakan';
+import ActionHistoryPage from '../admin/HistoryLaporan';
 import StoreVerfication from '../components/StoreVerification';
 
 function DashboardPage() {
