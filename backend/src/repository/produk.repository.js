@@ -1,4 +1,4 @@
-import Produk from "../models/produk.model.js";
+import Produk from '../models/produk.model.js';
 
 export async function create(produk) {
   return await Produk.create(produk);
@@ -16,11 +16,12 @@ export async function findOne(id) {
   return await Produk.findOne({ produk_id: id });
 }
 
+export async function aggregate(pipeline) {
+  return await Produk.aggregate(pipeline);
+}
+
 export async function findOneAndUpdate(id, updateFields) {
-  return await Produk.findOneAndUpdate(
-    { produk_id: id },
-    { $set: updateFields }
-  );
+  return await Produk.findOneAndUpdate({ produk_id: id }, { $set: updateFields });
 }
 
 export async function deleteOne(id) {

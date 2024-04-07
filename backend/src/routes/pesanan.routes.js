@@ -1,11 +1,13 @@
 import express from 'express';
-import { createPesanan, getPesananAll, getPesananById, updatePesanan, deletePesanan } from '../controllers/pesanan.controller.js';
+import { createPesanan, getPesananAll, getPesananById, updatePesanan, deletePesanan, getPesananAllCurrentUser } from '../controllers/pesanan.controller.js';
 
 const router = express.Router();
 
 router.post('/', createPesanan);
 
 router.get('/', getPesananAll);
+
+router.get('/current/user', getPesananAllCurrentUser);
 
 router.get('/:id', getPesananById);
 
