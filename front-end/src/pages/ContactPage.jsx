@@ -17,7 +17,7 @@ function ContactPage() {
             <input type='text' class='h-[3vmax] w-full bg-[#f0f0f0] pl-[0.5vmax] rounded-[0.3vmax] focus:bg-white'></input>
           </div>
           <div class='hp:text-[1.5vmax] pt-[1vmax]'>
-            <div class=''>Nama</div>
+            <div class=''>Subjek</div>
             <input type='text' class='h-[3vmax] w-full bg-[#f0f0f0] pl-[0.5vmax] rounded-[0.3vmax] focus:bg-white'></input>
           </div>
         </div>

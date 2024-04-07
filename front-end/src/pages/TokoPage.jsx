@@ -38,8 +38,8 @@ function TokoPage() {
     return (
         <div>
             <Navbar />
-            <div className='bg-white flex-col mx-auto min-h-screen max-w-screen-xl text-center px-4 md:px-8 mb-8' >
-                <h1 className='text-2xl md:text-3xl pt-28 mb-1 font-bold'>Mau Babungkus?</h1>
+            <div className='flex-col max-w-screen-xl min-h-screen px-4 mx-auto mb-8 text-center bg-white md:px-8' >
+                <h1 className='mb-1 text-2xl font-bold md:text-3xl pt-28'>Mau Babungkus?</h1>
                 <p>Sederhana, tapi Signifikan: Dari Sisa ke Solusi. Ayo jelajahi!</p>
                 <div className='flex m-auto border border-gray-500 gap-2 align-middle justify-between rounded-lg px-3 py-2 mt-3 mb-8 max-w-[765px]'>
                     <input
@@ -52,7 +52,7 @@ function TokoPage() {
                     <IoIosSearch className='w-7 h-7'></IoIosSearch>
                 </div>
                 {isLoading ? (
-                    <div className='flex justify-center items-center h-40'>
+                    <div className='flex items-center justify-center h-40'>
                         <div class="border-gray-300 h-10 w-10 animate-spin rounded-full border-4 border-t-green-600" />
                     </div>
                 ) : (
@@ -66,7 +66,7 @@ function TokoPage() {
                         )}
                     </div>
                 )}
-                {tokoData.length > 6 && <button className='text-white px-3 py-2 rounded-md w-full bg-primary'>Tampilkan lebih banyak</button>}
+                {tokoData.length > 6 && <button className='w-full px-3 py-2 text-white rounded-md bg-primary'>Tampilkan lebih banyak</button>}
             </div>
             <Footer />
         </div>
