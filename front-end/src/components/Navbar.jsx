@@ -18,7 +18,7 @@ function Navbar() {
   ];
 
   return (
-    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] shadow-mini-xlx sm:shadow-xlx'>
+    <div className='w-full font-poppins md:text-lg flex justify-center items-center py-4 px-[5%] fixed shadow-mini-xlx sm:shadow-xlx z-50 bg-white'>
       <div className='flex justify-between w-full'>
         <div className='flex items-center gap-[10%] w-[60%]'>
           <div className='flex justify-center items-center w-[50px]'>
@@ -47,13 +47,16 @@ function Navbar() {
             <Link key={index} to={item.href} className='hover:text-primary'>{item.label}</Link>
           ))}
         </div>
-        <div className='w-[25%] flex items-center justify-between transition duration-300 ease-in-out'>
+        <div className='flex items-center justify-between text-white gap-5'>
           {buttonItems.map((item, index) => (
-            <Link key={index} to={item.href} className='hover:bg-primary w-[10vw] p-[3%] text-white text-center bg-primary rounded-md'>
+            <Link key={index} to={item.href} className='hover:bg-primary-dark px-5 py-2 text-center bg-primary rounded-5 transition duration-300 ease-in-out'>
               {item.label}
             </Link>
           ))}
         </div>
+        <Link to='/detail-product'>det pro</Link>
+        <Link to='/riwayat'>det riw</Link>
+        <Link to='/akun'>det ak</Link>
       </div>
     </div>
   );

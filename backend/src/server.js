@@ -13,11 +13,13 @@ import cors from "cors";
 export const app = express();
 
 const corsOptions = {
-  origin: "*", // Alamat domain React
+  origin: "http://localhost:5173", // Alamat domain React
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Mengizinkan pengiriman cookies
   optionsSuccessStatus: 204,
 };
+
+app.use(Cors(corsOptions));
 
 app.use(cors(corsOptions));
 app.use(express.json());

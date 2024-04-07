@@ -4,11 +4,10 @@ import { FaArrowRight, FaUserAlt, FaStore, FaPlusCircle, FaListAlt, FaBuilding, 
 
 const AccountNavbar = () => {
     const [isNavVisible, setIsNavVisible] = useState(false);
-    const [hasStore, setHasStore] = useState(false); // Anda mungkin mengatur state ini berdasarkan logika tertentu
+    const [hasStore, setHasStore] = useState(false); 
 
     return (
         <div className="relative">
-            {/* Tombol untuk membuka navigasi hanya ditampilkan pada mobile */}
             <button
                 className={`absolute top-0 left-0 z-30 mt-4 ml-4 sm:hidden ${isNavVisible ? 'hidden' : 'block'}`}
                 onClick={() => setIsNavVisible(true)}>

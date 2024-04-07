@@ -75,7 +75,7 @@ Response Body Success:
     "stok": 30,
     "deskripsi": "Makanan sisa penjualan",
     "image": "foto.png",
-    "expire_at": "2023-11-24T10:39:58.606Z"
+    "expired_at": "2023-11-24T10:39:58.606Z"
   }
 }
 ```
