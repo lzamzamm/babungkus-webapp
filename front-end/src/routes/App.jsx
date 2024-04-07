@@ -6,6 +6,8 @@ import RegisPage from '../pages/RegisPage'
 import AccountPage from '../pages/AccountPage'
 import Detail_ProductPage from '../pages/Detail_ProductPage'
 import RiwayatPage from '../pages/RiwayatPage'
+import TokoPage from '../pages/TokoPage'
+
 import ContactPage from '../pages/ContactPage'
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
         <Route path='/akun/*' Component={AccountPage} />
         <Route path='/detail-product' Component={Detail_ProductPage} />
         <Route path='/riwayat' Component={RiwayatPage} />
+        <Route path='/toko' Component={TokoPage} />
       </Routes>
     </div>
   )

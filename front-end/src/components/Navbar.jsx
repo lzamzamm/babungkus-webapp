@@ -30,7 +30,7 @@ function Navbar() {
             {isOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
           </button>
         </div>
-        <nav className={`flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
+        <nav className={`flex-col h-screen md:h-auto flex-grow pb-4 md:pb-0 md:flex justify-between md:justify-end md:flex-row transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
           <div className="md:flex md:items-center md:justify-between w-full">
             <div className="md:flex md:items-center gap-2">
               {navItems.map((item, index) => (
