@@ -13,13 +13,13 @@ export const loginUserService = asyncHandler(async (res, user) => {
   }
 
   var result = await findWithUsername(user["username"]);
-  //console.log(result);
 
   if (!result || !(await result.matchPassword(user["password"]))) {
     res.status(400);
     throw new Error("Username atau password salah");
   }
 
+  // console.log(result.user_id);
   generateToken(res, result.user_id);
 
   return result;

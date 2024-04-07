@@ -18,8 +18,10 @@ const tokoSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    is_confirmed: {
-      type: Boolean,
+    status: {
+      type: String,
+      enum: ["Pending", "Freeze", "Active", "Banned"],
+      default: "Pending",
       required: true,
     },
     image: {
@@ -37,6 +39,9 @@ const tokoSchema = mongoose.Schema(
     no_telp: {
       type: String,
       required: true,
+    },
+    freeze_at: {
+      type: Date,
     },
   },
   { timestamps: true }

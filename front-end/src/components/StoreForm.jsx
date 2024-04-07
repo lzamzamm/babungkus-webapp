@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const StoreForm = () => {
+const StoreUpdateForm = () => {
+    const [storeImagePreview, setStoreImagePreview] = useState('');
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]; 
+        if (file && file.type.startsWith("image/")) {
+            setStoreImagePreview(URL.createObjectURL(file)); 
+        }
+    };
+
+    const handleRemoveImagePreview = () => {
+        setStoreImagePreview(''); 
+    };
+
     return (
         <div className="p-5 w-full text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <h2 className="text-2xl mb-2">Data Diri</h2>
+            <h2 className="text-2xl mb-2">Data Tokomu!</h2>
             <hr className="mb-10" style={{ height: '2px', backgroundColor: '#000', border: 'none' }} />
             <form className="max-w-2xl">
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-l  mb-2" htmlFor="NamaLengkap">
-                        Nama Toko
-                    </label>
+                    <label htmlFor="storeImage" className="block text-gray-700 text-l mb-2">Foto Toko</label>
+                    <input
+                        type="file"
+                        id="storeImage"
+                        name="storeImage"
+                        className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={handleImageChange}
+                    />
+                    {storeImagePreview && (
+                        <div className="mt-4 relative w-32 h-32">
+                            <img src={storeImagePreview} alt="Preview" className="w-full h-full object-cover" />
+                            <button
+                                type="button"
+                                onClick={handleRemoveImagePreview}
+                                className="absolute top-0 right-0 bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-full"
+                                style={{ top: '5px', right: '5px' }}
+                            >
+                                &times;
+                            </button>
+                        </div>
+                    )}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-l mb-2" htmlFor="storeName">Nama Toko</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="NamaLengkap"
-                        name="NamaLengkap"
+                        id="NamaToko"
+                        name="NamaToko"
                         type="text"
                     />
                 </div>
@@ -53,7 +87,7 @@ const StoreForm = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-l mb-2" htmlFor="waktuMulai">
-                        Waktu Mulai
+                        Waktu Buka
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -64,7 +98,7 @@ const StoreForm = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-l mb-2" htmlFor="waktuSelesai">
-                        Waktu Selesai
+                        Waktu Tutup
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -84,13 +118,14 @@ const StoreForm = () => {
                         rows="5"
                     ></textarea>
                 </div>
+                {/* Lanjutkan untuk field lainnya */}
+                
                 <button className="bg-primary hover:bg-amber-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Update
+                    Perbarui
                 </button>
             </form>
         </div>
     );
 };
 
-
-export default StoreForm;
+export default StoreUpdateForm;
