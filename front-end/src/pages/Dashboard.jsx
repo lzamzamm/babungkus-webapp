@@ -6,7 +6,7 @@ import DashboardNavbar from '../admin/DashboardNav';
 import ReportPage from '../admin/Laporan';
 import ActionPage from '../admin/Tindakan';
 import ActionHistoryPage from '../admin/HistoryLaporan';
-import StoreVerfication from '../components/StoreVerification';
+import StoreVerfication from '../admin/StoreVerification';
 
 function DashboardPage() {
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+/* import React, { useState, useEffect } from 'react';
 import { FaEdit } from 'react-icons/fa'; // Pastikan Anda telah mengimpor ini
 import { MdDelete } from 'react-icons/md'; // Pastikan Anda telah mengimpor ini
 import axios from 'axios';
@@ -10,6 +10,7 @@ const ProdukSaya = () => {
     // Contoh fungsi untuk memuat data (gantikan dengan logika pengambilan data Anda)
     const fetchData = async () => {
       const response = await axios.get('http://localhost:5555/api/produk');
+      console.log(response.data);
       // const data = await response.json();
       setData(response.data); // Set data produk ke state
     };
@@ -60,3 +61,4 @@ const ProdukSaya = () => {
 };
 
 export default ProdukSaya;
+ */

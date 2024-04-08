@@ -7,7 +7,7 @@ const generateToken = (res, user_id) => {
   });
 
   // console.log(token, res);
-  console.log(res.cookie);
+  //console.log(res.cookie);
   res.cookie("jwt", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development", // Use secure cookies in production

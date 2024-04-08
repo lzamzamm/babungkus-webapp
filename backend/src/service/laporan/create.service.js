@@ -1,16 +1,13 @@
 import asyncHandler from 'express-async-handler';
 import { create } from '../../repository/laporan.repository.js';
 
-export const createLaporanService = asyncHandler(async (laporan) => {
-  const new_laporan = {
-    user_id: laporan.user_id,
-    toko_id: laporan.toko_id,
-    judul: laporan.judul,
-    alasan: laporan.alasan,
-    image: laporan.image,
-  };
+export const createLaporanService = asyncHandler(async (body, files) => {
+  const laporan = JSON.parse(body['data']);
+  const file = files['file'][0];
 
-  const result = await create(new_laporan);
+  laporan.image = file.filename;
+
+  const result = await create(laporan);
 
   return result;
 });
