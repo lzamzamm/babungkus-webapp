@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const laporanSchema = mongoose.Schema({
   laporan_id: {
@@ -27,13 +27,17 @@ const laporanSchema = mongoose.Schema({
   },
 });
 
-laporanSchema.pre('save', async function (next) {
+laporanSchema.pre("save", async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
-  console.log('tes middleware');
+  console.log("tes middleware");
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
-    const last_doc = await mongoose.model('Laporan').findOne().sort('-laporan_id').exec();
+    const last_doc = await mongoose
+      .model("Laporan")
+      .findOne()
+      .sort("-laporan_id")
+      .exec();
     console.log(last_doc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
@@ -44,6 +48,6 @@ laporanSchema.pre('save', async function (next) {
   }
 });
 
-const Laporan = mongoose.model('Laporan', laporanSchema);
+const Laporan = mongoose.model("Laporan", laporanSchema);
 
 export default Laporan;

@@ -5,7 +5,7 @@ import {
 } from "../../repository/toko.repository.js";
 
 export const updateTokoService = asyncHandler(
-  async (res, { id }, toko, imageFile) => {
+  async (res, { id }, toko, file) => {
     const requiredFields = [
       "nama",
       "deskripsi",
