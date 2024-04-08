@@ -1,24 +1,54 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 const AddProductForm = () => {
-    const [imagePreviews, setImagePreviews] = useState([]);
+    const [storeImagePreview, setStoreImagePreview] = useState("");
+    const [inputData, setInputData] = useState({});
+    const [image, setImage] = useState();
 
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files); // Mengonversi FileList menjadi Array
-        const newImagePreviews = [...imagePreviews, ...files.map(file => {
-            if (file.type.substr(0, 5) === "image") {
-                return URL.createObjectURL(file); // Membuat URL untuk preview
-            }
-            return null; // Mengabaikan file jika bukan gambar
-        }).filter(preview => preview !== null)]; // Filter out non-images
+    var formData = new FormData();
 
-        setImagePreviews(newImagePreviews);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputData({
+            ...inputData,
+            [name]: value,
+        });
     };
 
-    const handleCancelIndividualUpload = (index) => {
-        const newImagePreviews = [...imagePreviews];
-        newImagePreviews.splice(index, 1); // Menghapus preview pada index tertentu
-        setImagePreviews(newImagePreviews);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+
+        const maxFileSize = 5 * 1024 * 1024;
+
+        if (file) {
+            if (file.type.substr(0, 5) === "image" && file.size <= maxFileSize) {
+                setImage(file);
+                setStoreImagePreview(URL.createObjectURL(file));
+            } else if (file.size > maxFileSize) {
+                alert("Ukuran gambar melebihi batas maksimal 5MB.");
+                e.target.value = "";
+            } else {
+                alert("File yang diunggah bukan gambar.");
+            }
+        }
+    };
+
+    const handleRemoveImagePreview = () => {
+        setStoreImagePreview(""); // Menghapus preview gambar
+    };
+
+    const createHandler = async (e) => {
+        e.preventDefault();
+        // console.log(inputData);
+        // console.log(image);
+        var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        inputData.user_id = userInfo.user_id;
+        console.log(inputData);
+        formData.append("data", JSON.stringify(inputData));
+        formData.append("file", image);
+        var res = await axios.post("http://localhost:5555/api/produk", formData);
+        console.log(res);
     };
 
     return (
@@ -27,32 +57,36 @@ const AddProductForm = () => {
             <hr className="mb-5 sm:mb-10" style={{ height: '2px', backgroundColor: '#000', border: 'none' }} />
             <form className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
-                    <label className="block text-gray-700 text-l mb-2" htmlFor="foto">
-                        Foto Produk
+                    <label
+                        className="block text-gray-700 text-l mb-2"
+                        htmlFor="storeImage"
+                    >
+                        Foto Toko
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="foto"
-                        name="foto"
+                        id="storeImage"
+                        name="storeImage"
                         type="file"
                         onChange={handleImageChange}
-                        multiple
                     />
-                    <div className="mt-4 grid grid-cols-3 gap-4">
-                        {imagePreviews.map((preview, index) => (
-                            <div key={index} className="relative w-32 h-32">
-                                <img src={preview} alt="Preview" className="w-full h-full object-cover" />
-                                <button
-                                    type="button"
-                                    className="absolute top-0 right-0 bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-full"
-                                    onClick={() => handleCancelIndividualUpload(index)}
-                                    style={{ top: '5px', right: '5px' }} // Adjusting the position to be closer to the corner
-                                >
-                                    &times;
-                                </button>
-                            </div>
-                        ))}
-                    </div>
+                    {storeImagePreview && (
+                        <div className="mt-4 relative w-32 h-32">
+                            <img
+                                src={storeImagePreview}
+                                alt="Preview"
+                                className="w-full h-full object-cover"
+                            />
+                            <button
+                                type="button"
+                                className="absolute top-0 right-0 bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-full"
+                                onClick={handleRemoveImagePreview}
+                                style={{ top: "5px", right: "5px" }}
+                            >
+                                &times;
+                            </button>
+                        </div>
+                    )}
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
                     <label className="block text-gray-700 text-l mb-2" htmlFor="namaProduk">
@@ -63,6 +97,7 @@ const AddProductForm = () => {
                         id="namaProduk"
                         name="namaProduk"
                         type="text"
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
@@ -74,6 +109,7 @@ const AddProductForm = () => {
                         id="tanggalDibuat"
                         name="tanggalDibuat"
                         type="date"
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
@@ -85,6 +121,7 @@ const AddProductForm = () => {
                         id="expired"
                         name="expired"
                         type="date"
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
@@ -95,13 +132,17 @@ const AddProductForm = () => {
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="jenisMakanan"
                         name="jenisMakanan"
+                        onChange={handleInputChange}
                     >
                         <option value="makanan">Makanan</option>
                         <option value="minuman">Minuman</option>
                         <option value="pakan">Pakan</option>
                     </select>
                 </div>
-                <button className="bg-primary hover:bg-amber-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                <button 
+                className="bg-primary hover:bg-amber-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline" 
+                onClick={createHandler}
+                >
                     Tambah
                 </button>
             </form>

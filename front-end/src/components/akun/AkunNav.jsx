@@ -5,7 +5,7 @@ import { FaArrowRight, FaUserAlt, FaStore, FaPlusCircle, FaListAlt, FaBuilding, 
 const AccountNavbar = () => {
     const [isNavVisible, setIsNavVisible] = useState(false);
     //const [hasStore, setHasStore] = useState(false); 
-
+    
     return (
         <div className="relative">
             <button
