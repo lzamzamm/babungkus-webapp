@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaUserAlt, FaStore, FaPlusCircle, FaListAlt, FaBuilding, FaTimes } from 'react-icons/fa'; // Tambahkan FaTimes untuk tombol tutup
+import { FaArrowRight, FaUserAlt, FaStore, FaPlusCircle, FaListAlt, FaBuilding, FaTimes } from 'react-icons/fa'; 
 
 const AccountNavbar = () => {
     const [isNavVisible, setIsNavVisible] = useState(false);
@@ -16,7 +16,7 @@ const AccountNavbar = () => {
             <div className={`fixed inset-y-0 left-0 bg-gray-100 w-64 z-20 transition-all duration-300 ease-in-out sm:relative ${isNavVisible ? 'translate-x-0' : '-translate-x-full'} sm:translate-x-0`}>
                 <button className={`absolute top-0 right-0 mt-4 mr-4  sm:hidden ${isNavVisible ? 'block' : 'hidden'}`}
                         onClick={() => setIsNavVisible(false)}>
-                    <FaTimes className="mt-20 text-2xl" /> {/* Mengganti ikon dengan FaTimes untuk tutup */}
+                    <FaTimes className="mt-20 text-2xl" /> 
                 </button>
                 <div className="p-10 mt-12">
                     <h1 className="text-2xl mb-6">Pengaturan</h1>

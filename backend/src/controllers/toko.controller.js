@@ -10,7 +10,7 @@ import { updateTokoService } from "../service/toko/update.service.js";
 import { updateStatusTokoService } from "../service/toko/update.service.js";
 
 const createToko = asyncHandler(async (req, res) => {
-  const toko = await createTokoService(res, req.body);
+  const toko = await createTokoService(res, req.body, req.files);
 
   return res.status(200).json({
     status: "Success",

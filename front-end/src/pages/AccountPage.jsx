@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import AccountNavbar from '../components/AkunNav';
-import PersonalForm from '../components/PersonalForm';
-import StoreUpdateForm from '../components/StoreForm'; 
+import AccountNavbar from '../components/akun/AkunNav';
+import PersonalForm from '../components/akun/PersonalForm';
+import StoreUpdateForm from '../components/akun/StoreForm'; 
 import AddProduct from '../components/AddProductForm'; 
-import CreateStoreForm from '../components/CreateStore';
+import CreateStoreForm from '../components/akun/CreateStore';
 
 function AccountPage() {
   const [isNavVisible, setIsNavVisible] = useState(false);
