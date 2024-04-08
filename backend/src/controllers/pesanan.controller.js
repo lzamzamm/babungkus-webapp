@@ -33,6 +33,7 @@ const getPesananAll = asyncHandler(async (req, res) => {
 
 const getPesananAllCurrentUser = asyncHandler(async (req, res) => {
   const pesanan = await getPesananAllCurrentUserService(req.user.user_id);
+  console.log(req.user.user_id);
 
   return res.status(200).json({
     status: 'success',

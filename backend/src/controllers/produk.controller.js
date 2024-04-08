@@ -6,7 +6,7 @@ import { updateProdukService } from '../service/produk/update.service.js';
 import { deleteProdukService } from '../service/produk/delete.service.js';
 
 const createProduk = asyncHandler(async (req, res) => {
-  const produk = await createProdukService(res, req.body);
+  const produk = await createProdukService(res, req.body, req.files);
 
   return res.status(200).json({
     status: 'success',
@@ -54,21 +54,7 @@ const getProdukByToko = asyncHandler(async (req, res) => {
 
 const UpdateProduk = asyncHandler(async (req, res) => {
   var { id } = req.params;
-
-  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
-
-  if (!toko_id && !nama && !deskripsi && !image && !harga && !kategori && !stok && !expired_at) {
-    res.status(400);
-    throw new Error('Tidak ada data yang terisi');
-  }
-
-  var updateFields = { ...req.body };
-
-  if (req.file) {
-    updateFields.image = req.file.filename;
-  }
-
-  const produk = await updateProdukService(id, updateFields);
+  const produk = await updateProdukService(id, req.body, req.files);
 
   res.status(200).json({
     status: 'Success',
