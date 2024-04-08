@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import { find, findByKategori, findOne } from '../../repository/produk.repository.js';
+import { aggregate, find, findByKategori } from '../../repository/produk.repository.js';
 
 export const getProdukAllService = asyncHandler(async () => {
   const result = await find();
@@ -7,15 +7,12 @@ export const getProdukAllService = asyncHandler(async () => {
 });
 
 export const getProdukByIdService = asyncHandler(async (id) => {
-  const produk = await findOne(id);
-
-  if (!produk) {
-    const error = new Error('Produk tidak ditemukan');
-    error.status = 404;
-    throw error;
-  }
-
   const pipeline = [
+    {
+      $match: {
+        produk_id: parseInt(id),
+      },
+    },
     {
       $lookup: {
         from: 'tokos',
@@ -29,7 +26,6 @@ export const getProdukByIdService = asyncHandler(async (id) => {
     },
     {
       $project: {
-        _id: 0,
         toko_id: 1,
         nama: 1,
         harga: 1,
@@ -44,7 +40,7 @@ export const getProdukByIdService = asyncHandler(async (id) => {
           image_toko: '$info_toko.image',
           is_confirmed: '$info_toko.is_confirmed',
           jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
+          lokasi: '$info_toko.lokasi',
           no_telp: '$info_toko.no_telp',
         },
       },
@@ -53,7 +49,13 @@ export const getProdukByIdService = asyncHandler(async (id) => {
 
   const result = await aggregate(pipeline);
 
-  return result;
+  if (!result || result.length === 0) {
+    const error = new Error('Produk tidak ditemukan');
+    error.status = 404;
+    throw error;
+  }
+
+  return result[0];
 });
 
 export const getProdukByKategoriService = asyncHandler(async ({ kategori }) => {

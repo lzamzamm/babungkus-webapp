@@ -16,6 +16,10 @@ export async function findOne(id) {
   return await Produk.findOne({ produk_id: id });
 }
 
+export async function aggregate(pipeline) {
+  return await Produk.aggregate(pipeline);
+}
+
 export async function findOneAndUpdate(id, updateFields) {
   return await Produk.findOneAndUpdate(
     { produk_id: id },
@@ -25,8 +29,4 @@ export async function findOneAndUpdate(id, updateFields) {
 
 export async function deleteOne(id) {
   return await Produk.deleteOne({ produk_id: id });
-}
-
-export async function aggregate(pipeline) {
-  return await Produk.aggregate(pipeline);
 }

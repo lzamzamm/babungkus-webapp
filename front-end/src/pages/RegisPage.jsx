@@ -32,7 +32,7 @@ export default function RegisPage() {
     };
   
     try {
-      const response = await axios.post('http://localhost:5555/api/register', userData);
+      const response = await axios.post('http://localhost:5555/api/user/register', userData);
       console.log("Register berhasil", response.data);
       setIsDataValid(true);
       navigate('/login');
@@ -49,7 +49,7 @@ export default function RegisPage() {
     <div style={{ fontFamily: 'Poppins, sans-serif' }}>
       <Navbar />
       <div className="bg-white flex min-h-screen items-center justify-center">
-        <div className="flex flex-col sm:flex-row gap-10 items-center">
+        <div className="flex flex-col sm:flex-row gap-10 items-center mt-12">
           <div className="flex flex-col items-center">
             <img src={LogoDaftar} alt="Logo" className="w-48 sm:w-72 md:w-90" />
             <div className="text-center mt-4">

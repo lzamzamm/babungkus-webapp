@@ -9,17 +9,15 @@ const AccountNavbar = () => {
     return (
         <div className="relative">
             <button
-                className={`absolute top-0 left-0 z-30 mt-4 ml-4 sm:hidden ${isNavVisible ? 'hidden' : 'block'}`}
+                className={`absolute top-0 left-0 z-30  p-2 sm:hidden ${isNavVisible ? 'hidden' : 'block'}`}
                 onClick={() => setIsNavVisible(true)}>
-                <FaArrowRight className="text-2xl" />
+                <FaArrowRight className=" mt-10 text-2xl" />
             </button>
 
-            {/* Konten navigasi */}
             <div className={`fixed inset-y-0 left-0 bg-gray-100 w-64 z-20 transition-all duration-300 ease-in-out sm:relative ${isNavVisible ? 'translate-x-0' : '-translate-x-full'} sm:translate-x-0`}>
-                {/* Tombol untuk menutup navigasi hanya ditampilkan pada mobile dan saat navigasi terbuka */}
-                <button className={`absolute top-0 right-0 mt-4 mr-4 sm:hidden ${isNavVisible ? 'block' : 'hidden'}`}
+                <button className={`absolute top-0 right-0 mt-4 mr-4  sm:hidden ${isNavVisible ? 'block' : 'hidden'}`}
                         onClick={() => setIsNavVisible(false)}>
-                    <FaTimes className="text-2xl" /> {/* Mengganti ikon dengan FaTimes untuk tutup */}
+                    <FaTimes className="mt-20 text-2xl" /> {/* Mengganti ikon dengan FaTimes untuk tutup */}
                 </button>
                 <div className="p-10 mt-12">
                     <h1 className="text-2xl mb-6">Pengaturan</h1>
@@ -68,5 +66,4 @@ const AccountNavbar = () => {
         </div>
     );
 };
-
 export default AccountNavbar;

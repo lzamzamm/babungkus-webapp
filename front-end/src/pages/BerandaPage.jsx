@@ -36,7 +36,7 @@ function BerandaPage() {
             </p>
           </div>
         </div>
-        <div class="hp:text-[1.6vmax] flex lg:flex-row hp:flex-col pt-10 px-8">
+        <div class="hp:text-[1.6vmax] flex lg:flex-row hp:flex-col pt-12 px-8 justify-center">
           <div class=" hp:w-full lg:w-[30vmax]">
             <img
               src={Food_1}
@@ -93,20 +93,20 @@ function BerandaPage() {
             </div>
           </div>
         </div>
-        <div class="lg:p-[5%] hp:p-[10%] hp:h-[60vmax] lg:h-[45vmax] font-semibold flex hp:flex-col hp:justify-center hp:items-center hp:gap-[3%] lg:gap-[5%]">
+        <div class="lg:p-[5%] hp:p-[10%] lg:py-[5%] lg:px-[10%] hp:h-[60vmax] lg:h-[45vmax] font-semibold flex hp:flex-col hp:justify-center hp:items-center hp:gap-[3%] lg:gap-[5%]">
           <p className="text-center lg:text-[3vmax]">Berbagai Outlet</p>
           <div className="flex hp:flex-col lg:flex-row gap-[5%] h-[50%] hp:w-[60%] text-white lg:justify-center text-[2vmax]">
             <div className=" bg-slate-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
               <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Kedai</p>
-                <img className="absolute w-full h-full " src={Food_1} />
+                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
               </div>
               {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
             </div>
             <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
               <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Restoran</p>
-                <img className="absolute w-full h-full" src={Food_1} />
+                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
               </div>
             </div>
           </div>
@@ -114,13 +114,13 @@ function BerandaPage() {
             <div className="bg-stone-600 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
               <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Toko</p>
-                <img className="absolute w-full h-full" src={Food_1} />
+                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
               </div>
             </div>
             <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
               <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Warung</p>
-                <img className="absolute w-full h-full" src={Food_1} />
+                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
               </div>
             </div>
           </div>
