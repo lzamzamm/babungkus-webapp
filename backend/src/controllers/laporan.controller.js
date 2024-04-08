@@ -11,7 +11,7 @@ const createLaporan = asyncHandler(async (req, res) => {
     throw new Error('isi semua data');
   }
 
-  const laporan = await createLaporanService(req.body);
+  const laporan = await createLaporanService(req.body, req.files);
 
   return res.status(200).json({
     status: 'success',

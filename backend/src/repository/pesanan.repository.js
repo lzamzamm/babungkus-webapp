@@ -19,3 +19,7 @@ export async function findOneAndUpdate(id, updateFields) {
 export async function deleteOne(id) {
   return await Pesanan.deleteOne({ pesanan_id: id });
 }
+
+export async function aggregate(pipeline) {
+  return await Pesanan.aggregate(pipeline);
+}

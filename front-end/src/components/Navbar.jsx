@@ -1,50 +1,70 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
+import LogoBabungkus from '/assets/images/logo.png';
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+  const navItems = [
+    { label: 'Produk', href: '/produk', subItems: [{ label: 'Makanan', href: '/produk/makanan' }, { label: 'Minuman', href: '/produk/minuman' }, { label: 'Pakan', href: '/produk/pakan' }] },
+    { label: 'Toko', href: '/toko' },
+    { label: 'Tentang Kami', href: '/tentangkami' }
+  ];
 
-  const [isOpen, setIsOpen] = useState(false)
+  const buttonItems = [
+    { label: 'Masuk', href: '/masuk' },
+    { label: 'Daftar', href: '/daftar' }
+  ];
 
   return (
-    <div class=' w-full fixed font-poppins text-[14px] sm:text-[22px] flex justify-center items-center sm:pt-[1%] sm:pb-[1%] pt-[2%] pl-[5%] pr-[5%] pb-[2%] shadow-mini-xlx sm:shadow-xlx'>
-      <div class='flex justify-between w-full'>
-        <div class='flex items-center gap-[10%] w-[55%]'>
-          <div class='w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] '>
-            <div class='w-full h-full rounded-[50%] bg-abu-abu' />
-          </div>
-          <div class='hover:bg-[#d6d4d4] flex items-center justify-center'>
-            <button
-              onClick={() => setIsOpen((prev) => !prev)}
-              class='flex items-center justify-center'>
-              Produk
-              {!isOpen ? (
-                <IoIosArrowDown class='pl-[10%]' />
-              ) : (
-                <IoIosArrowUp class='pl-[10%]' />
-              )}
-            </button>
-            {isOpen && (
-              <div class='absolute p-[1%] mt-[15%] bg-slate-400'>
-                <Link to='/'>Makanan</Link>
-                <Link to='/'>Minuman</Link>
-              </div>
-            )}
-          </div>
-          <Link to='/' class='hover:bg-[#d6d4d4]'>Outlet</Link>
-          <Link to='/' class='hover:bg-[#d6d4d4]'>Kontak</Link>
+    <div className="fixed z-50 w-full bg-white shadow-mini-xlx sm:shadow-xlx md:text-lg font-poppins">
+      <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:flex-row md:items-center md:justify-between md:px-6 lg:px-8">
+        <div className="flex flex-row items-center justify-between p-4">
+          <Link to='/' className='flex justify-center items-center w-[50px]'>
+            <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
+          </Link>          
+          <button onClick={() => setIsOpen(!isOpen)} className="rounded-lg md:hidden focus:outline-none focus:shadow-outline">
+            {isOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
+          </button>
         </div>
-        <div class=' font-inter w-[25%] flex items-center justify-between'>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
-            Masuk
-          </Link>
-          <Link to='/' class=' hover:bg-[#d6d4d4] w-[45%] p-[3%] text-center bg-abu-abu rounded-md'>
-            Daftar
-          </Link>
-        </div>
+        <nav className={`flex-col h-screen md:h-auto flex-grow pb-4 md:pb-0 md:flex justify-between md:justify-end md:flex-row transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
+          <div className="w-full md:flex md:items-center md:justify-between">
+            <div className="gap-2 md:flex md:items-center">
+              {navItems.map((item, index) => (
+                <div key={index} className="relative">
+                {item.label === 'Produk' ? (
+                  <button onClick={() => setDropdownOpen((prev) => !prev)} className="flex items-center w-full px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
+                  {item.label}
+                  <IoIosArrowDown className={`inline w-4 h-4 ml-4 transition-transform duration-200 transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
+                </button>
+                  ) : (
+                    <Link to={item.href} className="flex px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary">
+                      {item.label}
+                    </Link>
+                  )}
+                  {dropdownOpen && item.subItems && item.subItems.length > 0 && (
+                    <div className="right-0 z-10 w-full px-2 py-2 mt-0 text-base bg-white rounded-lg dropdown-menu md:absolute md:mt-2 md:border">
+                      {item.subItems.map((subItem, subIndex) => (
+                        <a key={subIndex} className="block px-4 py-2 rounded-lg hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline" href={subItem.href}>{subItem.label}</a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="gap-2 mt-4 md:flex md:items-center md:mt-0">
+              {buttonItems.map((item, index) => (
+                <Link key={index} to={item.href} className="flex justify-center px-4 py-2 mt-2 text-white transition duration-300 ease-in-out rounded-lg md:mt-0 hover:bg-primary-dark bg-primary">{item.label}</Link>
+              ))}
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

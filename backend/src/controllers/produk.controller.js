@@ -6,14 +6,7 @@ import { updateProdukService } from '../service/produk/update.service.js';
 import { deleteProdukService } from '../service/produk/delete.service.js';
 
 const createProduk = asyncHandler(async (req, res) => {
-  const { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
-
-  if (!toko_id || !nama || !deskripsi || !image || !harga || !kategori || !stok || !expired_at) {
-    res.status(400);
-    throw new Error('isi semua data');
-  }
-
-  const produk = await createProdukService(req.body);
+  const produk = await createProdukService(res, req.body, req.files);
 
   return res.status(200).json({
     status: 'success',
@@ -33,7 +26,6 @@ const getProdukAll = asyncHandler(async (req, res) => {
 
 const getProdukById = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
   const produk = await getProdukByIdService(id);
 
   return res.status(200).json({
@@ -43,9 +35,16 @@ const getProdukById = asyncHandler(async (req, res) => {
 });
 
 const getProdukByKategori = asyncHandler(async (req, res) => {
-  const { kategori } = req.body;
+  const produk = await getProdukByKategoriService(req.body);
 
-  const produk = await getProdukByKategoriService(kategori);
+  return res.status(200).json({
+    status: 'success',
+    data: produk,
+  });
+});
+
+const getProdukByToko = asyncHandler(async (req, res) => {
+  const produk = await getProdukByKategoriService(req.body);
 
   return res.status(200).json({
     status: 'success',
@@ -55,21 +54,7 @@ const getProdukByKategori = asyncHandler(async (req, res) => {
 
 const UpdateProduk = asyncHandler(async (req, res) => {
   var { id } = req.params;
-
-  var { toko_id, nama, harga, kategori, stok, deskripsi, image, expired_at } = req.body;
-
-  if (!toko_id && !nama && !deskripsi && !image && !harga && !kategori && !stok && !expired_at) {
-    res.status(400);
-    throw new Error('Tidak ada data yang terisi');
-  }
-
-  var updateFields = { ...req.body };
-
-  if (req.file) {
-    updateFields.image = req.file.filename;
-  }
-
-  const produk = await updateProdukService(id, updateFields);
+  const produk = await updateProdukService(id, req.body, req.files);
 
   res.status(200).json({
     status: 'Success',

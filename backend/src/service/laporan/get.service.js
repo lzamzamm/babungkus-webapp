@@ -1,18 +1,18 @@
-import asyncHandler from 'express-async-handler';
-import { aggregate } from '../../repository/laporan.repository.js';
+import asyncHandler from "express-async-handler";
+import { aggregate } from "../../repository/laporan.repository.js";
 
 export const getLaporanAllService = asyncHandler(async () => {
   const pipeline = [
     {
       $lookup: {
-        from: 'tokos',
-        localField: 'toko_id',
-        foreignField: 'toko_id',
-        as: 'info_toko',
+        from: "tokos",
+        localField: "toko_id",
+        foreignField: "toko_id",
+        as: "info_toko",
       },
     },
     {
-      $unwind: '$info_toko',
+      $unwind: "$info_toko",
     },
     {
       $project: {
@@ -24,13 +24,13 @@ export const getLaporanAllService = asyncHandler(async () => {
         alasan: 1,
         image: 1,
         info_toko: {
-          nama: '$info_toko.nama',
-          deskripsi: '$info_toko.deskripsi',
-          image_toko: '$info_toko.image',
-          is_confirmed: '$info_toko.is_confirmed',
-          jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
-          no_telp: '$info_toko.no_telp',
+          nama: "$info_toko.nama",
+          deskripsi: "$info_toko.deskripsi",
+          image_toko: "$info_toko.image",
+          is_confirmed: "$info_toko.is_confirmed",
+          jam_operasional: "$info_toko.jam_operasional",
+          lokasi: "$info_toko.loksi",
+          no_telp: "$info_toko.no_telp",
         },
       },
     },
@@ -50,14 +50,14 @@ export const getLaporanByIdService = asyncHandler(async (id) => {
     },
     {
       $lookup: {
-        from: 'tokos',
-        localField: 'toko_id',
-        foreignField: 'toko_id',
-        as: 'info_toko',
+        from: "tokos",
+        localField: "toko_id",
+        foreignField: "toko_id",
+        as: "info_toko",
       },
     },
     {
-      $unwind: '$info_toko',
+      $unwind: "$info_toko",
     },
     {
       $project: {
@@ -69,13 +69,13 @@ export const getLaporanByIdService = asyncHandler(async (id) => {
         alasan: 1,
         image: 1,
         info_toko: {
-          nama: '$info_toko.nama',
-          deskripsi: '$info_toko.deskripsi',
-          image_toko: '$info_toko.image',
-          is_confirmed: '$info_toko.is_confirmed',
-          jam_operasional: '$info_toko.jam_operasional',
-          lokasi: '$info_toko.loksi',
-          no_telp: '$info_toko.no_telp',
+          nama: "$info_toko.nama",
+          deskripsi: "$info_toko.deskripsi",
+          image_toko: "$info_toko.image",
+          is_confirmed: "$info_toko.is_confirmed",
+          jam_operasional: "$info_toko.jam_operasional",
+          lokasi: "$info_toko.loksi",
+          no_telp: "$info_toko.no_telp",
         },
       },
     },
@@ -84,7 +84,7 @@ export const getLaporanByIdService = asyncHandler(async (id) => {
   const result = await aggregate(pipeline);
 
   if (!result || result.length === 0) {
-    const error = new Error('Laporan tidak ditemukan');
+    const error = new Error("Laporan tidak ditemukan");
     error.status = 404;
     throw error;
   }

@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import Pesanan from '../models/pesanan.model.js';
 import { createPesananService } from '../service/pesanan/create.service.js';
-import { getPesananAllService, getPesananByIdService } from '../service/pesanan/get.service.js';
+import { getPesananAllCurrentUserService, getPesananAllService, getPesananByIdService } from '../service/pesanan/get.service.js';
 import { updatePesananService } from '../service/pesanan/update.service.js';
 import { deletePesananService } from '../service/pesanan/delete.service.js';
 
@@ -13,7 +13,7 @@ const createPesanan = asyncHandler(async (req, res) => {
     throw new Error('isi semua data');
   }
 
-  const pesanan = await createPesananService(req.body);
+  const pesanan = await createPesananService(res, req.body);
 
   return res.status(200).json({
     status: 'success',
@@ -24,6 +24,16 @@ const createPesanan = asyncHandler(async (req, res) => {
 
 const getPesananAll = asyncHandler(async (req, res) => {
   const pesanan = await getPesananAllService();
+
+  return res.status(200).json({
+    status: 'success',
+    data: pesanan,
+  });
+});
+
+const getPesananAllCurrentUser = asyncHandler(async (req, res) => {
+  const pesanan = await getPesananAllCurrentUserService(req.user.user_id);
+  console.log(req.user.user_id);
 
   return res.status(200).json({
     status: 'success',
@@ -73,4 +83,4 @@ const deletePesanan = asyncHandler(async (req, res) => {
   });
 });
 
-export { createPesanan, getPesananAll, getPesananById, updatePesanan, deletePesanan };
+export { createPesanan, getPesananAll, getPesananAllCurrentUser, getPesananById, updatePesanan, deletePesanan };
