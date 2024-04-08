@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar'
 import { Link } from 'react-router-dom';
 
-import Food_1 from '../../public/assets/images/beranda/food-1.jpg'
+import Food_1 from '../../../public/assets/images/beranda/food-1.jpg'
 import { RiRecycleLine } from "react-icons/ri";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 import axios from 'axios';
 
-function RiwayatPage() {
+function RiwayatPembelian() {
 
   const [data, setData] = useState([]);
   const [user, setUser] = useState({});
   const [produk, setProd] = useState({});
 
   const getData = async () => {
-    const response = await axios.get('http://localhost:5555/api/pesanan');
+    const response = await axios.get('http://localhost:5555/api/pesanan/current/user');
     setData(response.data.data);
     console.log(response.data.data)
   };
+  
+  // const getData = async () => {
+  //   const response = await axios.get('http://localhost:5555/api/pesanan/current/user');
+  //   setData(response.data.data);
+  //   console.log(response.data.data)
+  // };
 
   const getUser = async () => {
     const response = await axios.get('http://localhost:5555/api/user');
@@ -43,11 +49,11 @@ function RiwayatPage() {
             <div className='font-light text-[1.75vmax] p-[0.5%] w-full text-center'>{user.no_telp}</div>
           </div>
         </div>
-        <div className='hp:h-[20vmax] lg:w-[40%]'>
-          <p className='font-semibold lg:text-center h-[15%] text-[1.75vmax]'>Pembelian</p>
-          <ul className='bg-gray-100 h-[85%] rounded-[0.5vmax]'>
+        <div className='hp:h-auto lg:w-[40%]'>
+          <p className='font-semibold lg:text-center h-[4%] text-[1.75vmax]'>Pembelian</p>
+          <ul className='h-auto rounded-[0.5vmax] flex flex-col gap-[2vh]'>
             {data.map((item) => (
-              <li className='h-full'>
+              <li className='h-[17vmax] bg-gray-100 rounded-[0.5vmax]'>
                 <div className='flex flex-row justify-between h-[20%] bg-slate-300 p-[1.5%] rounded-t-[0.5vmax]'>
                   <div className='flex flex-row items-center w-[60%]'>
                     <RiRecycleLine className='lg:text-[2.5vmax]' />
@@ -60,15 +66,17 @@ function RiwayatPage() {
                     <div className='flex flex-row h-[80%]'>
                       <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
                       <div className='flex flex-col pl-[5%] w-[75%]'>
-                        <p className='font-light text-[1.75vmax]'>Nasi Goreng</p>
+                        <p className='font-light text-[1.75vmax]'>
+                          {/* {item.info_produk.nama} */}
+                          </p>
                         <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
                       </div>
                     </div>
-                    <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> {item.harga_total} </p>
+                    <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp {item.harga_total} </p>
                   </div>
                 </Link>
               </li>
-            ))};
+            ))}
           </ul>
         </div>
         <div className='hp:h-[20vmax] lg:w-[40%]'>
@@ -102,4 +110,4 @@ function RiwayatPage() {
   )
 }
 
-export default RiwayatPage
+export default RiwayatPembelian
