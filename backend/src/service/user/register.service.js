@@ -32,7 +32,37 @@ export const registerUserService = asyncHandler(async (res, user) => {
     throw new Error("Email sudah terpakai");
   }
 
-  user["password"] = await bcrypt.hash(user["password"], 10);
+  var password = user["password"];
+  if (password.length < 8) {
+    res.status(400);
+    throw new Error("Kata sandi harus memiliki minimal 8 karakter.");
+  }
+
+  // Kombinasi karakter
+  const regex = {
+    uppercase: /[A-Z]/,
+    lowercase: /[a-z]/,
+    number: /[0-9]/,
+    special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/,
+  };
+
+  let containsUppercase = regex.uppercase.test(password);
+  let containsLowercase = regex.lowercase.test(password);
+  let containsNumber = regex.number.test(password);
+  let containsSpecial = regex.special.test(password);
+
+  if (
+    !containsUppercase ||
+    !containsLowercase ||
+    !containsNumber ||
+    !containsSpecial
+  ) {
+    res.status(400);
+    throw new Error(
+      "Kata sandi harus terdiri dari kombinasi huruf besar, huruf kecil, angka, dan karakter khusus."
+    );
+  }
+  password = await bcrypt.hash(password, 10);
   const newUser = { ...user, role: "User" };
 
   const result = await create(newUser);
