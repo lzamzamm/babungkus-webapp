@@ -7,14 +7,14 @@ import User from "../models/user.model.js";
 import "dotenv/config";
 
 const protect = asyncHandler(async (req, res, next) => {
-  var cookie = req.headers.cookie;
-  console.log(cookie);
 
-  if (!cookie) {
+  const token = req.cookies.jwt;
+  console.log(token);
+  
+  if (!token){
     res.status(401);
     throw new Error("Unauthorized");
   }
-  var token = cookie.split("=")[1];
 
   //console.log(token);
   const decoded = jwt.verify(token, process.env.JWT_SECRET);

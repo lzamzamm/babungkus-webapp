@@ -29,9 +29,7 @@ const ReportPage = () => {
             <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
               Alasan
             </th>
-            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-              Tanggal Laporan
-            </th>
+            
             <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
               Aksi
             </th>
@@ -53,6 +51,7 @@ const ReportPage = () => {
                 <button
                   className="text-white bg-red-500 hover:bg-red-700 font-semibold py-2 px-4 rounded"
                   onClick={() => handleAction(report.id)}
+                  to="tindakan"
                 >
                   Ambil Tindakan
                 </button>

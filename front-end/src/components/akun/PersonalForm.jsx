@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from "axios";
 
-
-
 const PersonalForm = () => {
   // Deklarasi state
   const [nama_lengkap, setNamaLengkap] = useState('');
@@ -12,21 +10,22 @@ const PersonalForm = () => {
   const userId = JSON.parse(localStorage.getItem("userInfo")).user_id;
 
 
+  const getUserById = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5555/api/user`);
+      setNamaLengkap(response.data.nama_lengkap);
+      setUsername(response.data.username);
+      setEmail(response.data.email);
+      setNoTelp(response.data.no_telp);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // Mengambil data pengguna berdasarkan ID
   useEffect(() => {
-    const getUserById = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5555/api/user/${userId}`);
-        setNamaLengkap(response.data.nama_lengkap);
-        setUsername(response.data.username);
-        setEmail(response.data.email);
-        setNoTelp(response.data.no_telp);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getUserById();
-  }, [userId]);
+  }, []);
+  //  [userId]);
 
   // Menghandle submit form
   const handleFormSubmit = async (e) => {
