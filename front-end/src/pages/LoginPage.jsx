@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LogoLogin from "/assets/images/logoLogin.jpeg";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setCredentials } from "../slices/auth.slice";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +14,7 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const togglePassword = () => setShowPassword(!showPassword);
 
@@ -37,7 +40,8 @@ export default function LoginPage() {
         { withCredentials: true }
       );
       console.log("Login berhasil", response.data);
-      localStorage.setItem("userInfo", JSON.stringify(response.data.data));
+      dispatch(setCredentials({ ...response.data.data }));
+      // localStorage.setItem("userInfo", JSON.stringify(response.data.data));
       navigate("/");
     } catch (error) {
       console.error("Error login", error);

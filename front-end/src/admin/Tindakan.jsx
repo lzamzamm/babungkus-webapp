@@ -34,7 +34,6 @@ const ActionPage = () => {
         <p><strong>Alasan Laporan:</strong> {report.reason}</p>
         <p><strong>Deskripsi:</strong> {report.description}</p>
         <p><strong>Tanggal Laporan:</strong> {report.dateReported}</p>
-        <p><strong>Tindakan yang Telah Diambil:</strong> {report.actionsTaken || 'Belum ada tindakan'}</p>
       </div>
       <hr className="mb-6" />
       <h3 className="mb-4 text-xl">Ambil Tindakan</h3>

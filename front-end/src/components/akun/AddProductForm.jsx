@@ -47,8 +47,13 @@ const AddProductForm = () => {
         console.log(inputData);
         formData.append("data", JSON.stringify(inputData));
         formData.append("file", image);
-        var res = await axios.post("http://localhost:5555/api/produk", formData);
-        console.log(res);
+        try {
+            var res = await axios.post("http://localhost:5555/api/produk", formData);
+            console.log(res);
+        } catch (error) {
+            console.error(error);
+            // Handle error, misalnya dengan menampilkan pesan error ke pengguna
+        }
     };
 
     return (
@@ -61,7 +66,7 @@ const AddProductForm = () => {
                         className="block text-gray-700 text-l mb-2"
                         htmlFor="storeImage"
                     >
-                        Foto Toko
+                        Foto Produk
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
