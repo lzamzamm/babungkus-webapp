@@ -7,6 +7,7 @@ const PersonalForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [no_telp, setNoTelp] = useState('');
+  const [password, setPassword] = useState('');
   const userId = JSON.parse(localStorage.getItem('userInfo')).user_id;
 
   const getUserById = async () => {
@@ -16,6 +17,7 @@ const PersonalForm = () => {
       setUsername(response.data.data.username);
       setEmail(response.data.data.email);
       setNoTelp(response.data.data.no_telp);
+      setPassword(response.data.data.password);
       console.log(response.data.data);
     } catch (err) {
       console.log(err);
@@ -33,11 +35,11 @@ const PersonalForm = () => {
     try {
       const userData = {
         nama_lengkap: nama_lengkap,
-        username: username,
         email: email,
         no_telp: no_telp,
+        password: password,
       };
-      await axios.patch(`http://localhost:5555/api/user/${userId}`, userData);
+      await axios.patch(`http://localhost:5555/api/user/update`, userData, { withCredentials: true, credentials: 'include' });
       alert('Data berhasil diperbarui');
     } catch (err) {
       console.log(err);
@@ -59,7 +61,6 @@ const PersonalForm = () => {
             id="NamaLengkap"
             name="nama_lengkap"
             onChange={(e) => setNamaLengkap(e.target.value)}
-            onChange={(e) => setNamaLengkap(e.target.value)}
             value={nama_lengkap}
             type="text"
             required
@@ -73,11 +74,9 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="NamaPengguna"
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            onChange={(e) => setUsername(e.target.value)}
             value={username}
             type="text"
-            required
+            disabled
           />
         </div>
         <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
@@ -88,7 +87,6 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="Email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
@@ -103,7 +101,6 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="Telpon"
             name="no_telp"
-            onChange={(e) => setNoTelp(e.target.value)}
             onChange={(e) => setNoTelp(e.target.value)}
             value={no_telp}
             type="tel"
