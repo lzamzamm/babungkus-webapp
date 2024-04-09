@@ -24,6 +24,7 @@ function App() {
         <Route path='/riwayat' element={<RiwayatPage />} />
         <Route path='/toko' element={<TokoPage />} />
         <Route path='/produk' element={<ProdukPage />} />
+        <Route path='/produk/:kategori' element={<ProdukPage />} />
         <Route path="/toko/:id" element={<DetailTokoPage />} />
       </Routes>
     </div>
