@@ -59,7 +59,6 @@ const PersonalForm = () => {
             id="NamaLengkap"
             name="nama_lengkap"
             onChange={(e) => setNamaLengkap(e.target.value)}
-            onChange={(e) => setNamaLengkap(e.target.value)}
             value={nama_lengkap}
             type="text"
             required
@@ -73,7 +72,6 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="NamaPengguna"
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             type="text"
@@ -89,7 +87,6 @@ const PersonalForm = () => {
             id="Email"
             name="email"
             onChange={(e) => setEmail(e.target.value)}
-            onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
             required
@@ -103,7 +100,6 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="Telpon"
             name="no_telp"
-            onChange={(e) => setNoTelp(e.target.value)}
             onChange={(e) => setNoTelp(e.target.value)}
             value={no_telp}
             type="tel"
