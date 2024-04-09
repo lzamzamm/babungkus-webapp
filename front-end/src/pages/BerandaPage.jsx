@@ -9,7 +9,6 @@ import Food_2 from "../assets/images/beranda/food-2.jpg";
 import axios from "axios";
 
 function BerandaPage() {
-
   const [data, setData] = useState({});
 
   const getData = async () => {
@@ -17,7 +16,7 @@ function BerandaPage() {
     const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
     setData(response.data.data);
     console.log(response.data.data);
-  }
+  };
 
   useEffect(() => {
     getData();
@@ -26,14 +25,15 @@ function BerandaPage() {
   return (
     <div class="font-poppins">
       <Navbar />
-      <div className='pt-20'>
+      <div className="pt-20">
         <div class="flex text-white relative overflow-hidden h-[50vh] lg:h-[80vh]">
-          <img src={Hero} class="brightness-50 h-full w-full object-cover"></img>
+          <img
+            src={Hero}
+            class="brightness-50 h-full w-full object-cover"
+          ></img>
           <div class="flex flex-col absolute inset-0 justify-center px-4 md:px-8 lg:px-16">
             <p class="text-3xl md:text-5xl font-semibold">Babungkus</p>
-            <p class="">
-              Selamatkan Makanan dan Jadilah Bagian dari Gerakan!
-            </p>
+            <p class="">Selamatkan Makanan dan Jadilah Bagian dari Gerakan!</p>
           </div>
         </div>
         <div class="hp:text-[1.6vmax] flex lg:flex-row hp:flex-col pt-12 px-8 justify-center">
@@ -99,14 +99,20 @@ function BerandaPage() {
             <div className=" bg-slate-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
               <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Kedai</p>
-                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
+                <img
+                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  src={Food_1}
+                />
               </div>
               {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
             </div>
             <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
               <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Restoran</p>
-                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
+                <img
+                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  src={Food_1}
+                />
               </div>
             </div>
           </div>
@@ -114,19 +120,25 @@ function BerandaPage() {
             <div className="bg-stone-600 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
               <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Toko</p>
-                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
+                <img
+                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  src={Food_1}
+                />
               </div>
             </div>
             <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
               <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Warung</p>
-                <img className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none" src={Food_1} />
+                <img
+                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  src={Food_1}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );

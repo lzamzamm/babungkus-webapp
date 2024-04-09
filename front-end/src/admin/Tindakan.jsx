@@ -27,8 +27,8 @@ const ActionPage = () => {
   };
 
   return (
-    <div className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
-      <h2 className="lg:text-2xl md:text-xl sm:text-base mb-2">Detail Laporan</h2>
+    <div className="w-full p-5 text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
         <p><strong>Nama Toko:</strong> {report.storeName}</p>
         <p><strong>Alasan Laporan:</strong> {report.reason}</p>
@@ -36,10 +36,10 @@ const ActionPage = () => {
         <p><strong>Tanggal Laporan:</strong> {report.dateReported}</p>
       </div>
       <hr className="mb-6" />
-      <h3 className="text-l md:text-xl lg:text-lg mb-4">Ambil Tindakan</h3>
-      {/* <form onSubmit={handleSubmit}>
+      <h3 className="mb-4 text-xl">Ambil Tindakan</h3>
+      <form onSubmit={handleSubmit}>
         <textarea
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
+          className="w-full px-3 py-2 mb-4 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           id="action"
           name="action"
           placeholder="Deskripsikan tindakan yang akan diambil..."
@@ -47,25 +47,21 @@ const ActionPage = () => {
           onChange={(e) => setAction(e.target.value)}
           rows="4"
         />
-        <button
-          type="submit"
-          className="bg-primary hover:bg-amber-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Simpan Tindakan
-        </button>
-      </form> */}
-      <button
-        className="text-white bg-blue-500  font-semibold py-2 px-4 rounded mr-2"
-        onClick={() => handleApprove(request.id)}
-      >
-        Freeze
-      </button>
-      <button
-        className="text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded"
-        onClick={() => handleReject(request.id)}
-      >
-        Tutup
-      </button>
+        <div className='flex flex-row gap-3'>
+          <button
+            type="submit"
+            className="px-4 py-2 font-bold text-white rounded bg-primary hover:bg-amber-700 focus:outline-none focus:shadow-outline"
+          >
+            Bekukan
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 font-bold text-white rounded bg-primary hover:bg-amber-700 focus:outline-none focus:shadow-outline"
+          >
+            Takedown
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

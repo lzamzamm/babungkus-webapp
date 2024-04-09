@@ -9,10 +9,11 @@ const generateToken = (res, user_id) => {
   // console.log(token, res);
   //console.log(res.cookie);
   res.cookie('jwt', token, {
+    path: '/',
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    sameSite: 'none',
+    sameSite: 'strict',
   });
 };
 

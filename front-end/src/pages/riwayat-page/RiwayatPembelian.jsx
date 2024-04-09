@@ -15,7 +15,7 @@ function RiwayatPembelian() {
   const [produk, setProd] = useState({});
 
   const getData = async () => {
-    const response = await axios.get('http://localhost:5555/api/pesanan/current/user');
+    const response = await axios.get('http://localhost:5555/api/pesanan/current/user'); // ini BELOMMM
     setData(response.data.data);
     console.log(response.data.data)
   };
@@ -79,7 +79,7 @@ function RiwayatPembelian() {
             ))}
           </ul>
         </div>
-        <div className='hp:h-[20vmax] lg:w-[40%]'>
+        {/* <div className='hp:h-[20vmax] lg:w-[40%]'>
           <p className='font-semibold lg:text-center h-[15%] text-[1.75vmax]'>Penjualan</p>
           <ul className='bg-gray-100 h-[85%] rounded-[0.5vmax]'>
             <li className='h-full'>
@@ -104,7 +104,7 @@ function RiwayatPembelian() {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   )
