@@ -8,6 +8,7 @@ import {
 } from "../controllers/toko.controller.js";
 
 import { upload } from "../utils/upload/toko.img.js";
+import { protect } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
@@ -21,8 +22,8 @@ router.get("/", getTokoAll);
 
 router.get("/:id", getTokoById);
 
-router.put("/status", updateStatusToko);
+router.put("/status", protect, updateStatusToko);
 
-router.put("/:id", UpdateToko);
+router.put("/:id", protect, UpdateToko);
 
 export default router;
