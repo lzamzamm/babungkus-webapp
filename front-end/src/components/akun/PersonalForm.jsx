@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const PersonalForm = () => {
   // Deklarasi state
@@ -7,16 +7,16 @@ const PersonalForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [no_telp, setNoTelp] = useState('');
-  const userId = JSON.parse(localStorage.getItem("userInfo")).user_id;
-
+  const userId = JSON.parse(localStorage.getItem('userInfo')).user_id;
 
   const getUserById = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/api/user`);
-      setNamaLengkap(response.data.nama_lengkap);
-      setUsername(response.data.username);
-      setEmail(response.data.email);
-      setNoTelp(response.data.no_telp);
+      const response = await axios.get(`http://localhost:5555/api/user`, { withCredentials: true, credentials: 'include' });
+      setNamaLengkap(response.data.data.nama_lengkap);
+      setUsername(response.data.data.username);
+      setEmail(response.data.data.email);
+      setNoTelp(response.data.data.no_telp);
+      console.log(response.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -58,7 +58,7 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="NamaLengkap"
             name="nama_lengkap"
-            onChange={(e) => setNamaLengkap(e.target.value)} 
+            onChange={(e) => setNamaLengkap(e.target.value)}
             value={nama_lengkap}
             type="text"
             required
@@ -72,7 +72,7 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="NamaPengguna"
             name="username"
-            onChange={(e) => setUsername(e.target.value)} 
+            onChange={(e) => setUsername(e.target.value)}
             value={username}
             type="text"
             required
@@ -86,7 +86,7 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="Email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
             required
@@ -100,7 +100,7 @@ const PersonalForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="Telpon"
             name="no_telp"
-            onChange={(e) => setNoTelp(e.target.value)} 
+            onChange={(e) => setNoTelp(e.target.value)}
             value={no_telp}
             type="tel"
             required
