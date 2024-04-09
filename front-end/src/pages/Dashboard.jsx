@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import DashboardNavbar from '../admin/DashboardNav';
 import ReportPage from '../admin/Laporan';
 import ActionPage from '../admin/Tindakan';
-import ActionHistoryPage from '../admin/HistoryLaporan';
-import StoreVerfication from '../admin/StoreVerification';
+import HistoryReport from '../admin/HistoryLaporan';
+import StoreVerification from '../admin/StoreVerification';
 
 function DashboardPage() {
   return (
@@ -21,9 +21,8 @@ function DashboardPage() {
               <Route path='/' element={<ReportPage />} />
               <Route path='laporan' element={<ReportPage />} />
               <Route path='tindakan' element={<ActionPage />} />
-              <Route path='riwayat' element={<ActionHistoryPage />} />
-              <Route path='verifikasi' element={<StoreVerfication/>} />
-              <Route path='detail-verifikasi' element={<StoreVerfication/>} />
+              <Route path='verifikasi' element={<StoreVerification/>} />
+              <Route path='histori' element={<HistoryReport/>} />
             </Routes>
           </div>
           </div>

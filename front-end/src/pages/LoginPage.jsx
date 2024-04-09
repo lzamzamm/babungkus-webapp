@@ -33,7 +33,8 @@ export default function LoginPage() {
     try {
       const response = await axios.post(
         "http://localhost:5555/api/user/",
-        userData
+        userData,
+        { withCredentials: true }
       );
       console.log("Login berhasil", response.data);
       localStorage.setItem("userInfo", JSON.stringify(response.data.data));

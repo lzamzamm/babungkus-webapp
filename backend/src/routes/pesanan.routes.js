@@ -1,19 +1,26 @@
-import express from 'express';
-import { createPesanan, getPesananAll, getPesananById, updatePesanan, deletePesanan, getPesananAllCurrentUser } from '../controllers/pesanan.controller.js';
-import { protect } from '../middleware/auth.middleware.js';
+import express from "express";
+import {
+  createPesanan,
+  getPesananAll,
+  getPesananById,
+  updatePesanan,
+  deletePesanan,
+  getPesananAllCurrentUser,
+} from "../controllers/pesanan.controller.js";
+import { protect } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.post('/', createPesanan);
+router.post("/", protect, createPesanan);
 
-router.get('/', getPesananAll);
+router.get("/", protect, getPesananAll);
 
-router.get('/current/user', protect, getPesananAllCurrentUser);
+router.get("/current/user", protect, getPesananAllCurrentUser);
 
-router.get('/:id', getPesananById);
+router.get("/:id", protect, getPesananById);
 
-router.patch('/:id', updatePesanan);
+router.patch("/:id", protect, updatePesanan);
 
-router.delete('/:id', deletePesanan);
+router.delete("/:id", protect, deletePesanan);
 
 export default router;

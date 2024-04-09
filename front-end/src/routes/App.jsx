@@ -10,6 +10,7 @@ import RiwayatPenjualanPage from '../pages/riwayat-page/RiwayatPenjualan';
 import TokoPage from '../pages/TokoPage';
 import ProdukPage from '../pages/ProdukPage';
 import ContactPage from '../pages/ContactPage';
+import DashboardPage from '../pages/Dashboard';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/riwayat-penjualan' Component={RiwayatPenjualanPage} />
         <Route path='/toko' Component={TokoPage} />
         <Route path='/produk' Component={ProdukPage} />
+        <Route path='/dashboard/*' Component={DashboardPage} />
       </Routes>
     </div>
   );

@@ -30,7 +30,7 @@ const AccountNavbar = () => {
                         <li className="mb-3 hover:bg-neutral-300">
                             <Link to="store-profile" className="text-black-500 flex items-center">
                                 <FaStore className="text-gray-400 mr-2" />
-                                Data Toko
+                                Data Outlet
                             </Link>
                         </li>
                     </ul>
@@ -43,17 +43,17 @@ const AccountNavbar = () => {
                                         Tambah Produk
                                     </Link>
                                 </li>
-                                <li className="mb-3 hover:bg-neutral-300">
+                                {/* <li className="mb-3 hover:bg-neutral-300">
                                     <Link to="produk-saya" className="text-black-500 flex items-center">
                                         <FaListAlt className="text-gray-400 mr-2" />
                                         Produk Saya
                                     </Link>
-                                </li>
+                                </li> */}
                             </>
                             <li className="mb-3 hover:bg-neutral-300">
                                 <Link to="create-store" className="text-black-500 flex items-center">
                                     <FaBuilding className="text-gray-400 mr-2" />
-                                    Buka Toko
+                                    Buka Outlet
                                 </Link>
                             </li>
                     </ul>

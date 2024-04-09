@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import AccountNavbar from '../components/akun/AkunNav';
 import PersonalForm from '../components/akun/PersonalForm';
 import StoreUpdateForm from '../components/akun/StoreForm'; 
-import AddProduct from '../components/AddProductForm'; 
+import AddProduct from '../components/akun/AddProductForm'; 
 import CreateStoreForm from '../components/akun/CreateStore';
 
 function AccountPage() {

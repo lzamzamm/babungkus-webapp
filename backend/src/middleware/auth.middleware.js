@@ -8,6 +8,7 @@ import "dotenv/config";
 
 const protect = asyncHandler(async (req, res, next) => {
   var cookie = req.headers.cookie;
+  console.log(cookie);
 
   if (!cookie) {
     res.status(401);

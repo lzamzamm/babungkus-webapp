@@ -20,13 +20,6 @@ const DashboardNavbar = () => {
                     </Link>
                 </li>
                 <li className="mb-5 hover:bg-neutral-300">
-                    <Link to="riwayat" className="text-black-500 ml-8 flex items-center">
-                        <FaHistory className="text-gray-400 mr-2" />
-                        Histori
-                    </Link>
-                    
-                </li>
-                <li className="mb-5 hover:bg-neutral-300">
                     <Link to="verifikasi" className="text-black-500 ml-8 flex items-center">
                         <FaHistory className="text-gray-400 mr-2" />
                         Verifikasi Toko
