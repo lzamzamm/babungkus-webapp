@@ -41,7 +41,7 @@ export default function RegisPage() {
     try {
       const response = await axios.post(
         "http://localhost:5555/api/user/register",
-        userData
+        userData,
       );
       console.log("Register berhasil", response.data);
       setIsDataValid(true);
@@ -49,10 +49,10 @@ export default function RegisPage() {
     } catch (error) {
       console.error(
         "Error register",
-        error.response ? error.response.data : "Network error"
+        error.response ? error.response.data : "Network error",
       );
       setErrorMessage(
-        error.response ? error.response.data.message : "Network error"
+        error.response ? error.response.data.message : "Network error",
       );
       setIsDataValid(false);
     } finally {
@@ -63,22 +63,22 @@ export default function RegisPage() {
   return (
     <div style={{ fontFamily: "Poppins, sans-serif" }}>
       <Navbar />
-      <div className="bg-white flex min-h-screen items-center justify-center">
-        <div className="flex flex-col sm:flex-row gap-10 items-center mt-12">
+      <div className="flex min-h-screen items-center justify-center bg-white">
+        <div className="mt-12 flex flex-col items-center gap-10 sm:flex-row">
           <div className="flex flex-col items-center">
-            <img src={LogoDaftar} alt="Logo" className="w-48 sm:w-72 md:w-90" />
-            <div className="text-center mt-4">
+            <img src={LogoDaftar} alt="Logo" className="md:w-90 w-48 sm:w-72" />
+            <div className="mt-4 text-center">
               <p className="text-base sm:text-lg md:text-xl">
                 Manfaatkan Makanan Sisa
               </p>
-              <p className="text-sm sm:text-base md:text-l">
+              <p className="md:text-l text-sm sm:text-base">
                 Bersama-sama Selamatkan Bumi
               </p>
             </div>
           </div>
 
-          <div className="border border-gray-300 shadow-lg rounded-lg p-6 w-full sm:w-96">
-            <h3 className="text-xl font-semibold leading-6 tracking-tighter text-center mb-8">
+          <div className="w-full rounded-lg border border-gray-300 p-6 shadow-lg sm:w-96">
+            <h3 className="mb-8 text-center text-xl font-semibold leading-6 tracking-tighter">
               Daftar
             </h3>
             <form onSubmit={handleRegisterUser}>
@@ -120,15 +120,15 @@ export default function RegisPage() {
                 showPassword={showPassword}
               />
               {errorMessage && (
-                <div className="text-red-500 text-center mt-2">
+                <div className="mt-2 text-center text-red-500">
                   {errorMessage}
                 </div>
               )}
               <div className="mt-4 flex items-center justify-end gap-x-2">
                 <button
                   type="submit"
-                  className={`w-full text-white font-semibold py-2 px
-                  -4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-150 ease-in-out ${
+                  className={`px -4 w-full rounded-md py-2
+                  font-semibold text-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     isDataValid
                       ? "bg-primary hover:bg-orange-800 focus:ring-neutral-400"
                       : "bg-primary"
@@ -138,7 +138,7 @@ export default function RegisPage() {
                 </button>
               </div>
             </form>
-            <div className="text-xs leading-6 tracking-tighter text-center mt-2">
+            <div className="mt-2 text-center text-xs leading-6 tracking-tighter">
               <div className="text-gray-400">
                 Dengan Mendaftar Saya Menyetujui
               </div>
@@ -167,14 +167,14 @@ function InputField({
   showPassword,
 }) {
   return (
-    <div className="mt-4 group relative rounded-lg border focus-within:border-green-300 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-blue-300/30 flex items-center">
+    <div className="group relative mt-4 flex items-center rounded-lg border px-3 pb-1.5 pt-2.5 duration-200 focus-within:border-green-300 focus-within:ring focus-within:ring-blue-300/30">
       {icon}
       <input
         type={type}
         name={name}
         placeholder={placeholder}
         autoComplete="off"
-        className="block w-full border-0 bg-transparent p-0 text-sm placeholder:text-gray-400/90 focus:outline-none focus:ring-0 sm:leading-7 pl-10"
+        className="block w-full border-0 bg-transparent p-0 pl-10 text-sm placeholder:text-gray-400/90 focus:outline-none focus:ring-0 sm:leading-7"
       />
       {toggleVisibility && (
         <button

@@ -49,10 +49,10 @@ const PersonalForm = () => {
 
   return (
     <div
-      className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1"
+      className="mt-10 w-full p-3 text-gray-800 md:mt-2 lg:mt-1"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <h2 className="lg:text-2xl md:text-xl sm:text-base mb-2">Data Diri</h2>
+      <h2 className="mb-2 sm:text-base md:text-xl lg:text-2xl">Data Diri</h2>
       <hr
         className="mb-5 sm:mb-10"
         style={{ height: "2px", backgroundColor: "#000", border: "none" }}
@@ -61,12 +61,12 @@ const PersonalForm = () => {
         onSubmit={handleFormSubmit}
         className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl"
       >
-        <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
-          <label className="block text-gray-700 mb-2" htmlFor="NamaLengkap">
+        <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
+          <label className="mb-2 block text-gray-700" htmlFor="NamaLengkap">
             Nama Lengkap
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="NamaLengkap"
             name="nama_lengkap"
             onChange={(e) => setNamaLengkap(e.target.value)}
@@ -75,15 +75,15 @@ const PersonalForm = () => {
             required
           />
         </div>
-        <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
+        <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
           <label
-            className="block text-gray-700 text-l mb-2"
+            className="text-l mb-2 block text-gray-700"
             htmlFor="NamaPengguna"
           >
             Nama Pengguna
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="NamaPengguna"
             name="username"
             onChange={(e) => setUsername(e.target.value)}
@@ -92,15 +92,15 @@ const PersonalForm = () => {
             required
           />
         </div>
-        <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
+        <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
           <label
-            className="block text-gray-700 text-l mb-2 mr-2"
+            className="text-l mb-2 mr-2 block text-gray-700"
             htmlFor="Email"
           >
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="Email"
             name="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -109,15 +109,15 @@ const PersonalForm = () => {
             required
           />
         </div>
-        <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
+        <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
           <label
-            className="block text-gray-700 text-l mb-2 mr-2"
+            className="text-l mb-2 mr-2 block text-gray-700"
             htmlFor="Telpon"
           >
             Telpon
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="Telpon"
             name="no_telp"
             onChange={(e) => setNoTelp(e.target.value)}
@@ -125,12 +125,12 @@ const PersonalForm = () => {
             type="tel"
             required
           />
-          <p className="text-gray-600 text-xs italic">
+          <p className="text-xs italic text-gray-600">
             Masukkan nomor telpon yang juga merupakan nomor WhatsApp
           </p>
         </div>
         <button
-          className="bg-primary hover:bg-amber-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="focus:shadow-outline rounded bg-primary px-4 py-3 font-bold text-white hover:bg-amber-700 focus:outline-none"
           type="submit"
         >
           Simpan
