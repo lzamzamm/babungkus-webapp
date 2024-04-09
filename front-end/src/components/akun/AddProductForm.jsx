@@ -101,25 +101,37 @@ const AddProductForm = () => {
                     />
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
-                    <label className="block text-gray-700 text-l mb-2" htmlFor="tanggalDibuat">
-                        Tanggal Dibuat
+                    <label className="block text-gray-700 text-l mb-2" htmlFor="harga">
+                        Harga
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="tanggalDibuat"
-                        name="tanggalDibuat"
-                        type="date"
+                        id="harga"
+                        name="harga"
+                        type="number"
                         onChange={handleInputChange}
                     />
                 </div>
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
-                    <label className="block text-gray-700 text-l mb-2" htmlFor="expired">
+                    <label className="block text-gray-700 text-l mb-2" htmlFor="stok">
+                        Stok
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="stok"
+                        name="stok"
+                        type="number"
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
+                    <label className="block text-gray-700 text-l mb-2" htmlFor="expire_at">
                         Tanggal Kadaluwarsa
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="expired"
-                        name="expired"
+                        id="expire_at"
+                        name="expire_at"
                         type="date"
                         onChange={handleInputChange}
                     />

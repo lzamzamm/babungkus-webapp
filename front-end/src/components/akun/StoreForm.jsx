@@ -14,9 +14,14 @@ const StoreUpdateForm = () => {
         setStoreImagePreview(''); 
     };
 
+    const User = () => {
+        const [idUser, setIdUser] = useState('');
+        const [nama_lengkap, setNamaLengkap] = useState('');
+    }
+
     return (
         <div className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <h2 className="lg:text-2xl md:text-xl sm:text-base mb-2">Data Tokomu!</h2>
+            <h2 className="lg:text-2xl md:text-xl sm:text-base mb-2">Data Outletku!</h2>
             <hr className="mb-5 sm:mb-10" style={{ height: '2px', backgroundColor: '#000', border: 'none' }} />
             <form className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
                 <div className="mb-2 sm:mb-3 text-sm sm:text-lg">

@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import React, { useState } from "react";
 
 const CreateStoreForm = () => {
   const [storeImagePreview, setStoreImagePreview] = useState("");
@@ -18,22 +18,15 @@ const CreateStoreForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]; 
-
-    const maxFileSize = 5 * 1024 * 1024; 
-
-    if (file) {
-        if (file.type.substr(0, 5) === "image" && file.size <= maxFileSize) {
-            setImage(file);
-            setStoreImagePreview(URL.createObjectURL(file)); 
-        } else if (file.size > maxFileSize) {
-            alert("Ukuran gambar melebihi batas maksimal 5MB.");
-            e.target.value = "";
-        } else {
-            alert("File yang diunggah bukan gambar.");
-        }
+    if (file.size > 5242880) { 
+        alert('File size must not exceed 5MB');
+        return; 
+    }
+    setImage(file);
+    if (file && file.type.substr(0, 5) === "image") {
+        setStoreImagePreview(URL.createObjectURL(file)); // Membuat URL untuk preview
     }
 };
-
   const handleRemoveImagePreview = () => {
     setStoreImagePreview(""); // Menghapus preview gambar
   };
@@ -56,12 +49,12 @@ const CreateStoreForm = () => {
       className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <h2 className="lg:text-2xl md:text-xl sm:text-base mb-2">Buka Tokomu Sekarang!</h2>
-      <p className="text-l md:text-xl lg:text-xl mb-2">
+      <h2 className="lg:text-2xl md:text-xl text-xl mb-2">Buka Tokomu Sekarang!</h2>
+      <p className="text-l mb-2">
         Bersama-Sama Selamatkan Bumi dan Atasi Kelaparan
       </p>
       <hr
-        className="mb-5 sm:mb-10"
+        className="mb-5 sm:mb-10" 
         style={{ height: "2px", backgroundColor: "#000", border: "none" }}
       />
       <form className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
@@ -157,7 +150,7 @@ const CreateStoreForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="mb-2 sm:mb-3 text-sm sm:text-lg">
+        <div className="mb-4">
           <label
             className="block text-gray-700 text-l mb-2"
             htmlFor="deskripsi"
