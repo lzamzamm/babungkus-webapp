@@ -1,8 +1,6 @@
 import express from 'express';
 import { createProduk, deleteProduk, getProdukAll, getProdukById, getProdukByKategori, UpdateProduk } from '../controllers/produk.controller.js';
 import { upload } from '../utils/upload/produk.img.js';
-import express from 'express';
-import { createProduk, deleteProduk, getProdukAll, getProdukById, getProdukByKategori, UpdateProduk } from '../controllers/produk.controller.js';
 import { protect } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
