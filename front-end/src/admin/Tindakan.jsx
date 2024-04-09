@@ -34,7 +34,6 @@ const ActionPage = () => {
         <p><strong>Alasan Laporan:</strong> {report.reason}</p>
         <p><strong>Deskripsi:</strong> {report.description}</p>
         <p><strong>Tanggal Laporan:</strong> {report.dateReported}</p>
-        <p><strong>Tindakan yang Telah Diambil:</strong> {report.actionsTaken || 'Belum ada tindakan'}</p>
       </div>
       <hr className="mb-6" />
       <h3 className="text-l md:text-xl lg:text-lg mb-4">Ambil Tindakan</h3>
@@ -55,6 +54,18 @@ const ActionPage = () => {
           Simpan Tindakan
         </button>
       </form> */}
+      <button
+        className="text-white bg-blue-500  font-semibold py-2 px-4 rounded mr-2"
+        onClick={() => handleApprove(request.id)}
+      >
+        Freeze
+      </button>
+      <button
+        className="text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded"
+        onClick={() => handleReject(request.id)}
+      >
+        Tutup
+      </button>
     </div>
   );
 };
