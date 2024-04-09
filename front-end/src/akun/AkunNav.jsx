@@ -9,7 +9,7 @@ const AccountNavbar = () => {
     return (
         <div className="relative" style={{ fontFamily: 'Poppins, sans-serif' }}>
             <button
-                className={`absolute top-0 left-0 z-30  p-2 sm:hidden rounded-md p-2 bg-neutral-300 ${isNavVisible ? 'hidden' : 'block'}`}
+                className={`absolute top-0 left-0 z-30  p-2 sm:hidden rounded-md bg-neutral-300 ${isNavVisible ? 'hidden' : 'block'}`}
                 onClick={() => setIsNavVisible(true)}>
                 <FaArrowRight className=" mt-10 text-2xl" />
             </button>
