@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 import LogoBabungkus from '/assets/images/logo.png';
 
@@ -20,8 +20,8 @@ function Navbar() {
   ];
 
   return (
-    <div className="w-full fixed shadow-mini-xlx sm:shadow-xlx z-50 md:text-lg font-poppins bg-white">
-      <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:flex-row md:items-center md:justify-between md:px-6 lg:px-8">
+    <div className="w-full fixed shadow-mini-xlx z-50 md:text-lg font-poppins bg-white">
+      <div className="flex flex-col mx-auto md:flex-row md:items-center md:justify-between px-[5%]">
         <div className="p-4 flex flex-row items-center justify-between">
           <div className='flex justify-center items-center w-[50px]'>
             <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />

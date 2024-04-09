@@ -27,7 +27,6 @@ function ProdukPage() {
   }, []);
 
   useEffect(() => {
-    // Menunggu hingga kita memiliki data produk yang diperbarui
     if (!isLoading) {
       let filteredData = [...produkData];
       if (kategori) {
@@ -35,7 +34,6 @@ function ProdukPage() {
           produk.kategori.toLowerCase() === kategori.toLowerCase()
         );
       }
-      // Melakukan pencarian berdasarkan `searchTerm`
       const results = filteredData.filter(produk =>
         produk.nama.toLowerCase().includes(searchTerm.toLowerCase())
       );

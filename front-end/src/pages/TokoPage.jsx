@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import CardToko from '../components/card/CardToko'
+import CardToko from '../components/card/CardToko';
 import { IoIosSearch } from "react-icons/io";
 
 function TokoPage() {
@@ -15,8 +15,10 @@ function TokoPage() {
         fetch('http://localhost:5555/api/toko/')
             .then(response => response.json())
             .then(data => {
-                setTokoData(data.data);
-                setSearchResults(data.data);
+                // Filter toko yang memiliki status "Active"
+                const activeToko = data.data.filter(toko => toko.status === 'Active');
+                setTokoData(activeToko);
+                setSearchResults(activeToko);
                 setIsLoading(false);
             })
             .catch(error => {
@@ -43,7 +45,7 @@ function TokoPage() {
     return (
         <div>
             <Navbar />
-            <div className='flex-col max-w-screen-xl min-h-screen px-4 mx-auto mb-8 text-center bg-white md:px-8' >
+            <div className='flex-col min-h-screen mx-auto mb-8 text-center bg-white px-[5%]' >
                 <h1 className='mb-1 text-2xl font-bold md:text-3xl pt-28'>Mau Babungkus?</h1>
                 <p>Sederhana, tapi Signifikan: Dari Sisa ke Solusi. Ayo jelajahi!</p>
                 <div className='flex m-auto border border-gray-500 gap-2 align-middle justify-between rounded-lg px-3 py-2 mt-3 mb-8 max-w-[765px]'>
