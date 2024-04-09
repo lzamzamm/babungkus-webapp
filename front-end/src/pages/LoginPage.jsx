@@ -58,7 +58,7 @@ export default function LoginPage() {
   return (
     <div style={{ fontFamily: "Poppins, sans-serif" }}>
       <Navbar />
-      <div className="flex min-h-screen flex-col items-center bg-white pt-16 text-gray-700 sm:justify-center sm:pt-0">
+      <div className="flex min-h-screen flex-col items-center bg-white pt-16 text-gray-700 sm:justify-center">
         <a href="#" className="mt-16 text-center">
           <img src={LogoLogin} alt="Babungkus Logo" className="h-60" />
         </a>
@@ -120,7 +120,7 @@ export default function LoginPage() {
               </form>
               <div className="text-l mt-2 text-center leading-6 tracking-tighter">
                 Belum punya akun?{" "}
-                <Link className="ml-1 text-primary" to="/register">
+                <Link className="ml-1 text-primary" to="/daftar">
                   Daftar
                 </Link>
               </div>

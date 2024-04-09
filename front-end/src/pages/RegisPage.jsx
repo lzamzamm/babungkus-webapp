@@ -45,7 +45,7 @@ export default function RegisPage() {
       );
       console.log("Register berhasil", response.data);
       setIsDataValid(true);
-      navigate("/login");
+      navigate("/masuk");
     } catch (error) {
       console.error(
         "Error register",
