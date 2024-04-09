@@ -1,41 +1,31 @@
-import asyncHandler from "express-async-handler";
-import bcrypt from "bcrypt";
-import {
-  create,
-  findWithUsername,
-  findWithEmail,
-} from "../../repository/user.repository.js";
+import asyncHandler from 'express-async-handler';
+import bcrypt from 'bcrypt';
+import { create, findWithUsername, findWithEmail } from '../../repository/user.repository.js';
 
 export const registerUserService = asyncHandler(async (res, user) => {
-  const requiredFields = [
-    "username",
-    "nama_lengkap",
-    "password",
-    "email",
-    "no_telp",
-  ];
+  const requiredFields = ['username', 'nama_lengkap', 'password', 'email', 'no_telp'];
   if (requiredFields.some((field) => !user[field])) {
     res.status(400);
-    throw new Error("Isi semua data");
+    throw new Error('Isi semua data');
   }
 
-  const cekUsername = await findWithUsername(user["username"]);
+  const cekUsername = await findWithUsername(user['username']);
 
   if (cekUsername) {
     res.status(400);
-    throw new Error("Username sudah terpakai");
+    throw new Error('Username sudah terpakai');
   }
 
-  const cekEmail = await findWithEmail(user["email"]);
+  const cekEmail = await findWithEmail(user['email']);
   if (cekEmail) {
     res.status(400);
-    throw new Error("Email sudah terpakai");
+    throw new Error('Email sudah terpakai');
   }
 
-  var password = user["password"];
+  var password = user['password'];
   if (password.length < 8) {
     res.status(400);
-    throw new Error("Kata sandi harus memiliki minimal 8 karakter.");
+    throw new Error('Kata sandi harus memiliki minimal 8 karakter.');
   }
 
   // Kombinasi karakter
@@ -51,19 +41,13 @@ export const registerUserService = asyncHandler(async (res, user) => {
   let containsNumber = regex.number.test(password);
   let containsSpecial = regex.special.test(password);
 
-  if (
-    !containsUppercase ||
-    !containsLowercase ||
-    !containsNumber ||
-    !containsSpecial
-  ) {
+  if (!containsUppercase || !containsLowercase || !containsNumber || !containsSpecial) {
     res.status(400);
-    throw new Error(
-      "Kata sandi harus terdiri dari kombinasi huruf besar, huruf kecil, angka, dan karakter khusus."
-    );
+    throw new Error('Kata sandi harus terdiri dari kombinasi huruf besar, huruf kecil, angka, dan karakter khusus.');
   }
-  password = await bcrypt.hash(password, 10);
-  const newUser = { ...user, role: "User" };
+
+  user['password'] = await bcrypt.hash(password, 10);
+  const newUser = { ...user, role: 'User' };
 
   const result = await create(newUser);
   //console.log(result);
@@ -72,33 +56,27 @@ export const registerUserService = asyncHandler(async (res, user) => {
 });
 
 export const registerAdminService = asyncHandler(async (res, user) => {
-  const requiredFields = [
-    "username",
-    "nama_lengkap",
-    "password",
-    "email",
-    "no_telp",
-  ];
+  const requiredFields = ['username', 'nama_lengkap', 'password', 'email', 'no_telp'];
   if (requiredFields.some((field) => !user[field])) {
     res.status(400);
-    throw new Error("Isi semua data");
+    throw new Error('Isi semua data');
   }
 
-  const cekUsername = await findWithUsername(user["username"]);
+  const cekUsername = await findWithUsername(user['username']);
 
   if (cekUsername) {
     res.status(400);
-    throw new Error("Username sudah terpakai");
+    throw new Error('Username sudah terpakai');
   }
 
-  const cekEmail = await findWithEmail(user["email"]);
+  const cekEmail = await findWithEmail(user['email']);
   if (cekEmail) {
     res.status(400);
-    throw new Error("Email sudah terpakai");
+    throw new Error('Email sudah terpakai');
   }
 
-  user["password"] = await bcrypt.hash(user["password"], 10);
-  const newUser = { ...user, role: "Admin" };
+  user['password'] = await bcrypt.hash(user['password'], 10);
+  const newUser = { ...user, role: 'Admin' };
 
   const result = await create(newUser);
   //console.log(result);
