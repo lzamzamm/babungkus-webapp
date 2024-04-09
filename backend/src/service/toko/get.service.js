@@ -22,7 +22,7 @@ export const getTokoIdService = asyncHandler(async (res, { id }) => {
   const pipeline = [
     {
       $match: {
-        toko_id: parseInt(id),
+        user_id: parseInt(id),
       },
     },
     {

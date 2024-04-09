@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
 const StoreUpdateForm = () => {
   const [storeImagePreview, setStoreImagePreview] = useState("");
+  const [imageToko, setImageToko] = useState()
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -18,6 +21,20 @@ const StoreUpdateForm = () => {
     const [idUser, setIdUser] = useState("");
     const [nama_lengkap, setNamaLengkap] = useState("");
   };
+
+  
+  const getTokoUser = async () => {
+    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    var id = userInfo.user_id;
+
+    const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' })
+    //console.log(res.data.data[0].image)
+    setImageToko(res.data.data[0].image)
+  }
+
+  useEffect(() => {
+    getTokoUser();
+  }, []);
 
   return (
     <div
@@ -63,6 +80,13 @@ const StoreUpdateForm = () => {
               </button>
             </div>
           )}
+          <div className="relative mt-4 h-32 w-32">
+          <img
+                src={`http://localhost:5555/toko/${imageToko}`}
+                alt="Preview"
+                className="h-full w-full object-cover"
+              />
+          </div>
         </div>
         <div className="sm:text-l mb-2 text-sm sm:mb-3">
           <label
