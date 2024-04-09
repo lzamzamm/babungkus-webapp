@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { MdLocationOn } from "react-icons/md";
 import ImageNotAvailable from '../../assets/images/image-not-available.jpg';
 import { Link } from 'react-router-dom'; // Impor Link dari react-router-dom
 
@@ -24,7 +23,7 @@ function CardProduk({ data }) {
             </div>
             <div className='flex flex-col items-start px-5 bg-tertiary cursor-pointer'>
                 <p className='flex font-medium truncate text-xl pt-5 hover:text-primary'>{nama}</p>
-                <p className='flex items-center truncate pt-1 pb-3'>{harga}</p>
+                <p className='flex items-center truncate pt-1 pb-3'>Rp. {harga}</p>
             </div>
         </div>
     )
