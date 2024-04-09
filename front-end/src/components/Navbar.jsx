@@ -1,63 +1,106 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
-import LogoBabungkus from '/assets/images/logo.png';
+import LogoBabungkus from "/assets/images/logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+
   const navItems = [
-    { label: 'Produk', href: '/produk', subItems: [{ label: 'Makanan', href: '/produk/makanan' }, { label: 'Minuman', href: '/produk/minuman' }, { label: 'Pakan', href: '/produk/pakan' }] },
-    { label: 'Toko', href: '/toko' },
-    { label: 'Tentang Kami', href: '/tentangkami' }
+    {
+      label: "Produk",
+      href: "/produk",
+      subItems: [
+        { label: "Makanan", href: "/produk/makanan" },
+        { label: "Minuman", href: "/produk/minuman" },
+        { label: "Pakan", href: "/produk/pakan" },
+      ],
+    },
+    { label: "Toko", href: "/toko" },
+    { label: "Tentang Kami", href: "/tentangkami" },
   ];
 
   const buttonItems = [
-    { label: 'Masuk', href: '/masuk' },
-    { label: 'Daftar', href: '/daftar' }
+    { label: "Masuk", href: "/masuk" },
+    { label: "Daftar", href: "/daftar" },
   ];
 
   return (
-    <div className="w-full fixed shadow-mini-xlx z-50 md:text-lg font-poppins bg-white">
-      <div className="flex flex-col mx-auto md:flex-row md:items-center md:justify-between px-[5%]">
-        <div className="p-4 flex flex-row items-center justify-between">
-          <div className='flex justify-center items-center w-[50px]'>
-            <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
-          </div>          
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden rounded-lg focus:outline-none focus:shadow-outline">
-            {isOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
+    <div className="fixed z-50 w-full bg-white font-poppins shadow-mini-xlx md:text-lg">
+      <div className="mx-auto flex flex-col px-[5%] md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-row items-center justify-between py-4">
+          <div className="flex w-[50px] items-center justify-center">
+            <img
+              src={LogoBabungkus}
+              className="h-full w-full"
+              alt="Logo Babungkus"
+            />
+          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="focus:shadow-outline rounded-lg focus:outline-none md:hidden"
+          >
+            {isOpen ? (
+              <HiOutlineX className="h-6 w-6" />
+            ) : (
+              <HiOutlineMenuAlt3 className="h-6 w-6" />
+            )}
           </button>
         </div>
-        <nav className={`flex-col h-screen md:h-auto flex-grow pb-4 md:pb-0 md:flex justify-between md:justify-end md:flex-row transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
-          <div className="md:flex md:items-center md:justify-between w-full">
-            <div className="md:flex md:items-center gap-2">
+        <nav
+          className={`h-screen flex-grow flex-col justify-between pb-4 transition duration-300 ease-in-out md:flex md:h-auto md:flex-row md:justify-end md:pb-0 ${isOpen ? "flex" : "hidden"}`}
+        >
+          <div className="w-full md:flex md:items-center md:justify-between">
+            <div className="gap-2 md:flex md:items-center">
               {navItems.map((item, index) => (
                 <div key={index} className="relative">
-                {item.label === 'Produk' ? (
-                  <button onClick={() => setDropdownOpen((prev) => !prev)} className="flex w-full items-center px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
-                  {item.label}
-                  <IoIosArrowDown className={`inline w-4 h-4 ml-4 transition-transform duration-200 transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
-                </button>
+                  {item.label === "Produk" ? (
+                    <button
+                      onClick={() => setDropdownOpen((prev) => !prev)}
+                      className="focus:shadow-outline mt-2 flex w-full items-center rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none md:mt-0"
+                    >
+                      {item.label}
+                      <IoIosArrowDown
+                        className={`ml-4 inline h-4 w-4 transform transition-transform duration-200 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                      />
+                    </button>
                   ) : (
-                    <Link to={item.href} className="flex px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary">
+                    <Link
+                      to={item.href}
+                      className="mt-2 flex rounded-lg px-4 py-2 hover:text-primary focus:text-primary md:mt-0"
+                    >
                       {item.label}
                     </Link>
                   )}
-                  {dropdownOpen && item.subItems && item.subItems.length > 0 && (
-                    <div className="dropdown-menu text-base px-2 py-2 md:absolute right-0 w-full mt-0 md:mt-2 rounded-lg z-10 md:border bg-white">
-                      {item.subItems.map((subItem, subIndex) => (
-                        <a key={subIndex} className="block px-4 py-2 rounded-lg hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline" href={subItem.href}>{subItem.label}</a>
-                      ))}
-                    </div>
-                  )}
+                  {dropdownOpen &&
+                    item.subItems &&
+                    item.subItems.length > 0 && (
+                      <div className="dropdown-menu right-0 z-10 mt-0 w-full rounded-lg bg-white px-2 py-2 text-base md:absolute md:mt-2 md:border">
+                        {item.subItems.map((subItem, subIndex) => (
+                          <a
+                            key={subIndex}
+                            className="focus:shadow-outline block rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none"
+                            href={subItem.href}
+                          >
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                 </div>
               ))}
             </div>
-            <div className="md:flex md:items-center gap-2 mt-4 md:mt-0">
+            <div className="mt-4 gap-2 md:mt-0 md:flex md:items-center">
               {buttonItems.map((item, index) => (
-                <Link key={index} to={item.href} className="flex  justify-center text-white px-4 py-2 mt-2 rounded-lg md:mt-0 hover:bg-primary-dark bg-primary transition duration-300 ease-in-out">{item.label}</Link>
+                <Link
+                  key={index}
+                  to={item.href}
+                  className="mt-2  flex justify-center rounded-lg bg-primary px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-primary-dark md:mt-0"
+                >
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>

@@ -39,13 +39,14 @@ const StoreUpdateForm = () => {
         lokasi: lokasi,
         no_telp: noTelp,
       };
-      await axios.patch(`http://localhost:5555/api/user/update`, userData, { withCredentials: true, credentials: 'include' });
+      await axios.patch(`http://localhost:5555/api/toko/update`, userData, { withCredentials: true, credentials: 'include' });
       alert('Data berhasil diperbarui');
     } catch (err) {
       console.log(err);
       alert('Gagal memperbarui data');
     }
   };
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {

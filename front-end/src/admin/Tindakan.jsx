@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
+const ActionPage = () => {
   return (
-    <div className="w-full p-5 text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div
+      className="w-full p-5 text-gray-800"
+      style={{ fontFamily: "Poppins, sans-serif" }}
+    >
       <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
-        <p><strong>Nama Toko:</strong> {report.storeName}</p>
-        <p><strong>Alasan Laporan:</strong> {report.reason}</p>
-        <p><strong>Deskripsi:</strong> {report.description}</p>
-        <p><strong>Tanggal Laporan:</strong> {report.dateReported}</p>
+        <p>
+          <strong>Nama Toko:</strong> {report.storeName}
+        </p>
+        <p>
+          <strong>Alasan Laporan:</strong> {report.reason}
+        </p>
+        <p>
+          <strong>Deskripsi:</strong> {report.description}
+        </p>
+        <p>
+          <strong>Tanggal Laporan:</strong> {report.dateReported}
+        </p>
       </div>
       <hr className="mb-6" />
       <h3 className="mb-4 text-xl">Ambil Tindakan</h3>
           <button
             type="submit"
-            className="px-4 py-2 font-bold text-white rounded bg-blue-400 hover:bg-amber-700 focus:outline-none focus:shadow-outline mr-2"
+            className="focus:shadow-outline rounded bg-primary px-4 py-2 font-bold text-white hover:bg-amber-700 focus:outline-none"
           >
             Bekukan
           </button>
@@ -25,6 +37,6 @@ import React, { useState } from 'react';
           </button>
         </div>
   );
-
+};
 
 export default ActionPage;

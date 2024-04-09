@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-
+const DetailVerification = () => {
   return (
     <div className="w-full p-5 text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <h2 className="mb-4 text-2xl">Detail Laporan</h2>
@@ -27,6 +27,7 @@ import React, { useState, useEffect } from 'react';
           </button>
         </div>
   );
+};
 
-export default ActionPage;
+export default DetailVerification;
 

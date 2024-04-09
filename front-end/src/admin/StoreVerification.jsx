@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 
-const initialStoreRequests = [
-  { id: 1, userName: 'User A', storeName: 'Toko A', dateRequested: '2024-03-29' },
-  { id: 2, userName: 'User B', storeName: 'Toko B', dateRequested: '2024-03-30' },
-  
-];
 
 const StoreVerification = () => {
   const [storeRequests, setStoreRequests] = useState(initialStoreRequests);

@@ -26,29 +26,29 @@ function BerandaPage() {
     <div class="font-poppins">
       <Navbar />
       <div className="pt-20">
-        <div class="flex text-white relative overflow-hidden h-[50vh] lg:h-[80vh]">
+        <div class="relative flex h-[50vh] overflow-hidden text-white lg:h-[80vh]">
           <img
             src={Hero}
-            class="brightness-50 h-full w-full object-cover"
+            class="h-full w-full object-cover brightness-50"
           ></img>
-          <div class="flex flex-col absolute inset-0 justify-center px-4 md:px-8 lg:px-16">
-            <p class="text-3xl md:text-5xl font-semibold">Babungkus</p>
+          <div class="absolute inset-0 flex flex-col justify-center px-4 md:px-8 lg:px-16">
+            <p class="text-3xl font-semibold md:text-5xl">Babungkus</p>
             <p class="">Selamatkan Makanan dan Jadilah Bagian dari Gerakan!</p>
           </div>
         </div>
-        <div class="hp:text-[1.6vmax] flex lg:flex-row hp:flex-col pt-12 px-8 justify-center">
+        <div class="flex justify-center px-8 pt-12 hp:flex-col hp:text-[1.6vmax] lg:flex-row">
           <div class=" hp:w-full lg:w-[30vmax]">
             <img
               src={Food_1}
-              class="w-full lg:h-[15.5vmax] hp:h-[17.5vmax] bg-slate-300 lg:rounded-[1.5vmax] object-cover"
+              class="w-full bg-slate-300 object-cover hp:h-[17.5vmax] lg:h-[15.5vmax] lg:rounded-[1.5vmax]"
             />
-            <div class="w-full lg:h-[2vmax] hp:h-[1vmax] bg-white" />
+            <div class="w-full bg-white hp:h-[1vmax] lg:h-[2vmax]" />
             <img
               src={Food_2}
-              class="w-full lg:h-[15.5vmax] hp:h-[17.5vmax] bg-slate-600 lg:rounded-[1.5vmax] object-cover"
+              class="w-full bg-slate-600 object-cover hp:h-[17.5vmax] lg:h-[15.5vmax] lg:rounded-[1.5vmax]"
             />
           </div>
-          <div class="hp:pt-[5%] lg:pt-[0] lg:pl-[5%] hp:w-[full] lg:w-[49vmax] ">
+          <div class="hp:w-[full] hp:pt-[5%] lg:w-[49vmax] lg:pl-[5%] lg:pt-[0] ">
             Puluhan bahkan ribuan makanan terbuang begitu saja setiap harinya...
             Kita tidak boleh biarkan itu terjadi, mari olah makanan sisa dengan
             baik dan benar <br /> <br />
@@ -56,81 +56,81 @@ function BerandaPage() {
             mengelola sumber daya alam, termasuk makanan." - Ban Ki-moon
           </div>
         </div>
-        <div class="pt-[7.5%] pl-[15%] pr-[15%] pb-[7.5%] flex lg:flex-col hp:flex-col lg:h-[54vmax] hp:h-[35vmax] font-semibold">
-          <div class="text-center w-full font-semibold lg:text-[3vmax]">
+        <div class="flex pb-[7.5%] pl-[15%] pr-[15%] pt-[7.5%] font-semibold hp:h-[35vmax] hp:flex-col lg:h-[54vmax] lg:flex-col">
+          <div class="w-full text-center font-semibold lg:text-[3vmax]">
             Kami Menerima
           </div>
-          <div class="flex lg:flex-row pt-[2%] gap-x-[2%] h-full justify-center text-white">
-            <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
-              <div class="w-full h-full flex justify-center items-center ">
-                <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
-                  <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full ">
+          <div class="flex h-full justify-center gap-x-[2%] pt-[2%] text-white lg:flex-row">
+            <div class="  flex w-[10%] items-center justify-center overflow-hidden rounded-[1vmax] duration-700 ease-in-out hover:w-[70%] hover:transition-all ">
+              <div class="flex h-full w-full items-center justify-center ">
+                <div class="relative flex h-full  w-full items-center justify-center text-center text-[2vmax] grayscale duration-700 ease-in-out hover:grayscale-0 hover:transition-all">
+                  <p class="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all ">
                     Pakan
                   </p>
-                  <img class="w-full h-full object-cover " src={Food_1} />
+                  <img class="h-full w-full object-cover " src={Food_1} />
                 </div>
               </div>
             </div>
-            <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
-              <div class="w-full h-full flex justify-center items-center ">
-                <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
-                  <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full">
+            <div class="  flex w-[10%] items-center justify-center overflow-hidden rounded-[1vmax] duration-700 ease-in-out hover:w-[70%] hover:transition-all ">
+              <div class="flex h-full w-full items-center justify-center ">
+                <div class="relative flex h-full  w-full items-center justify-center text-center text-[2vmax] grayscale duration-700 ease-in-out hover:grayscale-0 hover:transition-all">
+                  <p class="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all">
                     Minuman
                   </p>
-                  <img class="w-full h-full object-cover" src={Food_1} />
+                  <img class="h-full w-full object-cover" src={Food_1} />
                 </div>
               </div>
             </div>
-            <div class="  w-[10%] hover:transition-all ease-in-out duration-700 rounded-[1vmax] hover:w-[70%] flex justify-center items-center overflow-hidden ">
-              <div class="w-full h-full flex justify-center items-center ">
-                <div class="hover:transition-all ease-in-out duration-700  text-[2vmax] text-center h-full w-full flex items-center justify-center relative grayscale hover:grayscale-0">
-                  <p class="z-10 flex items-center justify-center -rotate-90 hover:transition-all ease-in-out duration-700 hover:rotate-0 absolute w-full h-full">
+            <div class="  flex w-[10%] items-center justify-center overflow-hidden rounded-[1vmax] duration-700 ease-in-out hover:w-[70%] hover:transition-all ">
+              <div class="flex h-full w-full items-center justify-center ">
+                <div class="relative flex h-full  w-full items-center justify-center text-center text-[2vmax] grayscale duration-700 ease-in-out hover:grayscale-0 hover:transition-all">
+                  <p class="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all">
                     Makanan
                   </p>
-                  <img class="w-full h-full object-cover" src={Food_1} />
+                  <img class="h-full w-full object-cover" src={Food_1} />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="lg:p-[5%] hp:p-[10%] lg:py-[5%] lg:px-[10%] hp:h-[60vmax] lg:h-[45vmax] font-semibold flex hp:flex-col hp:justify-center hp:items-center hp:gap-[3%] lg:gap-[5%]">
+        <div class="flex font-semibold hp:h-[60vmax] hp:flex-col hp:items-center hp:justify-center hp:gap-[3%] hp:p-[10%] lg:h-[45vmax] lg:gap-[5%] lg:p-[5%] lg:px-[10%] lg:py-[5%]">
           <p className="text-center lg:text-[3vmax]">Berbagai Outlet</p>
-          <div className="flex hp:flex-col lg:flex-row gap-[5%] h-[50%] hp:w-[60%] text-white lg:justify-center text-[2vmax]">
-            <div className=" bg-slate-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
-              <div className="relative flex items-center justify-center w-full h-full">
+          <div className="flex h-[50%] gap-[5%] text-[2vmax] text-white hp:w-[60%] hp:flex-col lg:flex-row lg:justify-center">
+            <div className=" hover:(apa gitu disini) flex h-[50%] items-center justify-center bg-slate-200 duration-500 ease-in-out hover:transition-all lg:h-full lg:w-[50%]">
+              <div className="relative flex h-full w-full items-center justify-center">
                 <p className="z-10">Kedai</p>
                 <img
-                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
                   src={Food_1}
                 />
               </div>
               {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
             </div>
-            <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
-              <div className="relative flex items-center justify-center w-full h-full ">
+            <div className="flex h-[50%] items-center justify-center bg-amber-200 lg:h-full lg:w-[50%]">
+              <div className="relative flex h-full w-full items-center justify-center ">
                 <p className="z-10">Restoran</p>
                 <img
-                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
                   src={Food_1}
                 />
               </div>
             </div>
           </div>
-          <div className="flex hp:flex-col lg:flex-row gap-[5%] h-[50%] hp:w-[60%] text-white lg:justify-center text-[2vmax]">
-            <div className="bg-stone-600 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full hover:transition-all ease-in-out hover:(apa gitu disini) duration-500">
-              <div className="relative flex items-center justify-center w-full h-full">
+          <div className="flex h-[50%] gap-[5%] text-[2vmax] text-white hp:w-[60%] hp:flex-col lg:flex-row lg:justify-center">
+            <div className="hover:(apa gitu disini) flex h-[50%] items-center justify-center bg-stone-600 duration-500 ease-in-out hover:transition-all lg:h-full lg:w-[50%]">
+              <div className="relative flex h-full w-full items-center justify-center">
                 <p className="z-10">Toko</p>
                 <img
-                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
                   src={Food_1}
                 />
               </div>
             </div>
-            <div className="bg-amber-200 h-[50%] flex items-center justify-center lg:w-[50%] lg:h-full">
-              <div className="relative flex items-center justify-center w-full h-full ">
+            <div className="flex h-[50%] items-center justify-center bg-amber-200 lg:h-full lg:w-[50%]">
+              <div className="relative flex h-full w-full items-center justify-center ">
                 <p className="z-10">Warung</p>
                 <img
-                  className="absolute w-full h-full duration-500 hover:transition-all blur-[2px] hover:blur-none"
+                  className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
                   src={Food_1}
                 />
               </div>
