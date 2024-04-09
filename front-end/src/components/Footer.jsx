@@ -3,7 +3,7 @@ import LogoBabungkus from '/assets/images/logo.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-white-200 text-center text-neutral-800 dark:bg-neutral-600 border-t-2 border-gray-200 dark:border-gray-700" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <footer className="bg-white-200 text-center text-neutral-800 border-t-2 border-gray-200" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="container mx-auto px-4 py-9" style={{ maxWidth: '1140px', width: '100%' }}>
         <div className="flex justify-center items-center mb-5 flex-col lg:flex-row lg:justify-start" style={{ gap: '1rem', width: '100%' }} >
           <img src={LogoBabungkus} alt="Logo Babungkus" style={{ height: '50px' }} />
@@ -25,12 +25,12 @@ export default function Footer() {
             <div className="text-center lg:text-left">
               <h4 className="text-md font-semibold">Punya pertanyaan?</h4>
               <p>Hubungi kami melalui:</p>
-              <a href="mailto:kontak@babungkus.com" className="inline-flex items-center justify-center text-primary dark:text-neutral-200 hover:text-green-500">
+              <a href="mailto:kontak@babungkus.com" className="inline-flex items-center justify-center text-primary hover:text-green-500">
                 <FaEnvelope className="mr-2" />
                 kontak@babungkus.com
               </a>
               <br></br>
-              <a href="https://wa.me/6281510972178" className="inline-flex items-center justify-center text-primary dark:text-neutral-200 hover:text-green-500">
+              <a href="https://wa.me/6281510972178" className="inline-flex items-center justify-center text-primary hover:text-green-500">
                 <FaWhatsapp className="mr-2" />
                 +6281510972178
               </a>
@@ -43,10 +43,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="bg-neutral-200 p-4 text-center text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">
-        © 2024 Babungkus. All rights reserved.
-        <a className="text-neutral-800 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300" href="/privacy-policy">Privacy Policy</a> |
-        <a className="text-neutral-800 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300" href="/terms">Terms & Conditions</a>
+      <div className="bg-neutral-200 p-4 text-center text-neutral-700">
+        © 2024 Babungkus. Hak Cipta.
+        <a className="text-neutral-800 hover:text-neutral-600" href="/privacy-policy">Privacy Policy</a> |
+        <a className="text-neutral-800 hover:text-neutral-600" href="/terms">Syarat & Ketentuan</a>
       </div>
     </footer>
   );

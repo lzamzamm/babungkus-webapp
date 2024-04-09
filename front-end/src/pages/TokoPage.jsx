@@ -9,6 +9,7 @@ function TokoPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [showMoreCount, setShowMoreCount] = useState(6);
 
     useEffect(() => {
         fetch('http://localhost:5555/api/toko/')
@@ -35,6 +36,10 @@ function TokoPage() {
         setSearchTerm(event.target.value);
     };
 
+    const handleShowMore = () => {
+        setShowMoreCount(prevCount => prevCount + 6);
+    };
+
     return (
         <div>
             <Navbar />
@@ -53,20 +58,20 @@ function TokoPage() {
                 </div>
                 {isLoading ? (
                     <div className='flex items-center justify-center h-40'>
-                        <div class="border-gray-300 h-10 w-10 animate-spin rounded-full border-4 border-t-green-600" />
+                        <div className="border-gray-300 h-10 w-10 animate-spin rounded-full border-4 border-t-green-600" />
                     </div>
                 ) : (
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-7 gap-x-5'>
-                        {searchResults.length > 0 ? (
-                            searchResults.slice(0, 6).map(toko => (
-                                <CardToko key={toko._id} data={toko} />
-                            ))
-                        ) : (
-                            <p>Toko "{searchTerm}" tidak ditemukan.</p>
-                        )}
+                        {searchResults.slice(0, showMoreCount).map(toko => (
+                            <CardToko key={toko._id} data={toko} />
+                        ))}
                     </div>
                 )}
-                {tokoData.length > 6 && <button className='w-full px-3 py-2 text-white rounded-md bg-primary'>Tampilkan lebih banyak</button>}
+                {tokoData.length > showMoreCount && (
+                    <button className='w-full mt-5 px-3 py-2 text-white rounded-md bg-primary' onClick={handleShowMore}>
+                        Tampilkan lebih banyak
+                    </button>
+                )}
             </div>
             <Footer />
         </div>

@@ -9,20 +9,22 @@ import RiwayatPage from '../pages/RiwayatPage';
 import TokoPage from '../pages/TokoPage';
 import ProdukPage from '../pages/ProdukPage';
 import ContactPage from '../pages/ContactPage';
+import DetailTokoPage from '../pages/DetailTokoPage';
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' Component={BerandaPage} />
-        <Route path='/masuk' Component={LoginPage} />
-        <Route path='/daftar' Component={RegisPage} />
-        <Route path='/contact' Component={ContactPage} />
-        <Route path='/akun/*' Component={AccountPage} />
-        <Route path='/detail-product' Component={DetailProductPage} />
-        <Route path='/riwayat' Component={RiwayatPage} />
-        <Route path='/toko' Component={TokoPage} />
-        <Route path='/produk' Component={ProdukPage} />
+        <Route path='/' element={<BerandaPage />} />
+        <Route path='/masuk' element={<LoginPage />} />
+        <Route path='/daftar' element={<RegisPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path='/akun/*' element={<AccountPage />} />
+        <Route path='/detail-product' element={<DetailProductPage />} />
+        <Route path='/riwayat' element={<RiwayatPage />} />
+        <Route path='/toko' element={<TokoPage />} />
+        <Route path='/produk' element={<ProdukPage />} />
+        <Route path="/toko/:id" element={<DetailTokoPage />} />
       </Routes>
     </div>
   );

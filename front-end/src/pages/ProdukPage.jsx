@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import CardProduk from '../components/card/CardProduk'
 import { IoIosSearch } from "react-icons/io";
 
-function PordukPage() {
+function ProdukPage() {
     return (
       <div>
         <Navbar/>
@@ -25,4 +25,4 @@ function PordukPage() {
     )
   }
   
-  export default PordukPage;
+  export default ProdukPage;
