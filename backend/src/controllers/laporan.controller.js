@@ -32,7 +32,7 @@ const getLaporanAll = asyncHandler(async (req, res) => {
 const getLaporanById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const laporan = await getLaporanByIdService();
+  const laporan = await getLaporanByIdService(id);
 
   return res.status(200).json({
     status: 'success',

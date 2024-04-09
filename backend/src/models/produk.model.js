@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const produkSchema = mongoose.Schema(
   {
@@ -20,7 +20,7 @@ const produkSchema = mongoose.Schema(
     },
     kategori: {
       type: String,
-      enum: ['Makanan', 'Minuman', 'Makanan & Minuman'],
+      enum: ["Makanan", "Minuman", "Pakan"],
       required: true,
     },
     stok: {
@@ -43,13 +43,17 @@ const produkSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-produkSchema.pre('save', async function (next) {
+produkSchema.pre("save", async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
-  console.log('tes middleware');
+  console.log("tes middleware");
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
-    const last_doc = await mongoose.model('Produk').findOne().sort('-produk_id').exec();
+    const last_doc = await mongoose
+      .model("Produk")
+      .findOne()
+      .sort("-produk_id")
+      .exec();
     console.log(last_doc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
@@ -63,10 +67,12 @@ produkSchema.pre('save', async function (next) {
 produkSchema.methods.toJSON = function () {
   const obj = this.toObject();
   // Format the date to dd-mm-yyyy
-  obj.expired_at = obj.expired_at ? obj.expired_at.toISOString().slice(0, 10).split('-').reverse().join('-') : null;
+  obj.expired_at = obj.expired_at
+    ? obj.expired_at.toISOString().slice(0, 10).split("-").reverse().join("-")
+    : null;
   return obj;
 };
 
-const Produk = mongoose.model('Produk', produkSchema);
+const Produk = mongoose.model("Produk", produkSchema);
 
 export default Produk;

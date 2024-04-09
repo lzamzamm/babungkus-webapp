@@ -27,20 +27,19 @@ const ActionPage = () => {
   };
 
   return (
-    <div className="p-5 w-full text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
-      <h2 className="text-2xl mb-4">Detail Laporan</h2>
+    <div className="w-full p-5 text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
         <p><strong>Nama Toko:</strong> {report.storeName}</p>
         <p><strong>Alasan Laporan:</strong> {report.reason}</p>
         <p><strong>Deskripsi:</strong> {report.description}</p>
         <p><strong>Tanggal Laporan:</strong> {report.dateReported}</p>
-        <p><strong>Tindakan yang Telah Diambil:</strong> {report.actionsTaken || 'Belum ada tindakan'}</p>
       </div>
       <hr className="mb-6" />
-      <h3 className="text-xl mb-4">Ambil Tindakan</h3>
+      <h3 className="mb-4 text-xl">Ambil Tindakan</h3>
       <form onSubmit={handleSubmit}>
         <textarea
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
+          className="w-full px-3 py-2 mb-4 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           id="action"
           name="action"
           placeholder="Deskripsikan tindakan yang akan diambil..."
@@ -48,12 +47,20 @@ const ActionPage = () => {
           onChange={(e) => setAction(e.target.value)}
           rows="4"
         />
-        <button
-          type="submit"
-          className="bg-primary hover:bg-amber-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Simpan Tindakan
-        </button>
+        <div className='flex flex-row gap-3'>
+          <button
+            type="submit"
+            className="px-4 py-2 font-bold text-white rounded bg-primary hover:bg-amber-700 focus:outline-none focus:shadow-outline"
+          >
+            Bekukan
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 font-bold text-white rounded bg-primary hover:bg-amber-700 focus:outline-none focus:shadow-outline"
+          >
+            Takedown
+          </button>
+        </div>
       </form>
     </div>
   );

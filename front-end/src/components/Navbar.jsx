@@ -25,18 +25,18 @@ function Navbar() {
         <div className="p-4 flex flex-row items-center justify-between">
           <div className='flex justify-center items-center w-[50px]'>
             <img src={LogoBabungkus} className='w-full h-full' alt="Logo Babungkus" />
-          </div>          
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden rounded-lg focus:outline-none focus:shadow-outline">
+          </Link>          
+          <button onClick={() => setIsOpen(!isOpen)} className="rounded-lg md:hidden focus:outline-none focus:shadow-outline">
             {isOpen ? <HiOutlineX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
           </button>
         </div>
         <nav className={`flex-col h-screen md:h-auto flex-grow pb-4 md:pb-0 md:flex justify-between md:justify-end md:flex-row transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
-          <div className="md:flex md:items-center md:justify-between w-full">
-            <div className="md:flex md:items-center gap-2">
+          <div className="w-full md:flex md:items-center md:justify-between">
+            <div className="gap-2 md:flex md:items-center">
               {navItems.map((item, index) => (
                 <div key={index} className="relative">
                 {item.label === 'Produk' ? (
-                  <button onClick={() => setDropdownOpen((prev) => !prev)} className="flex w-full items-center px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
+                  <button onClick={() => setDropdownOpen((prev) => !prev)} className="flex items-center w-full px-4 py-2 mt-2 rounded-lg md:mt-0 hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline">
                   {item.label}
                   <IoIosArrowDown className={`inline w-4 h-4 ml-4 transition-transform duration-200 transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
                 </button>
@@ -46,7 +46,7 @@ function Navbar() {
                     </Link>
                   )}
                   {dropdownOpen && item.subItems && item.subItems.length > 0 && (
-                    <div className="dropdown-menu text-base px-2 py-2 md:absolute right-0 w-full mt-0 md:mt-2 rounded-lg z-10 md:border bg-white">
+                    <div className="right-0 z-10 w-full px-2 py-2 mt-0 text-base bg-white rounded-lg dropdown-menu md:absolute md:mt-2 md:border">
                       {item.subItems.map((subItem, subIndex) => (
                         <a key={subIndex} className="block px-4 py-2 rounded-lg hover:text-primary focus:text-primary focus:outline-none focus:shadow-outline" href={subItem.href}>{subItem.label}</a>
                       ))}
@@ -55,9 +55,9 @@ function Navbar() {
                 </div>
               ))}
             </div>
-            <div className="md:flex md:items-center gap-2 mt-4 md:mt-0">
+            <div className="gap-2 mt-4 md:flex md:items-center md:mt-0">
               {buttonItems.map((item, index) => (
-                <Link key={index} to={item.href} className="flex  justify-center text-white px-4 py-2 mt-2 rounded-lg md:mt-0 hover:bg-primary-dark bg-primary transition duration-300 ease-in-out">{item.label}</Link>
+                <Link key={index} to={item.href} className="flex justify-center px-4 py-2 mt-2 text-white transition duration-300 ease-in-out rounded-lg md:mt-0 hover:bg-primary-dark bg-primary">{item.label}</Link>
               ))}
             </div>
           </div>

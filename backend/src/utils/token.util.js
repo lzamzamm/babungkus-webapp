@@ -1,16 +1,19 @@
-import jwt from 'jsonwebtoken';
-import 'dotenv/config';
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 const generateToken = (res, user_id) => {
   const token = jwt.sign({ user_id }, process.env.JWT_SECRET, {
-    expiresIn: '30d',
+    expiresIn: "30d",
   });
 
-  res.cookie('jwt', token, {
+  // console.log(token, res);
+  //console.log(res.cookie);
+  res.cookie("jwt", token, {
+    path: "/",
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
-    sameSite: 'strict', // Prevent CSRF attacks
+    secure: process.env.NODE_ENV !== "development", // Use secure cookies in production
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    sameSite: "strict",
   });
 };
 

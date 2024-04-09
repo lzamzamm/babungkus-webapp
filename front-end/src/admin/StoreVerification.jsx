@@ -21,8 +21,8 @@ const StoreVerification = () => {
   };
 
   return (
-    <div className="p-5 w-full text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
-      <h2 className="text-2xl mb-4">Verifikasi Pembukaan Toko</h2>
+    <div className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <h2 className="lg:text-2xl md:text-xl sm:text-xl mb-2">Verifikasi Pembukaan Toko</h2>
       <table className="min-w-full leading-normal">
         <thead>
           <tr>
