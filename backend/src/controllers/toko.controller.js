@@ -43,7 +43,7 @@ const getTokoById = asyncHandler(async (req, res) => {
 });
 
 const UpdateToko = asyncHandler(async (req, res) => {
-  const toko = await updateTokoService(res, req.params, req.body, req.file);
+  const toko = await updateTokoService(res, req.params, req.body, req.files);
 
   res.status(200).json({
     status: 'Success',
