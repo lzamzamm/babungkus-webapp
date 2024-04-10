@@ -43,6 +43,7 @@ const CreateStoreForm = () => {
       var userInfo = JSON.parse(localStorage.getItem("userInfo"));
       inputData.user_id = userInfo.user_id;
       formData.append("data", JSON.stringify(inputData));
+      formData.append("file", image);
       var res = await axios.post("http://localhost:5555/api/toko", formData,);
       if (response.data.status === "success") {
         alert(response.data.message); 
@@ -165,7 +166,7 @@ const CreateStoreForm = () => {
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="jamOperasional"
-            name="jamOperasional"
+            name="jam_operasional"
             type="text"
             onChange={handleInputChange}
           />

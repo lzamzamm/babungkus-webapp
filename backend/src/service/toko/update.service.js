@@ -5,11 +5,13 @@ import {
 } from "../../repository/toko.repository.js";
 
 export const updateTokoService = asyncHandler(
-  async (res, { id }, toko, file) => {
+  async (res, { id }, body, files) => {
+    const toko = JSON.parse(body["data"]);
+    const file = files["file"][0];
+
     const requiredFields = [
       "nama",
       "deskripsi",
-      "image",
       "jam_operasional",
       "lokasi",
       "no_telp",
@@ -20,18 +22,11 @@ export const updateTokoService = asyncHandler(
       throw new Error("Tidak ada data yang terisi");
     }
 
-    if (toko.status != "Active") {
-      res.status(400);
-      throw new Error("Toko sedang tidak aktif");
+    if (file) {
+      toko.image = file.filename;
     }
 
-    const newToko = { ...toko };
-
-    if (imageFile) {
-      newToko.image = imageFile.filename;
-    }
-
-    var result = await findOneAndUpdate(id, newToko);
+    var result = await findOneAndUpdate(id, toko);
 
     if (!result) {
       res.status(404);
