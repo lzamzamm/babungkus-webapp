@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const PersonalForm = () => {
-  // Deklarasi state
   const [nama_lengkap, setNamaLengkap] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -23,13 +22,11 @@ const PersonalForm = () => {
       console.log(err);
     }
   };
-  // Mengambil data pengguna berdasarkan ID
+
   useEffect(() => {
     getUserById();
   }, []);
-  //  [userId]);
-
-  // Menghandle submit form
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {

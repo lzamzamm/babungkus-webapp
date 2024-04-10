@@ -55,7 +55,7 @@ const AccountNavbar = () => {
             <>
               <li className="mb-3 hover:bg-neutral-300">
                 <Link
-                  to="add-product"
+                  to="tambah-produk"
                   className="text-black-500 flex items-center"
                 >
                   <FaPlusCircle className="mr-2 text-gray-400" />
@@ -71,7 +71,7 @@ const AccountNavbar = () => {
             </>
             <li className="mb-3 hover:bg-neutral-300">
               <Link
-                to="create-store"
+                to="buat-toko"
                 className="text-black-500 flex items-center"
               >
                 <FaBuilding className="mr-2 text-gray-400" />

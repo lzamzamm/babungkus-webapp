@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const CreateStoreForm = () => {
@@ -18,30 +18,47 @@ const CreateStoreForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file.size > 5242880) {
-      alert("File size must not exceed 5MB");
-      return;
-    }
-    setImage(file);
-    if (file && file.type.substr(0, 5) === "image") {
-      setStoreImagePreview(URL.createObjectURL(file)); // Membuat URL untuk preview
+    const maxFileSize = 5 * 1024 * 1024;
+    if (file) {
+      if (file.type.substr(0, 5) === "image" && file.size <= maxFileSize) {
+        setImage(file);
+        setStoreImagePreview(URL.createObjectURL(file));
+      } else if (file.size > maxFileSize) {
+        alert("Ukuran gambar melebihi batas maksimal 5MB.");
+        e.target.value = "";
+      } else {
+        alert("File yang diunggah bukan gambar.");
+      }
     }
   };
+
   const handleRemoveImagePreview = () => {
-    setStoreImagePreview(""); // Menghapus preview gambar
+    setStoreImagePreview("");
   };
 
   const createHandler = async (e) => {
     e.preventDefault();
-    // console.log(inputData);
-    // console.log(image);
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    inputData.user_id = userInfo.user_id;
-    console.log(inputData);
-    formData.append("data", JSON.stringify(inputData));
-    formData.append("file", image);
-    var res = await axios.post("http://localhost:5555/api/toko", formData);
-    console.log(res);
+    try {
+      var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      inputData.user_id = userInfo.user_id;
+      formData.append("data", JSON.stringify(inputData));
+      var res = await axios.post("http://localhost:5555/api/toko", formData,);
+      if (response.data.status === "success") {
+        alert(response.data.message); 
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data.status === "fail") {
+          alert(error.response.data.message); 
+        } else if (error.response.data.status === "error") {
+          alert(error.response.data.message); 
+        }
+      } else {
+        alert("Terjadi kesalahan saat mengirim permintaan.");
+      }
+    }
   };
 
   return (
@@ -146,8 +163,8 @@ const CreateStoreForm = () => {
           </label>
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-            id="waktuMulai"
-            name="jam_operasional"
+            id="jamOperasional"
+            name="jamOperasional"
             type="text"
             onChange={handleInputChange}
           />
