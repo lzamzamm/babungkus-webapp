@@ -84,4 +84,5 @@ const AccountNavbar = () => {
     </div>
   );
 };
+
 export default AccountNavbar;
