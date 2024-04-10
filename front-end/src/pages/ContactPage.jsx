@@ -9,7 +9,7 @@ function ContactPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputData({
+    setInputReport({
       ...inputReport,
       [name]: value,
     });
@@ -20,10 +20,10 @@ function ContactPage() {
 
     var reportInfo = JSON.parse(localStorage.getItem("reportInfo"));
     inputReport.laporan_id = reportInfo.laporan_id;
-    console.log(input);
-    formData.append("data", JSON.stringify(inputReport));
-    var res = await axios.post("http://localhost:5555/api/laporan", formData);
-    console.log(res);
+    console.log(input)
+    formData.append('data', JSON.stringify(inputReport));
+    var res = await axios.post('http://localhost:5555/api/laporan', formData);
+    console.log(res)
   };
 
   return (

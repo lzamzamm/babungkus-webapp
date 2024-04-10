@@ -5,6 +5,7 @@ import asyncHandler from "express-async-handler";
 import User from "../models/user.model.js";
 
 import "dotenv/config";
+// import Cookies from "js-cookie";
 
 const protect = asyncHandler(async (req, res, next) => {
   var token = req.cookies.jwt;
