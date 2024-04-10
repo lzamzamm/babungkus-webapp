@@ -9,7 +9,7 @@ function ContactPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputData({
+    setInputReport({
       ...inputReport,
       [name]: value,
     });
@@ -24,7 +24,7 @@ function ContactPage() {
     formData.append('data', JSON.stringify(inputReport));
     var res = await axios.post('http://localhost:5555/api/laporan', formData);
     console.log(res)
-  }
+  };
 
   return (
     <div class="font-poppins">

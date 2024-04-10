@@ -15,7 +15,9 @@ function RiwayatPembelian() {
   const [produk, setProd] = useState({});
 
   const getData = async () => {
-    const response = await axios.get('http://localhost:5555/api/pesanan/current/user'); // ini BELOMMM
+    const response = await axios.get('http://localhost:5555/api/pesanan/current/user', {
+      withCredentials: true,
+    }); 
     setData(response.data.data);
     console.log(response.data.data)
   };
@@ -27,7 +29,9 @@ function RiwayatPembelian() {
   // };
 
   const getUser = async () => {
-    const response = await axios.get('http://localhost:5555/api/user');
+    const response = await axios.get('http://localhost:5555/api/user', {
+      withCredentials: true,
+    });
     setUser(response.data.data);
     console.log(response.data.data)
   }
@@ -67,9 +71,9 @@ function RiwayatPembelian() {
                       <img className='h-[70%] w-[20%] rounded-[1vmax]' src={Food_1} />
                       <div className='flex flex-col pl-[5%] w-[75%]'>
                         <p className='font-light text-[1.75vmax]'>
-                          {/* {item.info_produk.nama} */}
+                          {item.info_produk.nama}
                           </p>
-                        <p className='text-[#777777] text-[1.4vmax]'>Makanan</p>
+                        <p className='text-[#777777] text-[1.4vmax]'>{item.info_produk.kategori}</p>
                       </div>
                     </div>
                     <p className='h-[20%] text-[1.5vmax] text-end'><span className='text-[1.25vmax] pr-[2%]'>Total Pesanan </span> Rp {item.harga_total} </p>
