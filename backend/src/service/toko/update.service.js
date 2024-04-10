@@ -3,6 +3,7 @@ import {
   findOneAndUpdate,
   findWithId,
 } from "../../repository/toko.repository.js";
+import fs from "fs";
 
 export const updateTokoService = asyncHandler(
   async (res, { id }, body, files) => {
