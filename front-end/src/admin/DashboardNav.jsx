@@ -58,6 +58,15 @@ const DashboardNavbar = () => {
                 Verifikasi Toko
               </Link>
             </li>
+            <li className="mb-5 hover:bg-neutral-300">
+              <Link
+                to="detailVerif"
+                className="text-black-500 ml-8 flex items-center"
+              >
+                <FaHistory className="mr-2 text-gray-400" />
+                Detail verifikasi
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

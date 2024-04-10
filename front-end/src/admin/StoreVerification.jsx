@@ -2,18 +2,6 @@ import React, { useState } from 'react';
 
 
 const StoreVerification = () => {
-  const [storeRequests, setStoreRequests] = useState(initialStoreRequests);
-
-  const handleApprove = (requestId) => {
-    const updatedRequests = storeRequests.filter(request => request.id !== requestId);
-    setStoreRequests(updatedRequests);
-  };
-
-
-  const handleReject = (requestId) => {
-    const updatedRequests = storeRequests.filter(request => request.id !== requestId);
-    setStoreRequests(updatedRequests);
-  };
 
   return (
     <div className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -39,13 +27,10 @@ const StoreVerification = () => {
           {storeRequests.map((request) => (
             <tr key={request.id}>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                {request.userName}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                {request.storeName}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                {request.dateRequested}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex space-x-2">
                 <button

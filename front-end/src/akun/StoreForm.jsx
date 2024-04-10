@@ -61,7 +61,7 @@ const StoreUpdateForm = () => {
     }
   };
 
-  
+
   return (
     <div
       className="mt-10 w-full p-3 text-gray-800 md:mt-2 lg:mt-1"

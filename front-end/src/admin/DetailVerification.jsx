@@ -5,11 +5,11 @@ const DetailVerification = () => {
     <div className="w-full p-5 text-gray-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
-        <p><strong>Nama Toko:</strong> {report.storeName}</p>
-        <p><strong>Alamat:</strong> {report.reason}</p>
-        <p><strong>Telpon:</strong> {report.description}</p>
-        <p><strong>Jam Operasional:</strong> {report.dateReported}</p>
-        <p><strong>Deskripsi Toko:</strong> {report.dateReported}</p>
+        <p><strong>Nama Toko:</strong></p>
+        <p><strong>Alamat:</strong></p>
+        <p><strong>Telpon:</strong> </p>
+        <p><strong>Jam Operasional:</strong></p>
+        <p><strong>Deskripsi Toko:</strong></p>
       </div>
       <hr className="mb-6" />
       <h3 className="mb-4 text-xl">Ambil Tindakan</h3>

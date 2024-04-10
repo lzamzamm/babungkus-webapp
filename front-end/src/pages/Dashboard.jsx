@@ -5,8 +5,8 @@ import Footer from "../components/Footer";
 import DashboardNavbar from "../admin/DashboardNav";
 import ReportPage from "../admin/Laporan";
 import ActionPage from "../admin/Tindakan";
-//import HistoryReport from '../admin/HistoryLaporan';
 import StoreVerification from "../admin/StoreVerification";
+import DetailVerification from "../admin/DetailVerification";
 
 function DashboardPage() {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -32,7 +32,8 @@ function DashboardPage() {
                 <Route path="laporan" element={<ReportPage />} />
                 <Route path="tindakan" element={<ActionPage />} />
                 <Route path="verifikasi" element={<StoreVerification />} />
-                {/* <Route path='histori' element={<HistoryReport />} /> */}
+                <Route path="detailVerif" element={<DetailVerification />} />
+              
               </Routes>
             </div>
           </div>
