@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const tokoSchema = mongoose.Schema(
   {
@@ -20,8 +20,8 @@ const tokoSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Pending", "Freeze", "Active", "Banned"],
-      default: "Pending",
+      enum: ['Pending', 'Freeze', 'Active', 'Banned'],
+      default: 'Pending',
       required: true,
     },
     image: {
@@ -47,17 +47,13 @@ const tokoSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-tokoSchema.pre("save", async function (next) {
+tokoSchema.pre('save', async function (next) {
   const doc = this;
   // Gunakan Model untuk mendapatkan nilai auto-increment
   //console.log("tes middleware");
   try {
     // Gunakan Model untuk mendapatkan nilai auto-increment
-    const last_doc = await mongoose
-      .model("Toko")
-      .findOne()
-      .sort("-toko_id")
-      .exec();
+    const last_doc = await mongoose.model('Toko').findOne().sort('-toko_id').exec();
     //console.log(last_doc);
 
     // Tentukan nilai auto-increment untuk dokumen saat ini
@@ -68,6 +64,6 @@ tokoSchema.pre("save", async function (next) {
   }
 });
 
-const Toko = mongoose.model("Toko", tokoSchema);
+const Toko = mongoose.model('Toko', tokoSchema);
 
 export default Toko;

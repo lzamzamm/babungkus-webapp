@@ -6,6 +6,7 @@ export const createTokoService = asyncHandler(async (res, body, files) => {
   const toko = JSON.parse(body['data']);
   const file = files['file'][0];
   // console.log(toko, file);
+
   const requiredFields = ['nama', 'lokasi', 'no_telp', 'jam_operasional', 'deskripsi', 'user_id'];
   if (requiredFields.some((field) => !toko[field])) {
     res.status(400);
