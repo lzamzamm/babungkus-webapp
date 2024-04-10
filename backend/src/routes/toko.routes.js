@@ -20,7 +20,7 @@ router.post(
 
 router.get("/", getTokoAll);
 
-router.get("/:id", getTokoById);
+router.get("/:id", protect, getTokoById);
 
 router.put("/status", protect, updateStatusToko);
 

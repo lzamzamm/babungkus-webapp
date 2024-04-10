@@ -1,52 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
 const StoreUpdateForm = () => {
-  const [nama, setNama] = useState('');
-  const [deskripsi, setDeskripsi] = useState('');
-  const [image, setImage] = useState('');
-  const [jamOperasional, setJamOperasional] = useState('');
-  const [lokasi, setLokasi] = useState('');
-  const [noTelp, setNoTelp] = useState('');
+  const [storeImagePreview, setStoreImagePreview] = useState("");
+  const [imageToko, setImageToko] = useState()
 
-  const getStoreById = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5555/api/toko`, { withCredentials: true, credentials: 'include' });
-      setNama(response.data.data.nama);
-      setDeskripsi(response.data.data.deskripsi);
-      setImage(response.data.data.image);
-      setJamOperasional(response.data.data.jamOperasional);
-      setLokasi(response.data.data.lokasi);
-      setNoTelp(response.data.data.noTelp);
-      console.log(response.data.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getStoreById();
-  }, []);
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const tokoData = {
-        nama: nama,
-        deskripsi: deskripsi,
-        image: image,
-        jam_operational: jamOperasional,
-        lokasi: lokasi,
-        no_telp: noTelp,
-      };
-      await axios.patch(`http://localhost:5555/api/toko/update`, userData, { withCredentials: true, credentials: 'include' });
-      alert('Data berhasil diperbarui');
-    } catch (err) {
-      console.log(err);
-      alert('Gagal memperbarui data');
-    }
-  };
-  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -58,6 +17,24 @@ const StoreUpdateForm = () => {
     setStoreImagePreview('');
   };
 
+  const User = () => {
+    const [idUser, setIdUser] = useState("");
+    const [nama_lengkap, setNamaLengkap] = useState("");
+  };
+
+  
+  const getTokoUser = async () => {
+    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    var id = userInfo.user_id;
+
+    const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' })
+    //console.log(res.data.data[0].image)
+    setImageToko(res.data.data[0].image)
+  }
+
+  useEffect(() => {
+    getTokoUser();
+  }, []);
 
   return (
     <div className="p-3 w-full text-gray-800 mt-10 md:mt-2 lg:mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -77,6 +54,13 @@ const StoreUpdateForm = () => {
               </button>
             </div>
           )}
+          <div className="relative mt-4 h-32 w-32">
+          <img
+                src={`http://localhost:5555/toko/${imageToko}`}
+                alt="Preview"
+                className="h-full w-full object-cover"
+              />
+          </div>
         </div>
         <div className="mb-2 sm:mb-3 text-sm sm:text-l">
           <label className="block text-gray-700 text-l mb-2" htmlFor="storeName">

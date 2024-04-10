@@ -1,12 +1,19 @@
-import multer from 'multer';
-import path from 'path';
+import multer from "multer";
+import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
-    cb(null, '../front-end/src/assets/images/produk');
+    cb(null, "../backend/public/assets/images/produk");
   },
   filename: (req, file, cb) => {
-    cb(null, 'toko' + file.fieldname + '_' + Date.now() + path.extname(file.originalname));
+    cb(
+      null,
+      "produk" +
+        file.fieldname +
+        "_" +
+        Date.now() +
+        path.extname(file.originalname)
+    );
   },
 });
 
