@@ -27,6 +27,7 @@ const getTokoAll = asyncHandler(async (req, res) => {
     data: toko,
   });
 });
+
 const getTokoByStatus = asyncHandler(async (req, res) => {
   const toko = await getTokoByStatusService(req.body.status);
 
@@ -65,4 +66,11 @@ const updateStatusToko = asyncHandler(async (req, res) => {
   });
 });
 
-export { createToko, getTokoAll, getTokoById, UpdateToko, updateStatusToko };
+export {
+  createToko,
+  getTokoAll,
+  getTokoByStatus,
+  getTokoById,
+  UpdateToko,
+  updateStatusToko,
+};

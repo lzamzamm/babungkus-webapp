@@ -9,7 +9,6 @@ import "dotenv/config";
 
 const protect = asyncHandler(async (req, res, next) => {
   var token = req.cookies.jwt;
-  console.log(token);
 
   if (!token) {
     res.status(401);

@@ -13,6 +13,7 @@ import cors from "cors";
 
 export const app = express();
 
+app.use(express.static("../backend/public/assets/images"));
 const corsOptions = {
   origin: "http://localhost:5173", // Alamat domain React
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -46,7 +47,7 @@ app.use("/api/laporan", laporan_routes);
 app.use("/api/pesanan", pesanan_routes);
 app.use("/api/user", userRoutes);
 
-app.use(notFound);
+// app.use(notFound);
 app.use(errorHandler);
 
 mongoose.connect(mongoDBURL).then(() => {
