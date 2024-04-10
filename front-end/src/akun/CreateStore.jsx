@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CreateStoreForm = () => {
@@ -16,25 +16,19 @@ const CreateStoreForm = () => {
     });
   };
 
-  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const maxFileSize = 5 * 1024 * 1024;
-    if (file) {
-      if (file.type.substr(0, 5) === "image" && file.size <= maxFileSize) {
-        setImage(file);
-        setStoreImagePreview(URL.createObjectURL(file));
-      } else if (file.size > maxFileSize) {
-        alert("Ukuran gambar melebihi batas maksimal 5MB.");
-        e.target.value = "";
-      } else {
-        alert("File yang diunggah bukan gambar.");
-      }
+    if (file.size > 5242880) {
+      alert("File size must not exceed 5MB");
+      return;
+    }
+    setImage(file);
+    if (file && file.type.substr(0, 5) === "image") {
+      setStoreImagePreview(URL.createObjectURL(file)); // Membuat URL untuk preview
     }
   };
-
   const handleRemoveImagePreview = () => {
-    setStoreImagePreview("");
+    setStoreImagePreview(""); // Menghapus preview gambar
   };
 
   const createHandler = async (e) => {
