@@ -38,9 +38,12 @@ const CreateStoreForm = () => {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
     inputData.user_id = userInfo.user_id;
     console.log(inputData);
+    console.log(image);
     formData.append("data", JSON.stringify(inputData));
     formData.append("file", image);
-    var res = await axios.post("http://localhost:5555/api/toko", formData);
+    var res = await axios.post("http://localhost:5555/api/toko", formData, {
+      withCredentials: true,
+    });
     console.log(res);
   };
 
@@ -59,7 +62,10 @@ const CreateStoreForm = () => {
         className="mb-5 sm:mb-10"
         style={{ height: "2px", backgroundColor: "#000", border: "none" }}
       />
-      <form className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
+      <form
+        onSubmit={createHandler}
+        className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl"
+      >
         <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
           <label
             className="text-l mb-2 block text-gray-700"
@@ -169,7 +175,7 @@ const CreateStoreForm = () => {
         </div>
         <button
           className="focus:shadow-outline rounded bg-primary px-4 py-3 font-bold text-white hover:bg-amber-700 focus:outline-none"
-          onClick={createHandler}
+          type="submit"
         >
           Buka Toko
         </button>
