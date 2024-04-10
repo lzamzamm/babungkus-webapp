@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 
 const StoreUpdateForm = () => {
   const [storeImagePreview, setStoreImagePreview] = useState("");
-  const [imageToko, setImageToko] = useState()
+  const [nama, setNama] = useState('');
+  const [deskripsi, setDeskripsi] = useState('');
+  const [jamOperasional, setJamOperasional] = useState('');
+  const [lokasi, setLokasi] = useState('');
+  const [noTelp, setNoTelp] = useState('');
+  const [imageToko, setImageToko] = useState(''); 
+  
+  const getTokoUser = async () => {
+    try {
+      var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      var id = userInfo.user_id;
+  
+      const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
+      setImageToko(res.data.data.image);
+      setNama(res.data.data.nama);
+      setDeskripsi(res.data.data.deskripsi);
+      setJamOperasional(res.data.data.jamOperasional);
+      setLokasi(res.data.data.lokasi);
+      setNoTelp(res.data.data.noTelp);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getTokoUser();
+  }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -17,25 +42,26 @@ const StoreUpdateForm = () => {
     setStoreImagePreview("");
   };
 
-  const User = () => {
-    const [idUser, setIdUser] = useState("");
-    const [nama_lengkap, setNamaLengkap] = useState("");
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const tokoData = {
+        nama: nama,
+        deskripsi: deskripsi,
+        jam_operasional: jamOperasional,
+        lokasi: lokasi,
+        no_telp: noTelp,
+      };
+    
+      await axios.put(`http://localhost:5555/api/toko/:user_id`, tokoData, { withCredentials: true, credentials: 'include' });
+      alert('Data berhasil diperbarui');
+    } catch (err) {
+      console.log(err);
+      alert('Gagal memperbarui data');
+    }
   };
 
   
-  const getTokoUser = async () => {
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    var id = userInfo.user_id;
-
-    const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' })
-    //console.log(res.data.data[0].image)
-    setImageToko(res.data.data[0].image)
-  }
-
-  useEffect(() => {
-    getTokoUser();
-  }, []);
-
   return (
     <div
       className="mt-10 w-full p-3 text-gray-800 md:mt-2 lg:mt-1"
@@ -48,7 +74,7 @@ const StoreUpdateForm = () => {
         className="mb-5 sm:mb-10"
         style={{ height: "2px", backgroundColor: "#000", border: "none" }}
       />
-      <form className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
+      <form onSubmit={handleFormSubmit}  className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
         <div className="mb-2 text-sm sm:mb-3 sm:text-lg">
           <label
             htmlFor="storeImage"
@@ -100,6 +126,9 @@ const StoreUpdateForm = () => {
             id="NamaToko"
             name="NamaToko"
             type="text"
+            onChange={(e) => setNama(e.target.value)}
+            value={nama}
+            required
           />
         </div>
         <div className="sm:text-l mb-2 text-sm sm:mb-3">
@@ -111,21 +140,10 @@ const StoreUpdateForm = () => {
             id="alamat"
             name="alamat"
             rows="4"
+            onChange={(e) => setLokasi(e.target.value)}
+            value={lokasi}
+            required
           ></textarea>
-        </div>
-        <div className="sm:text-l mb-2 text-sm sm:mb-3">
-          <label
-            className="text-l mb-2 mr-2 block text-gray-700"
-            htmlFor="Email"
-          >
-            Email
-          </label>
-          <input
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-            id="Email"
-            name="Email"
-            type="email"
-          />
         </div>
         <div className="sm:text-l mb-2 text-sm sm:mb-3">
           <label
@@ -139,6 +157,9 @@ const StoreUpdateForm = () => {
             id="Telpon"
             name="Telpon"
             type="tel"
+            onChange={(e) => setNoTelp(e.target.value)}
+            value={noTelp}
+            required
           />
           <p className="text-xs italic text-gray-600">
             Masukkan nomor telpon yang juga merupakan nomor WhatsApp
@@ -153,9 +174,12 @@ const StoreUpdateForm = () => {
           </label>
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-            id="waktuMulai"
-            name="waktuMulai"
+            id="jamOperasional"
+            name="jamOperasional"
             type="text"
+            onChange={(e) => setJamOperasional(e.target.value)}
+            value={jamOperasional}
+            required
           />
         </div>
         <div className="sm:text-l mb-2 text-sm sm:mb-3">
@@ -170,6 +194,9 @@ const StoreUpdateForm = () => {
             id="deskripsi"
             name="deskripsi"
             rows="5"
+            onChange={(e) => setDeskripso(e.target.value)}
+            value={deskripsi}
+            required
           ></textarea>
         </div>
         <button
