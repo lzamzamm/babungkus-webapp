@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const ProductUpdateForm = () => {
-    const { id } = useParams();
+    // const { id } = useParams();
     const [productImagePreview, setProductImagePreview] = useState("");
     const [nama, setNama] = useState('');
     const [deskripsi, setDeskripsi] = useState('');
@@ -14,13 +14,17 @@ const ProductUpdateForm = () => {
     const [stok, setStok] = useState('');
     const [expiredAt, setExpiredAt] = useState('');
     const [image, setImage] = useState(null);
+    const [inputImage, setInputImage] = useState();
+
+    const formData = new FormData();
+    const id = 5;
 
     useEffect(() => {
         const getProduct = async () => {
             try {
                 const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
                 const { data } = response.data;
-                setProductImagePreview(data.image);
+                setImage(data.image);
                 setNama(data.nama);
                 setDeskripsi(data.deskripsi);
                 setHarga(data.harga);
@@ -37,7 +41,7 @@ const ProductUpdateForm = () => {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImage(file);
+            setInputImage(file);
             setProductImagePreview(URL.createObjectURL(file));
         }
     };
@@ -49,24 +53,25 @@ const ProductUpdateForm = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('nama', nama);
-        formData.append('deskripsi', deskripsi);
-        formData.append('harga', harga);
-        formData.append('kategori', kategori);
-        formData.append('stok', stok);
-        formData.append('expired_at', expiredAt);
-        if (image instanceof File) {
-            formData.append('image', image);
+        const produkData = {
+            nama: nama,
+            deskripsi: deskripsi,
+            expired_at: expiredAt,
+            kategori: kategori,
+            harga: harga,
+            stok: stok,
+          };
+        
+        formData.append('data', JSON.stringify(produkData))
+        
+        if (inputImage) {
+            formData.append('file', inputImage)
         }
 
         try {
-            await axios.patch(`http://localhost:5555/api/produk/${id}`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-            });
+            await axios.patch(`http://localhost:5555/api/produk/${id}`, formData, { withCredentials: true, credentials: 'include' });
             alert('Produk berhasil diperbarui');
+            window.location.reload();
         } catch (error) {
             console.error(error);
             alert('Gagal memperbarui produk');

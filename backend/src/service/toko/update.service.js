@@ -7,7 +7,6 @@ import {
 export const updateTokoService = asyncHandler(
   async (res, { id }, body, files) => {
     const toko = JSON.parse(body["data"]);
-    const file = files["file"][0];
 
     const requiredFields = [
       "nama",
@@ -22,8 +21,18 @@ export const updateTokoService = asyncHandler(
       throw new Error("Tidak ada data yang terisi");
     }
 
-    if (file) {
-      toko.image = file.filename;
+    if (files["file"]) {
+      const file = files["file"][0];
+      produkNew.image = file.filename;
+      const result = await findWithId(id);
+      var filePath = `../backend/public/assets/images/toko/${result.image}`;
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error("Error deleting file:", err);
+          return;
+        }
+        console.log("File deleted successfully");
+      });
     }
 
     var result = await findOneAndUpdate(id, toko);
