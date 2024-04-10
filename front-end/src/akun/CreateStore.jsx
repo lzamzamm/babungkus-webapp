@@ -63,7 +63,7 @@ const CreateStoreForm = () => {
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <h2 className="mb-2 text-xl md:text-xl lg:text-2xl">
-        Buka Tokomu Sekarang!
+        Buka Outletmu Sekarang!
       </h2>
       <p className="text-l mb-2">
         Bersama-Sama Selamatkan Bumi dan Atasi Kelaparan

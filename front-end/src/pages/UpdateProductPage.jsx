@@ -73,6 +73,7 @@ const ProductUpdateForm = () => {
         }
     };
 
+    
     return (
         <div style={{ fontFamily: 'Poppins, sans-serif' }}>
             <Navbar />
