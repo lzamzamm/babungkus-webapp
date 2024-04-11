@@ -10,10 +10,10 @@ import CreateStoreForm from "../akun/CreateStore";
 
 function AccountPage() {
   const [isNavVisible, setIsNavVisible] = useState(false);
-  
+
   return (
-    <div>
-      <Navbar />
+    <>
+    <Navbar />
       <div className="flex min-h-screen flex-col bg-gray-100">
         <div className="mt-10 flex flex-1 md:ml-10 lg:ml-12">
           <AccountNavbar
@@ -36,7 +36,8 @@ function AccountPage() {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
+      
   );
 }
 

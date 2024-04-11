@@ -14,7 +14,7 @@ const AccountNavbar = () => {
   //const [hasStore, setHasStore] = useState(false);
 
   return (
-    <div className="relative" style={{ fontFamily: "Poppins, sans-serif" }}>
+    <div className="relative">
       <button
         className={`absolute left-0 top-0 z-30  rounded-md bg-neutral-300 p-2 sm:hidden ${isNavVisible ? "hidden" : "block"}`}
         onClick={() => setIsNavVisible(true)}
@@ -30,9 +30,9 @@ const AccountNavbar = () => {
         >
           <FaTimes className="mt-20 text-2xl" />
         </button>
-        <div className="mt-12 p-10">
-          <h1 className="mb-6 text-2xl">Pengaturan</h1>
-          <ul className="text-xl">
+        <div className="mt-14 sm:mt-12 p-10">
+          <h1 className="mb-6 text-xl sm:text-2xl">Pengaturan</h1>
+          <ul className="text-lg sm:text-xl">
             <li className="mb-5 hover:bg-neutral-300">
               <Link to="profile" className="text-black-500 flex items-center">
                 <FaUserAlt className="mr-2 text-gray-400" />
