@@ -21,13 +21,13 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*"); // Atur origin sesuai dengan aplikasi klien Anda
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Atur origin sesuai dengan aplikasi klien Anda
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
