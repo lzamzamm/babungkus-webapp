@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
+import config from "../../utils/config";
 import { Link } from "react-router-dom";
 
 import Food_1 from "../../../public/assets/images/beranda/food-1.jpg";
@@ -14,7 +15,7 @@ function RiwayatPembelian() {
   const [produk, setProd] = useState({});
 
   const getData = async () => {
-    const response = await axios.get('http://localhost:5555/api/pesanan/current/user', {
+    const response = await axios.get(`${config.BASE_URL}/api/pesanan/current/user`, {
       withCredentials: true,
     }); 
     setData(response.data.data);
@@ -28,7 +29,7 @@ function RiwayatPembelian() {
   // };
 
   const getUser = async () => {
-    const response = await axios.get('http://localhost:5555/api/user', {
+    const response = await axios.get(`${config.BASE_URL}/api/user`, {
       withCredentials: true,
     });
     setUser(response.data.data);

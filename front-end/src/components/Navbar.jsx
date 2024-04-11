@@ -8,8 +8,8 @@ import { FaEyeLowVision } from "react-icons/fa6";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [userRole, setUserRole] = useState(""); // State untuk menyimpan role pengguna
-  const [loading, setLoading] = useState(true); // State untuk menandai apakah data pengguna sedang dimuat
+  const [userRole, setUserRole] = useState(""); 
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
@@ -17,7 +17,6 @@ function Navbar() {
       const parsedUserInfo = JSON.parse(userInfo);
       setUserRole(parsedUserInfo.role);
     }
-    // Set loading menjadi false setelah data pengguna selesai dimuat
     setLoading(false);
   }, []);
 
@@ -33,14 +32,10 @@ function Navbar() {
       visibleForUser: true,
     },
     {
-      label: "Produk Saya",
-      href: "/akun/produk",
-      visibleForUser: true,
-    },
-    {
       label: "Produk",
       href: "/produk",
       visibleForGuest: true,
+      visibleForUser: true,
       subItems: [
         { label: "Makanan", href: "/produk/makanan" },
         { label: "Minuman", href: "/produk/minuman" },
@@ -51,17 +46,19 @@ function Navbar() {
       label: "Toko",
       href: "/toko",
       visibleForGuest: true,
+      visibleForUser: true,
     },
     {
       label: "Tentang Kami",
       href: "/tentangkami",
       visibleForGuest: true,
+      visibleForUser: true,
     },
   ];
 
   const buttonItems = [
-    { label: "Masuk", href: "/masuk" },
-    { label: "Daftar", href: "/daftar" },
+    { label: "Masuk", href: "/masuk", ariaLabel: "Masuk ke akun" },
+    { label: "Daftar", href: "/daftar", ariaLabel: "Daftar akun baru" },
   ];
 
   const handleLogout = () => {
@@ -90,6 +87,7 @@ function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="rounded-lg focus:shadow-outline focus:outline-none md:hidden"
+            aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           >
             {isOpen ? (
               <HiOutlineX className="w-6 h-6" />
@@ -117,6 +115,7 @@ function Navbar() {
                         <button
                           onClick={() => setDropdownOpen((prev) => !prev)}
                           className="focus:shadow-outline mt-2 flex w-full items-center rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none md:mt-0"
+                          aria-label="Menu Produk"
                         >
                           {item.label}
                           <IoIosArrowDown
@@ -129,6 +128,7 @@ function Navbar() {
                         <Link
                           to={item.href}
                           className="mt-2 flex rounded-lg px-4 py-2 hover:text-primary focus:text-primary md:mt-0"
+                          aria-label={`Menu ${item.label}`}
                         >
                           {item.label}
                         </Link>
@@ -142,6 +142,7 @@ function Navbar() {
                                 key={subIndex}
                                 className="focus:shadow-outline block rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none"
                                 to={subItem.href}
+                                aria-label={`Menu ${subItem.label}`}
                               >
                                 {subItem.label}
                               </Link>
@@ -160,6 +161,7 @@ function Navbar() {
                 <button
                   onClick={handleLogout}
                   className="mt-2 w-full flex justify-center rounded-lg bg-primary px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-primary-dark md:mt-0"
+                  aria-label="Keluar"
                 >
                   Keluar
                 </button>
@@ -170,6 +172,7 @@ function Navbar() {
                     key={index}
                     to={item.href}
                     className="mt-2 flex justify-center rounded-lg bg-primary px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-primary-dark md:mt-0"
+                    aria-label={item.ariaLabel}
                   >
                     {item.label}
                   </Link>
