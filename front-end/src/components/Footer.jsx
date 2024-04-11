@@ -41,13 +41,13 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex w-full flex-col items-center gap-1 text-center lg:w-1/3 lg:items-start lg:pl-12 lg:pt-10 lg:text-left">
-            <h4 className="text-md font-semibold">Punya pertanyaan?</h4>
+            <p className="text-md font-semibold">Punya pertanyaan?</p>
             <p>Hubungi kami melalui:</p>
             <a
               href="mailto:kontak@babungkus.com"
               className="inline-flex items-center text-primary hover:text-green-500"
             >
-              <FaEnvelope className="mr-2 py-2" />
+              <FaEnvelope className="mr-2 py-2 min-h-[48px]" />
               kontak@babungkus.com
             </a>
             <a
@@ -58,13 +58,13 @@ export default function Footer() {
               +6281510972178
             </a>
             <div className="flex justify-center gap-4 lg:justify-start">
-              <a href="/" className="text-2xl">
+              <a href="/" aria-label="link facebook" className="text-2xl min-h-[48px]">
                 <FaFacebook className="text-[#3b5998]" />
               </a>
-              <a href="/" className="text-2xl">
+              <a href="/" aria-label="link instagram" className="text-2xl min-h-[48px]">
                 <FaInstagram className="text-[#E4405F]" />
               </a>
-              <a href="/" className="text-2xl">
+              <a href="/" aria-label="link twitter" className="text-2xl min-h-[48px]">
                 <FaTwitter className="text-[#1DA1F2]" />
               </a>
             </div>

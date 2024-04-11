@@ -91,7 +91,7 @@ function BerandaPage() {
                   <p className="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all">
                     Makanan
                   </p>
-                  <img className="h-full w-full object-cover" src={Food_1} />
+                  <img className="h-full w-full object-cover" src={Food_1} alt="Gambar sisa makanan" />
                 </div>
               </div>
             </div>

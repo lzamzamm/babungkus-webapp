@@ -75,7 +75,7 @@ function Navbar() {
     <div className="fixed z-50 w-full bg-white font-poppins shadow-mini-xlx md:text-lg">
       <div className="mx-auto flex flex-col px-[5%] md:flex-row md:items-center md:justify-between">
         <div className="flex flex-row items-center justify-between py-4">
-          <div className="flex w-[50px] items-center justify-center">
+          <div className="flex w-[50px] h-[50px]  items-center justify-center">
             <Link to='/'>
               <img
                 src={LogoBabungkus}
