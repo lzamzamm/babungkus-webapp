@@ -4,6 +4,7 @@ import { GoShareAndroid } from "react-icons/go";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import config from "../utils/config";
 
 import Food_2 from "../assets/images/beranda/food-2.jpg";
 
@@ -12,7 +13,7 @@ function DetailProductPage() {
 
   const getProduk = async () => {
     const id = 1;
-    const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
+    const response = await axios.get(`${config.BASE_URL}/api/produk/${id}`);
     setData(response.data.data);
     console.log(response.data.data);
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import PrivateRoute from "../components/privateRoute";
 import BerandaPage from "../pages/BerandaPage";
 import LoginPage from "../pages/LoginPage";
@@ -14,6 +14,7 @@ import ProdukPage from "../pages/ProdukPage";
 import LaporPage from "../pages/LaporPage";
 import DashboardPage from "../pages/Dashboard";
 import DetailTokoPage from "../pages/DetailTokoPage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/" element={<BerandaPage />} />
         <Route path="/masuk" element={<LoginPage />} />
         <Route path="/daftar" element={<RegisPage />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" />} />
         <Route element={<PrivateRoute />}>
           <Route path="/akun/*" element={<AccountPage />} />
           <Route path="/lapor" element={<LaporPage />} />

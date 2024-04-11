@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import config from "../utils/config";
 import CardProduk from "../components/card/CardProduk";
 import { IoIosSearch } from "react-icons/io";
 import { useParams } from "react-router-dom";
@@ -14,7 +15,7 @@ function ProdukPage() {
   const [showMoreCount, setShowMoreCount] = useState(6);
 
   useEffect(() => {
-    fetch("http://localhost:5555/api/produk/")
+    fetch(`${config.BASE_URL}/api/produk/`)
       .then((response) => response.json())
       .then((data) => {
         setProdukData(data.data);

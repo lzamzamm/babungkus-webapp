@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import config from '../utils/config';
 import axios from 'axios';
 
 const PersonalForm = () => {
@@ -11,7 +12,7 @@ const PersonalForm = () => {
 
   const getUserById = async () => {
     try {
-      const response = await axios.get(`http://localhost:5555/api/user`, { withCredentials: true, credentials: 'include' });
+      const response = await axios.get(`${config.BASE_URL}/api/user`, { withCredentials: true, credentials: 'include' });
       setNamaLengkap(response.data.data.nama_lengkap);
       setUsername(response.data.data.username);
       setEmail(response.data.data.email);
@@ -36,7 +37,7 @@ const PersonalForm = () => {
         no_telp: no_telp,
         password: password,
       };
-      await axios.patch(`http://localhost:5555/api/user/update`, userData, { withCredentials: true, credentials: 'include' });
+      await axios.patch(`${config.BASE_URL}/api/user/update`, userData, { withCredentials: true, credentials: 'include' });
       alert('Data berhasil diperbarui');
     } catch (err) {
       console.log(err);

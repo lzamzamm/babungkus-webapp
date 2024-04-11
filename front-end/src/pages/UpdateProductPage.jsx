@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../utils/config";
 import { useParams } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -22,7 +23,7 @@ const ProductUpdateForm = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:5555/api/produk/${id}`);
+                const response = await axios.get(`${config.BASE_URL}/api/produk/${id}`);
                 const { data } = response.data;
                 setImage(data.image);
                 setNama(data.nama);

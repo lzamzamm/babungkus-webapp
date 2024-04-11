@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../utils/config";
 import axios from "axios";
 
 const StoreUpdateForm = () => {
@@ -18,7 +19,7 @@ const StoreUpdateForm = () => {
   const getTokoUser = async () => {
     try {
   
-      const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
+      const res = await axios.get(`${config.BASE_URL}/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
       setImageToko(res.data.data[0].image);
       setNama(res.data.data[0].nama);
       setDeskripsi(res.data.data[0].deskripsi);
@@ -66,7 +67,7 @@ const StoreUpdateForm = () => {
       formData.append("file", imageData);
       formData.get("file")
     
-      await axios.put(`http://localhost:5555/api/toko/${id}`, formData, { withCredentials: true, credentials: 'include' });
+      await axios.put(`${config.BASE_URL}/api/toko/${id}`, formData, { withCredentials: true, credentials: 'include' });
       window.location.reload();
       alert('Data berhasil diperbarui');
     } catch (err) {
@@ -122,7 +123,7 @@ const StoreUpdateForm = () => {
           )}
           <div className="relative mt-4 h-32 w-32">
           <img
-                src={`http://localhost:5555/toko/${imageToko}`}
+                src={`${config.BASE_URL}/toko/${imageToko}`}
                 alt="Preview"
                 className="h-full w-full object-cover"
               />
@@ -208,7 +209,7 @@ const StoreUpdateForm = () => {
             id="deskripsi"
             name="deskripsi"
             rows="5"
-            onChange={(e) => setDeskripso(e.target.value)}
+            onChange={(e) => setDeskripsi(e.target.value)}
             value={deskripsi}
             required
           ></textarea>

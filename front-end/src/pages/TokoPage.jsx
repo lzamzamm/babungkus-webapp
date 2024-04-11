@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import config from "../utils/config";
 import CardToko from "../components/card/CardToko";
 import { IoIosSearch } from "react-icons/io";
 
@@ -12,7 +13,7 @@ function TokoPage() {
   const [showMoreCount, setShowMoreCount] = useState(6);
 
   useEffect(() => {
-    fetch("http://localhost:5555/api/toko/")
+    fetch(`${config.BASE_URL}/api/toko/`)
       .then((response) => response.json())
       .then((data) => {
         // Filter toko yang memiliki status "Active"

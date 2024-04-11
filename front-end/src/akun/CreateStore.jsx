@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../utils/config";
 import axios from "axios";
 
 const CreateStoreForm = () => {
@@ -38,7 +39,7 @@ const CreateStoreForm = () => {
       inputData.user_id = userInfo.user_id;
       formData.append("data", JSON.stringify(inputData));
       formData.append("file", image);
-      var response = await axios.post("http://localhost:5555/api/toko", formData,);
+      var response = await axios.post(`${config.BASE_URL}/api/toko`, formData,);
       if (response.data.status === "success") {
         alert(response.data.message); 
       } else {
