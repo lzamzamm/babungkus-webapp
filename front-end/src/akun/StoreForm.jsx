@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../utils/config";
 import axios from "axios";
 
 const StoreUpdateForm = () => {
@@ -18,7 +19,7 @@ const StoreUpdateForm = () => {
   const getTokoUser = async () => {
     try {
   
-      const res = await axios.get(`http://localhost:5555/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
+      const res = await axios.get(`${config.BASE_URL}/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
       setImageToko(res.data.data[0].image);
       setNama(res.data.data[0].nama);
       setDeskripsi(res.data.data[0].deskripsi);

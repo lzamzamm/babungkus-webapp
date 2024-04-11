@@ -5,7 +5,6 @@ import {
   FaUserAlt,
   FaStore,
   FaPlusCircle,
-  FaListAlt,
   FaBuilding,
   FaTimes,
 } from "react-icons/fa";

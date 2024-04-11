@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../utils/config";
 
 // Contoh data laporan, di aplikasi nyata ini bisa berasal dari API
 const initialReports = [
@@ -24,7 +25,7 @@ const ReportPage = () => {
 
   const getReport = async () => {
     const id = 1;
-    const response = await axios.get(`http://localhost:5555/api/laporan/${id}`);
+    const response = await axios.get(`${config.BASE_URL}/api/laporan/${id}`);
     setReport(response.data.data);
     console.log(response.data.data);
   };

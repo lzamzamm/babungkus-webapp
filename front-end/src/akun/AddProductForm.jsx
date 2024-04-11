@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import config from "../utils/config";
 
 const AddProductForm = () => {
   const [storeImagePreview, setStoreImagePreview] = useState("");
@@ -40,7 +41,7 @@ const AddProductForm = () => {
   const getToko = async () => {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
     var response = await axios.get(
-      `http://localhost:5555/api/toko/${userInfo.user_id}`,
+      `${config.BASE_URL}/api/toko/${userInfo.user_id}`,
       { withCredentials: true },
     );
 
@@ -54,7 +55,7 @@ const AddProductForm = () => {
       inputData.toko_id = tokoId;
       formData.append("data", JSON.stringify(inputData));
       formData.append("file", image);
-      var response = await axios.post("http://localhost:5555/api/produk", formData, {
+      var response = await axios.post(`${config.BASE_URL}/api/produk`, formData, {
         withCredentials: true,
         credentials: "include",
       });

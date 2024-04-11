@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import config from "../utils/config";
 import { IoIosArrowForward } from "react-icons/io";
 import CardProduk from "../components/card/CardProduk";
 
@@ -15,7 +16,7 @@ function DetailTokoPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5555/api/toko/${id}`)
+    fetch(`${config.BASE_URL}/api/toko/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Gagal mengambil data dari server");

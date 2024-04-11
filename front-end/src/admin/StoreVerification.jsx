@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../utils/config';
 
 const StoreVerification = () => {
   const [permintaanToko, setPermintaanToko] = useState([]);
 
   const getPermintaanToko = async () => {
     try {
-      const res = await axios.get(`http://localhost:5555/api/toko`, { withCredentials: true, credentials: 'include' });
+      const res = await axios.get(`${config.BASE_URL}/api/toko`, { withCredentials: true, credentials: 'include' });
       setPermintaanToko(res.data.data); // Pastikan struktur respons sesuai dengan yang diharapkan
     } catch (err) {
       console.log(err);

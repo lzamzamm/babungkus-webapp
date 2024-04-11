@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../utils/config";
 import Navbar from "../components/Navbar";
 
 function ContactPage() {
@@ -41,7 +42,7 @@ function ContactPage() {
 
   const getTokoId = async (nama) => {
     var response = await axios.get(
-      `http://localhost:5555/api/toko/byname/${nama}`,
+      `${config.BASE_URL}/api/toko/byname/${nama}`,
       {
         withCredentials: true,
       },
@@ -59,7 +60,7 @@ function ContactPage() {
     console.log(inputData);
     formData.append("data", JSON.stringify(inputData));
     formData.append("file", image);
-    var res = await axios.post("http://localhost:5555/api/laporan", formData, {
+    var res = await axios.post(`${config.BASE_URL}/api/laporan`, formData, {
       withCredentials: true,
       credentials: "include",
     });

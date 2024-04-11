@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import config from "../utils/config";
 import LogoDaftar from "/assets/images/daftar.png";
 
 export default function RegisPage() {
@@ -40,7 +41,7 @@ export default function RegisPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5555/api/user/register",
+        `${config.BASE_URL}/api/user/register`,
         userData,
       );
       console.log("Register berhasil", response.data);

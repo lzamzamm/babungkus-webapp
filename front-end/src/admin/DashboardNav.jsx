@@ -14,7 +14,7 @@ const DashboardNavbar = () => {
   return (
     <div className="relative" style={{ fontFamily: "Poppins, sans-serif" }}>
       <button
-        className={`absolute left-0 top-0 z-30  rounded-md bg-neutral-300 p-2 p-2 sm:hidden ${isNavVisible ? "hidden" : "block"}`}
+        className={`absolute left-0 top-0 z-30  rounded-md bg-neutral-300 p-2 sm:hidden ${isNavVisible ? "hidden" : "block"}`}
         onClick={() => setIsNavVisible(true)}
       >
         <FaArrowRight className=" mt-10 text-2xl" />

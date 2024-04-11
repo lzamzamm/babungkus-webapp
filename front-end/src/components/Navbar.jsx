@@ -45,7 +45,6 @@ function Navbar() {
     window.location.href = "/";
   };
 
-  // Jika data pengguna masih dimuat, tampilkan pesan loading
   if (loading) {
     return <div></div>;
   }
