@@ -33,14 +33,10 @@ function Navbar() {
       visibleForUser: true,
     },
     {
-      label: "Produk Saya",
-      href: "/akun/produk",
-      visibleForUser: true,
-    },
-    {
       label: "Produk",
       href: "/produk",
       visibleForGuest: true,
+      visibleForUser: true,
       subItems: [
         { label: "Makanan", href: "/produk/makanan" },
         { label: "Minuman", href: "/produk/minuman" },
@@ -51,11 +47,13 @@ function Navbar() {
       label: "Toko",
       href: "/toko",
       visibleForGuest: true,
+      visibleForUser: true,
     },
     {
       label: "Tentang Kami",
       href: "/tentangkami",
       visibleForGuest: true,
+      visibleForUser: true,
     },
   ];
 
