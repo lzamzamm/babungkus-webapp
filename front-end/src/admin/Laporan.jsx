@@ -68,13 +68,10 @@ const ReportPage = () => {
           {report.map((report) => (
             <tr key={report.id}>
               <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                {report.storeName}
               </td>
               <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                {report.reason}
               </td>
               <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                {report.dateReported}
               </td>
               <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                 <button

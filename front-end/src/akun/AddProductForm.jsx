@@ -52,19 +52,18 @@ const AddProductForm = () => {
     try {
       // var userInfo = JSON.parse(localStorage.getItem("userInfo"));
       inputData.toko_id = tokoId;
-      console.log(inputData);
       formData.append("data", JSON.stringify(inputData));
       formData.append("file", image);
-      var res = await axios.post("http://localhost:5555/api/produk", formData, {
+      var response = await axios.post("http://localhost:5555/api/produk", formData, {
         withCredentials: true,
         credentials: "include",
       });
-      console.log(res);
       if (response.data.status === "success") {
         alert(response.data.message);
       } else {
         alert(response.data.message);
       }
+      window.location.reload();
     } catch (error) {
       if (error.response) {
         if (error.response.data.status === "fail") {
@@ -194,6 +193,7 @@ const AddProductForm = () => {
             name="kategori"
             onChange={handleInputChange}
           >
+            <option value="">-- Jenis --</option>
             <option value="Makanan">Makanan</option>
             <option value="Minuman">Minuman</option>
             <option value="Pakan">Pakan</option>

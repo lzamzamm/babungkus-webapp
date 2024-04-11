@@ -9,16 +9,16 @@ const ActionPage = () => {
       <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
         <p>
-          <strong>Nama Toko:</strong> {report.storeName}
+          <strong>Nama Toko:</strong> 
         </p>
         <p>
-          <strong>Alasan Laporan:</strong> {report.reason}
+          <strong>Alasan Laporan:</strong>
         </p>
         <p>
-          <strong>Deskripsi:</strong> {report.description}
+          <strong>Deskripsi:</strong> 
         </p>
         <p>
-          <strong>Tanggal Laporan:</strong> {report.dateReported}
+          <strong>Tanggal Laporan:</strong> 
         </p>
       </div>
       <hr className="mb-6" />

@@ -38,12 +38,13 @@ const CreateStoreForm = () => {
       inputData.user_id = userInfo.user_id;
       formData.append("data", JSON.stringify(inputData));
       formData.append("file", image);
-      var res = await axios.post("http://localhost:5555/api/toko", formData,);
+      var response = await axios.post("http://localhost:5555/api/toko", formData,);
       if (response.data.status === "success") {
         alert(response.data.message); 
       } else {
         alert(response.data.message);
       }
+      window.location.reload();
     } catch (error) {
       if (error.response) {
         if (error.response.data.status === "fail") {
@@ -63,7 +64,7 @@ const CreateStoreForm = () => {
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <h2 className="mb-2 text-xl md:text-xl lg:text-2xl">
-        Buka Tokomu Sekarang!
+        Buka Outletmu Sekarang!
       </h2>
       <p className="text-l mb-2">
         Bersama-Sama Selamatkan Bumi dan Atasi Kelaparan

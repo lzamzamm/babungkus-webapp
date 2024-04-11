@@ -26,7 +26,6 @@ function DetailTokoPage() {
         setToko(data.data[0]); // Ambil objek pertama dari array data
         setLoading(false);
 
-        // Cek apakah file gambar ada di path yang diberikan
         const img = new Image();
         img.onload = () => {
           setImageExists(true);
@@ -34,7 +33,7 @@ function DetailTokoPage() {
         img.onerror = () => {
           setImageExists(false);
         };
-        img.src = `../../public/assets/images/toko/${data.data[0].image}`;
+        img.src = `../assets/images/toko/${data.data[0].image}`;
       })
       .catch((error) => {
         console.error("Error fetching toko data:", error);
@@ -77,7 +76,7 @@ function DetailTokoPage() {
         {imageExists ? (
           <img
             className="h-[350px] w-full rounded-lg border border-gray-300 object-cover"
-            src={`../../public/assets/images/toko/${toko.image}`}
+            src={`../assets/images/toko/${toko.image}`}
             alt={`Gambar ${toko.nama}`}
           />
         ) : (
@@ -97,9 +96,9 @@ function DetailTokoPage() {
         </span>
         <h2>Deskripsi :</h2>
         <p>{toko.deskripsi}</p>
-        <div class="inline-flex w-full items-center justify-center">
-          <hr class="my-8 h-px w-full border-0 bg-gray-400"></hr>
-          <h2 class="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-lg font-medium text-gray-900 md:text-xl">
+        <div className="inline-flex w-full items-center justify-center">
+          <hr className="my-8 h-px w-full border-0 bg-gray-400"></hr>
+          <h2 className="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-lg font-medium text-gray-900 md:text-xl">
             Daftar Produk
           </h2>
         </div>

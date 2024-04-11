@@ -4,6 +4,7 @@ import BerandaPage from "../pages/BerandaPage";
 import LoginPage from "../pages/LoginPage";
 import RegisPage from "../pages/RegisPage";
 import AccountPage from "../pages/AccountPage";
+import UpdateProductPage from "../pages/UpdateProductPage";
 import DetailProductPage from "../pages/DetailProductPage";
 import RiwayatPembelianPage from "../pages/riwayat-page/RiwayatPembelian";
 import RiwayatPenjualanPage from "../pages/riwayat-page/RiwayatPenjualan";
@@ -29,7 +30,8 @@ function App() {
         <Route path="/produk" element={<ProdukPage />} />
         <Route path="/produk/:kategori" element={<ProdukPage />} />
         <Route path="/toko/:id" element={<DetailTokoPage />} />
-        <Route path="/dashboard/*" Component={DashboardPage} />
+        <Route path="/admin/dashboard/*" Component={DashboardPage} />
+        <Route path="/edit-produk/" element={<UpdateProductPage />} />
       </Routes>
     </div>
   );
