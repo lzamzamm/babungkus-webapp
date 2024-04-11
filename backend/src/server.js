@@ -15,7 +15,7 @@ const app = express();
 
 app.use(express.static("../backend/public/assets/images"));
 const corsOptions = {
-  origin: "http://localhost:5173", // Alamat domain React
+  origin: "*", // Alamat domain React
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Mengizinkan pengiriman cookies
   optionsSuccessStatus: 204,
