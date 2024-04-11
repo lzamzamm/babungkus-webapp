@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../../utils/config";
 import { Link } from "react-router-dom"; // Impor Link dari react-router-dom
 
 function CardProduk({ data }) {
@@ -7,7 +8,7 @@ function CardProduk({ data }) {
   const [imageExists, setImageExists] = useState(true); // State untuk menandai apakah file gambar ada atau tidak
 
   useEffect(() => {
-    fetch(`http://localhost:5555/api/toko/${toko_id}`)
+    fetch(`${config.BASE_URL}/api/toko/${toko_id}`)
       .then((response) => response.json())
       .then((data) => {
         setTokoNama(data.data[0].nama);
@@ -18,7 +19,7 @@ function CardProduk({ data }) {
         img.onerror = () => {
           setImageExists(false);
         };
-        img.src = `../assets/images/produk/${data.data[0].info_produk[0].image}`;
+        img.src = `${config.IMAGE_BASE_URL}/produk/${data.data[0].info_produk[0].image}`;
     })
       .catch((error) => console.error("Error fetching toko data:", error));
   }, [toko_id]);
@@ -30,7 +31,7 @@ function CardProduk({ data }) {
           <img
             className="h-[180px] w-full bg-gray-300 object-cover brightness-75 filter md:w-[400px]"
             src={`../assets/images/produk/${image}`}
-            alt={`Gambar ${image}`}
+            alt={`Gambar ${nama}`}
           />
         ) : (
           <img

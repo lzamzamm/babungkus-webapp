@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import config from "../../utils/config";
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -13,7 +14,7 @@ function CardToko({ data }) {
     img.onerror = () => {
       setImageExists(false);
     };
-    img.src = `./src/assets/images/toko/${image}`;
+    img.src = `${config.IMAGE_BASE_URL}/toko/${image}`;
   }, [image]);
 
   return (
