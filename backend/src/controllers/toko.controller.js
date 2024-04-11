@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import Toko from '../models/toko.model.js';
 import { createTokoService } from '../service/toko/create.service.js';
-import { getTokoAllService, getTokoIdService, getTokoByStatusService } from '../service/toko/get.service.js';
+import { getTokoAllService, getTokoIdService, getTokoByStatusService, getTokoByNameService } from '../service/toko/get.service.js';
 import { updateTokoService } from '../service/toko/update.service.js';
 import { updateStatusTokoService } from '../service/toko/update.service.js';
 
@@ -42,6 +42,17 @@ const getTokoById = asyncHandler(async (req, res) => {
   });
 });
 
+const getTokoByName = asyncHandler(async (req, res) => {
+  const { nama } = req.params;
+  console.log(nama);
+  const toko = await getTokoByNameService(nama);
+
+  res.status(200).json({
+    status: 'Success',
+    data: toko,
+  });
+});
+
 const UpdateToko = asyncHandler(async (req, res) => {
   const toko = await updateTokoService(res, req.params, req.body, req.files);
 
@@ -62,4 +73,4 @@ const updateStatusToko = asyncHandler(async (req, res) => {
   });
 });
 
-export { createToko, getTokoAll, getTokoByStatus, getTokoById, UpdateToko, updateStatusToko };
+export { createToko, getTokoAll, getTokoByStatus, getTokoById, getTokoByName, UpdateToko, updateStatusToko };
