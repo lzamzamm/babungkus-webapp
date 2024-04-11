@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function LaporPage() {
     const adminNumber = "628123456789";
@@ -9,7 +10,7 @@ function LaporPage() {
     return (
         <div style={{ fontFamily: 'Poppins, sans-serif' }}>
             <Navbar />
-            <div className="flex items-center justify-center p-8 hp:pt-[25%] lg:pt-[10%]">
+            <div className="flex items-center justify-center p-8 hp:pt-[30%] lg:pt-[10%]">
                 <div className="w-full rounded border-[0.1px] border-solid border-black p-4 lg:w-[40vw] space-y-4">
                     <div className="border-b-[0.1vmax] border-[#787878] pb-[1vmax] font-semibold lg:text=2xl md:text-xl text-base">
                         Ada Masalah Produk dan Toko? Laporkan Melalui WhatsApp Admin!
@@ -51,10 +52,11 @@ function LaporPage() {
                                 disabled
                             ></textarea>
                         </div>
-                        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-white font-semibold p-8 py-2 px-4 rounded hover:bg-red-700 transition duration-300">Laporkan</a>
+                        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="p-8 px-4 py-2 font-semibold text-white transition duration-300 rounded bg-primary hover:bg-red-700">Laporkan</a>
                     </form>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

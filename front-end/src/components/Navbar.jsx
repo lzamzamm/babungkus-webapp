@@ -32,20 +32,22 @@ function Navbar() {
       <div className="mx-auto flex flex-col px-[5%] md:flex-row md:items-center md:justify-between">
         <div className="flex flex-row items-center justify-between py-4">
           <div className="flex w-[50px] items-center justify-center">
-            <img
-              src={LogoBabungkus}
-              className="h-full w-full"
-              alt="Logo Babungkus"
-            />
+            <Link to='/'>
+              <img
+                src={LogoBabungkus}
+                className="w-full h-full"
+                alt="Logo Babungkus"
+              />
+            </Link>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="focus:shadow-outline rounded-lg focus:outline-none md:hidden"
+            className="rounded-lg focus:shadow-outline focus:outline-none md:hidden"
           >
             {isOpen ? (
-              <HiOutlineX className="h-6 w-6" />
+              <HiOutlineX className="w-6 h-6" />
             ) : (
-              <HiOutlineMenuAlt3 className="h-6 w-6" />
+              <HiOutlineMenuAlt3 className="w-6 h-6" />
             )}
           </button>
         </div>
@@ -59,7 +61,7 @@ function Navbar() {
                   {item.label === "Produk" ? (
                     <button
                       onClick={() => setDropdownOpen((prev) => !prev)}
-                      className="focus:shadow-outline mt-2 flex w-full items-center rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none md:mt-0"
+                      className="flex items-center w-full px-4 py-2 mt-2 rounded-lg focus:shadow-outline hover:text-primary focus:text-primary focus:outline-none md:mt-0"
                     >
                       {item.label}
                       <IoIosArrowDown
@@ -69,7 +71,7 @@ function Navbar() {
                   ) : (
                     <Link
                       to={item.href}
-                      className="mt-2 flex rounded-lg px-4 py-2 hover:text-primary focus:text-primary md:mt-0"
+                      className="flex px-4 py-2 mt-2 rounded-lg hover:text-primary focus:text-primary md:mt-0"
                     >
                       {item.label}
                     </Link>
@@ -77,11 +79,11 @@ function Navbar() {
                   {dropdownOpen &&
                     item.subItems &&
                     item.subItems.length > 0 && (
-                      <div className="dropdown-menu right-0 z-10 mt-0 w-full rounded-lg bg-white px-2 py-2 text-base md:absolute md:mt-2 md:border">
+                      <div className="right-0 z-10 w-full px-2 py-2 mt-0 text-base bg-white rounded-lg dropdown-menu md:absolute md:mt-2 md:border">
                         {item.subItems.map((subItem, subIndex) => (
                           <a
                             key={subIndex}
-                            className="focus:shadow-outline block rounded-lg px-4 py-2 hover:text-primary focus:text-primary focus:outline-none"
+                            className="block px-4 py-2 rounded-lg focus:shadow-outline hover:text-primary focus:text-primary focus:outline-none"
                             href={subItem.href}
                           >
                             {subItem.label}
@@ -92,12 +94,12 @@ function Navbar() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 gap-2 md:mt-0 md:flex md:items-center">
+            <div className="gap-2 mt-4 md:mt-0 md:flex md:items-center">
               {buttonItems.map((item, index) => (
                 <Link
                   key={index}
                   to={item.href}
-                  className="mt-2  flex justify-center rounded-lg bg-primary px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-primary-dark md:mt-0"
+                  className="flex justify-center px-4 py-2 mt-2 text-white transition duration-300 ease-in-out rounded-lg bg-primary hover:bg-primary-dark md:mt-0"
                 >
                   {item.label}
                 </Link>
