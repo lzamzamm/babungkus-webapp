@@ -6,7 +6,6 @@ import DashboardNavbar from "../admin/DashboardNav";
 import ReportPage from "../admin/Laporan";
 import ActionPage from "../admin/Tindakan";
 import StoreVerification from "../admin/StoreVerification";
-import DetailVerification from "../admin/DetailVerification";
 
 function DashboardPage() {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -31,9 +30,7 @@ function DashboardPage() {
                 <Route path="/" element={<ReportPage />} />
                 <Route path="laporan" element={<ReportPage />} />
                 <Route path="tindakan" element={<ActionPage />} />
-                <Route path="verifikasi" element={<StoreVerification />} />
-                <Route path="detailVerif" element={<DetailVerification />} />
-              
+                <Route path="verifikasi" element={<StoreVerification />} />            
               </Routes>
             </div>
           </div>
