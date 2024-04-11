@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "../components/privateRoute";
 import BerandaPage from "../pages/BerandaPage";
 import LoginPage from "../pages/LoginPage";
 import RegisPage from "../pages/RegisPage";
@@ -21,17 +22,19 @@ function App() {
         <Route path="/" element={<BerandaPage />} />
         <Route path="/masuk" element={<LoginPage />} />
         <Route path="/daftar" element={<RegisPage />} />
-        <Route path="/lapor" element={<LaporPage />} />
-        <Route path="/akun/*" element={<AccountPage />} />
-        <Route path="/detail-product" element={<DetailProductPage />} />
-        <Route path="/riwayat-pembelian" element={<RiwayatPembelianPage />} />
-        <Route path="/riwayat-penjualan" Component={RiwayatPenjualanPage} />
-        <Route path="/toko" element={<TokoPage />} />
-        <Route path="/produk" element={<ProdukPage />} />
-        <Route path="/produk/:kategori" element={<ProdukPage />} />
-        <Route path="/toko/:id" element={<DetailTokoPage />} />
-        <Route path="/admin/dashboard/*" Component={DashboardPage} />
-        <Route path="/edit-produk/" element={<UpdateProductPage />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/akun/*" element={<AccountPage />} />
+          <Route path="/lapor" element={<LaporPage />} />
+          <Route path="/detail-product" element={<DetailProductPage />} />
+          <Route path="/riwayat-pembelian" element={<RiwayatPembelianPage />} />
+          <Route path="/riwayat-penjualan" element={<RiwayatPenjualanPage />} />
+          <Route path="/toko" element={<TokoPage />} />
+          <Route path="/produk" element={<ProdukPage />} />
+          <Route path="/produk/:kategori" element={<ProdukPage />} />
+          <Route path="/toko/:id" element={<DetailTokoPage />} />
+          <Route path="/admin/dashboard/*" element={<DashboardPage />} />
+          <Route path="/edit-produk" element={<UpdateProductPage />} />
+        </Route>
       </Routes>
     </div>
   );
