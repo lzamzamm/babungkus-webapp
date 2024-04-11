@@ -19,7 +19,7 @@ function Navbar() {
       ],
     },
     { label: "Toko", href: "/toko" },
-    { label: "Tentang Kami", href: "/tentangkami" },
+    { label: "Lapor", href: "/lapor" },
   ];
 
   const buttonItems = [

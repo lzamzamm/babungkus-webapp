@@ -10,7 +10,7 @@ import RiwayatPembelianPage from "../pages/riwayat-page/RiwayatPembelian";
 import RiwayatPenjualanPage from "../pages/riwayat-page/RiwayatPenjualan";
 import TokoPage from "../pages/TokoPage";
 import ProdukPage from "../pages/ProdukPage";
-import ContactPage from "../pages/ContactPage";
+import LaporPage from "../pages/LaporPage";
 import DashboardPage from "../pages/Dashboard";
 import DetailTokoPage from "../pages/DetailTokoPage";
 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<BerandaPage />} />
         <Route path="/masuk" element={<LoginPage />} />
         <Route path="/daftar" element={<RegisPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/lapor" element={<LaporPage />} />
         <Route path="/akun/*" element={<AccountPage />} />
         <Route path="/detail-product" element={<DetailProductPage />} />
         <Route path="/riwayat-pembelian" element={<RiwayatPembelianPage />} />
