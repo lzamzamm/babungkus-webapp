@@ -4,8 +4,11 @@ import { getLaporanAllService, getLaporanByIdService } from '../service/laporan/
 import { deleteLaporanService } from '../service/laporan/delete.service.js';
 
 const createLaporan = asyncHandler(async (req, res) => {
-  const { user_id, toko_id, judul, alasan, image } = req.body;
-
+  const { user_id, toko_id, judul, alasan } = req.body;
+  console.log('userId', user_id);
+  console.log('tokoId', toko_id);
+  console.log('judul', judul);
+  console.log('alasan', alasan);
   if (!user_id || !toko_id || !judul || !alasan) {
     res.status(400);
     throw new Error('isi semua data');

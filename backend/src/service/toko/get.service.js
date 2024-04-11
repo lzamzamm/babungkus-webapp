@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import { find, findWithId, findWithStatus, aggregate } from '../../repository/toko.repository.js';
+import { find, findWithId, findWithStatus, aggregate, findOneByName } from '../../repository/toko.repository.js';
 
 export const getTokoAllService = asyncHandler(async () => {
   const result = await find();
@@ -9,6 +9,12 @@ export const getTokoAllService = asyncHandler(async () => {
 
 export const getTokoByStatusService = asyncHandler(async (data) => {
   const result = await findWithStatus(data.status);
+
+  return result;
+});
+
+export const getTokoByNameService = asyncHandler(async (nama) => {
+  const result = await findOneByName(nama);
 
   return result;
 });
