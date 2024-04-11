@@ -136,7 +136,7 @@ const StoreUpdateForm = () => {
             Nama Toko
           </label>
           <input
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            className="focus:shadow-outline w-full text-lg appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="NamaToko"
             name="NamaToko"
             type="text"
@@ -150,7 +150,7 @@ const StoreUpdateForm = () => {
             Alamat
           </label>
           <textarea
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            className="focus:shadow-outline text-lg w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="alamat"
             name="alamat"
             rows="4"
@@ -167,7 +167,7 @@ const StoreUpdateForm = () => {
             Telpon
           </label>
           <input
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            className="focus:shadow-outline text-lg w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="Telpon"
             name="Telpon"
             type="tel"
@@ -187,7 +187,7 @@ const StoreUpdateForm = () => {
             Jam Operasional
           </label>
           <input
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            className="focus:shadow-outline text-lg w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="jamOperasional"
             name="jamOperasional"
             type="text"
@@ -204,7 +204,7 @@ const StoreUpdateForm = () => {
             Deskripsi Toko
           </label>
           <textarea
-            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            className="focus:shadow-outline text-lg w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="deskripsi"
             name="deskripsi"
             rows="5"
