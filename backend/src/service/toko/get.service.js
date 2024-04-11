@@ -1,10 +1,5 @@
-import asyncHandler from "express-async-handler";
-import {
-  find,
-  findWithId,
-  findWithStatus,
-  aggregate,
-} from "../../repository/toko.repository.js";
+import asyncHandler from 'express-async-handler';
+import { find, findWithId, findWithStatus, aggregate } from '../../repository/toko.repository.js';
 
 export const getTokoAllService = asyncHandler(async () => {
   const result = await find();
@@ -22,15 +17,15 @@ export const getTokoIdService = asyncHandler(async (res, { id }) => {
   const pipeline = [
     {
       $match: {
-        toko_id: parseInt(id),
+        user_id: parseInt(id),
       },
     },
     {
       $lookup: {
-        from: "produks",
-        localField: "toko_id",
-        foreignField: "toko_id",
-        as: "info_produk",
+        from: 'produks',
+        localField: 'toko_id',
+        foreignField: 'toko_id',
+        as: 'info_produk',
       },
     },
   ];
@@ -38,7 +33,7 @@ export const getTokoIdService = asyncHandler(async (res, { id }) => {
 
   if (!result) {
     res.status(404);
-    throw new Error("Toko tidak ditemukan");
+    throw new Error('Toko tidak ditemukan');
   }
 
   return result;

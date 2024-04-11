@@ -14,16 +14,22 @@ const router = express.Router();
 
 router.post(
   "/",
+  protect,
   upload.fields([{ name: "file", maxCount: 1 }, { name: "data" }]),
   createToko
 );
 
 router.get("/", getTokoAll);
 
-router.get("/:id", getTokoById);
+router.get("/:id", protect, getTokoById);
 
 router.put("/status", protect, updateStatusToko);
 
-router.put("/:id", protect, UpdateToko);
+router.put(
+  "/:id",
+  protect,
+  upload.fields([{ name: "file", maxCount: 1 }, { name: "data" }]),
+  UpdateToko
+);
 
 export default router;

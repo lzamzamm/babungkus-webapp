@@ -3,13 +3,15 @@ import {
   findOneAndUpdate,
   findWithId,
 } from "../../repository/toko.repository.js";
+import fs from "fs";
 
 export const updateTokoService = asyncHandler(
-  async (res, { id }, toko, file) => {
+  async (res, { id }, body, files) => {
+    const toko = JSON.parse(body["data"]);
+
     const requiredFields = [
       "nama",
       "deskripsi",
-      "image",
       "jam_operasional",
       "lokasi",
       "no_telp",
@@ -20,18 +22,21 @@ export const updateTokoService = asyncHandler(
       throw new Error("Tidak ada data yang terisi");
     }
 
-    if (toko.status != "Active") {
-      res.status(400);
-      throw new Error("Toko sedang tidak aktif");
+    if (files["file"]) {
+      const file = files["file"][0];
+      produkNew.image = file.filename;
+      const result = await findWithId(id);
+      var filePath = `../backend/public/assets/images/toko/${result.image}`;
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error("Error deleting file:", err);
+          return;
+        }
+        console.log("File deleted successfully");
+      });
     }
 
-    const newToko = { ...toko };
-
-    if (imageFile) {
-      newToko.image = imageFile.filename;
-    }
-
-    var result = await findOneAndUpdate(id, newToko);
+    var result = await findOneAndUpdate(id, toko);
 
     if (!result) {
       res.status(404);

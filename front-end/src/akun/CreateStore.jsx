@@ -33,15 +33,29 @@ const CreateStoreForm = () => {
 
   const createHandler = async (e) => {
     e.preventDefault();
-    // console.log(inputData);
-    // console.log(image);
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    inputData.user_id = userInfo.user_id;
-    console.log(inputData);
-    formData.append("data", JSON.stringify(inputData));
-    formData.append("file", image);
-    var res = await axios.post("http://localhost:5555/api/toko", formData);
-    console.log(res);
+    try {
+      var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      inputData.user_id = userInfo.user_id;
+      formData.append("data", JSON.stringify(inputData));
+      formData.append("file", image);
+      var response = await axios.post("http://localhost:5555/api/toko", formData,);
+      if (response.data.status === "success") {
+        alert(response.data.message); 
+      } else {
+        alert(response.data.message);
+      }
+      window.location.reload();
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data.status === "fail") {
+          alert(error.response.data.message); 
+        } else if (error.response.data.status === "error") {
+          alert(error.response.data.message); 
+        }
+      } else {
+        alert("Terjadi kesalahan saat mengirim permintaan.");
+      }
+    }
   };
 
   return (
@@ -50,7 +64,7 @@ const CreateStoreForm = () => {
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <h2 className="mb-2 text-xl md:text-xl lg:text-2xl">
-        Buka Tokomu Sekarang!
+        Buka Outletmu Sekarang!
       </h2>
       <p className="text-l mb-2">
         Bersama-Sama Selamatkan Bumi dan Atasi Kelaparan
@@ -146,7 +160,7 @@ const CreateStoreForm = () => {
           </label>
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-            id="waktuMulai"
+            id="jamOperasional"
             name="jam_operasional"
             type="text"
             onChange={handleInputChange}

@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AddProductForm = () => {
   const [storeImagePreview, setStoreImagePreview] = useState("");
   const [inputData, setInputData] = useState({});
   const [image, setImage] = useState();
+  const [tokoId, setTokoId] = useState([]);
 
   var formData = new FormData();
 
@@ -18,9 +19,7 @@ const AddProductForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-
     const maxFileSize = 5 * 1024 * 1024;
-
     if (file) {
       if (file.type.substr(0, 5) === "image" && file.size <= maxFileSize) {
         setImage(file);
@@ -35,26 +34,52 @@ const AddProductForm = () => {
   };
 
   const handleRemoveImagePreview = () => {
-    setStoreImagePreview(""); // Menghapus preview gambar
+    setStoreImagePreview("");
+  };
+
+  const getToko = async () => {
+    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    var response = await axios.get(
+      `http://localhost:5555/api/toko/${userInfo.user_id}`,
+      { withCredentials: true },
+    );
+
+    setTokoId(response.data.data[0].toko_id);
   };
 
   const createHandler = async (e) => {
     e.preventDefault();
-    // console.log(inputData);
-    // console.log(image);
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    inputData.user_id = userInfo.user_id;
-    console.log(inputData);
-    formData.append("data", JSON.stringify(inputData));
-    formData.append("file", image);
     try {
-      var res = await axios.post("http://localhost:5555/api/produk", formData);
-      console.log(res);
+      // var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      inputData.toko_id = tokoId;
+      formData.append("data", JSON.stringify(inputData));
+      formData.append("file", image);
+      var response = await axios.post("http://localhost:5555/api/produk", formData, {
+        withCredentials: true,
+        credentials: "include",
+      });
+      if (response.data.status === "success") {
+        alert(response.data.message);
+      } else {
+        alert(response.data.message);
+      }
+      window.location.reload();
     } catch (error) {
-      console.error(error);
-      // Handle error, misalnya dengan menampilkan pesan error ke pengguna
+      if (error.response) {
+        if (error.response.data.status === "fail") {
+          alert(error.response.data.message);
+        } else if (error.response.data.status === "error") {
+          alert(error.response.data.message);
+        }
+      } else {
+        alert("Terjadi kesalahan saat mengirim permintaan.");
+      }
     }
   };
+
+  useEffect(() => {
+    getToko();
+  }, []);
 
   return (
     <div
@@ -111,7 +136,7 @@ const AddProductForm = () => {
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="namaProduk"
-            name="namaProduk"
+            name="nama"
             type="text"
             onChange={handleInputChange}
           />
@@ -150,7 +175,7 @@ const AddProductForm = () => {
           <input
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="expire_at"
-            name="expire_at"
+            name="expired_at"
             type="date"
             onChange={handleInputChange}
           />
@@ -165,13 +190,29 @@ const AddProductForm = () => {
           <select
             className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
             id="jenisMakanan"
-            name="jenisMakanan"
+            name="kategori"
             onChange={handleInputChange}
           >
-            <option value="makanan">Makanan</option>
-            <option value="minuman">Minuman</option>
-            <option value="pakan">Pakan</option>
+            <option value="">-- Jenis --</option>
+            <option value="Makanan">Makanan</option>
+            <option value="Minuman">Minuman</option>
+            <option value="Pakan">Pakan</option>
           </select>
+        </div>
+        <div className="mb-4">
+          <label
+            className="text-l mb-2 block text-gray-700"
+            htmlFor="deskripsi"
+          >
+            Deskripsi Produk
+          </label>
+          <textarea
+            className="focus:shadow-outline w-full appearance-none rounded border px-4 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            id="deskripsi"
+            name="deskripsi"
+            rows="5"
+            onChange={handleInputChange}
+          ></textarea>
         </div>
         <button
           className="focus:shadow-outline rounded bg-primary px-4 py-3 font-bold text-white hover:bg-amber-700 focus:outline-none"

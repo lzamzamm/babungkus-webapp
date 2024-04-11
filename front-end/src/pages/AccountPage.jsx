@@ -32,7 +32,7 @@ function AccountPage() {
             <div className="rounded-lg bg-white p-2 shadow-md md:mt-6 lg:p-10">
               <Routes>
                 <Route path="/" element={<PersonalForm />} />
-                <Route path="profil" element={<PersonalForm />} />
+                <Route path="profile" element={<PersonalForm />} />
                 <Route path="store-profile" element={<StoreUpdateForm />} />
                 <Route path="tambah-produk" element={<AddProduct />} />
                 <Route path="buat-toko" element={<CreateStoreForm />} />
@@ -45,5 +45,6 @@ function AccountPage() {
     </div>
   );
 }
+
 
 export default AccountPage;

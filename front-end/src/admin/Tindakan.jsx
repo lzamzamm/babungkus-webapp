@@ -1,32 +1,6 @@
 import React, { useState } from "react";
 
-// Contoh data detail laporan, di aplikasi nyata data ini bisa berasal dari API
-const reportDetails = {
-  id: 1,
-  storeName: "Toko ABC",
-  reason: "Produk kadaluwarsa",
-  description:
-    "Beberapa produk di toko ini telah ditemukan kadaluwarsa pada tanggal inspeksi.",
-  dateReported: "2024-03-29",
-  actionsTaken: "", // Deskripsi tindakan yang telah diambil, jika ada
-};
-
 const ActionPage = () => {
-  const [report, setReport] = useState(reportDetails);
-  const [action, setAction] = useState("");
-
-  // Fungsi untuk menangani pengiriman tindakan
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulasikan pengiriman tindakan ke server
-    const updatedReport = { ...report, actionsTaken: action };
-    setReport(updatedReport);
-    // Setelah pengiriman, reset input tindakan
-    setAction("");
-    alert("Tindakan berhasil disimpan.");
-    // Dalam aplikasi nyata, anda akan mengirim data ke server
-  };
-
   return (
     <div
       className="w-full p-5 text-gray-800"
@@ -35,31 +9,20 @@ const ActionPage = () => {
       <h2 className="mb-4 text-2xl">Detail Laporan</h2>
       <div className="mb-8">
         <p>
-          <strong>Nama Toko:</strong> {report.storeName}
+          <strong>Nama Toko:</strong> 
         </p>
         <p>
-          <strong>Alasan Laporan:</strong> {report.reason}
+          <strong>Alasan Laporan:</strong>
         </p>
         <p>
-          <strong>Deskripsi:</strong> {report.description}
+          <strong>Deskripsi:</strong> 
         </p>
         <p>
-          <strong>Tanggal Laporan:</strong> {report.dateReported}
+          <strong>Tanggal Laporan:</strong> 
         </p>
       </div>
       <hr className="mb-6" />
       <h3 className="mb-4 text-xl">Ambil Tindakan</h3>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className="focus:shadow-outline mb-4 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
-          id="action"
-          name="action"
-          placeholder="Deskripsikan tindakan yang akan diambil..."
-          value={action}
-          onChange={(e) => setAction(e.target.value)}
-          rows="4"
-        />
-        <div className="flex flex-row gap-3">
           <button
             type="submit"
             className="focus:shadow-outline rounded bg-primary px-4 py-2 font-bold text-white hover:bg-amber-700 focus:outline-none"
@@ -68,13 +31,11 @@ const ActionPage = () => {
           </button>
           <button
             type="submit"
-            className="focus:shadow-outline rounded bg-primary px-4 py-2 font-bold text-white hover:bg-amber-700 focus:outline-none"
+            className="px-4 py-2 font-bold text-white rounded bg-red-500 hover:bg-amber-700 focus:outline-none focus:shadow-outline"
           >
             Takedown
           </button>
         </div>
-      </form>
-    </div>
   );
 };
 
