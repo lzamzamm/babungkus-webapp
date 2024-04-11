@@ -16,7 +16,8 @@ function TokoPage() {
       .then((response) => response.json())
       .then((data) => {
         // Filter toko yang memiliki status "Active"
-        const activeToko = data.data.filter((toko) => toko.status === "Active");
+        // const activeToko = data.data.filter((toko) => toko.status === "Active");
+        const activeToko = data.data;
         setTokoData(activeToko);
         setSearchResults(activeToko);
         setIsLoading(false);
