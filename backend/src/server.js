@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import { PORT, mongoDBURL } from "./configs/db.config.js";
 import toko_routes from "./routes/toko.routes.js";
 import produk_routes from "./routes/produk.routes.js";
 import pesanan_routes from "./routes/pesanan.routes.js";
@@ -8,6 +7,7 @@ import laporan_routes from "./routes/laporan.routes.js";
 import userRoutes from "./routes/user.route.js";
 import { notFound, errorHandler } from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
+import "dotenv/config";
 
 import cors from "cors";
 
@@ -47,12 +47,12 @@ app.use("/api/laporan", laporan_routes);
 app.use("/api/pesanan", pesanan_routes);
 app.use("/api/user", userRoutes);
 
-// app.use(notFound);
+app.use(notFound);
 app.use(errorHandler);
 
-mongoose.connect(mongoDBURL).then(() => {
+mongoose.connect(process.env.mongoDBURL).then(() => {
   console.log("App connected to database");
-  app.listen(PORT, () => {
-    console.log(`App is listening to port: ${PORT}`);
+  app.listen(process.env.PORT, () => {
+    console.log(`App is listening to port: ${process.env.PORT}`);
   });
 });
