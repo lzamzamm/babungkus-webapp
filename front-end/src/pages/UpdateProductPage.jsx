@@ -69,7 +69,7 @@ const ProductUpdateForm = () => {
         }
 
         try {
-            await axios.patch(`http://localhost:5555/api/produk/${id}`, formData, { withCredentials: true, credentials: 'include' });
+            await axios.patch(`${config.BASE_URL}/api/produk/${id}`, formData, { withCredentials: true, credentials: 'include' });
             alert('Produk berhasil diperbarui');
             window.location.reload();
         } catch (error) {
@@ -104,7 +104,7 @@ const ProductUpdateForm = () => {
                             )}
                             <div className="relative mt-4 h-32 w-32">
                                 <img
-                                    src={`http://localhost:5555/produk/${image}`}
+                                    src={`${config.BASE_URL}/produk/${image}`}
                                     alt="Preview"
                                     className="h-full w-full object-cover"
                                 />
