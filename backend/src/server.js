@@ -15,19 +15,19 @@ const app = express();
 
 app.use(express.static("../backend/public/assets/images"));
 const corsOptions = {
-  origin: "*", // Alamat domain React
+  origin: "https://babungkus-webapp.vercel.app/", // Alamat domain React
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Mengizinkan pengiriman cookies
   optionsSuccessStatus: 204,
 };
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Atur origin sesuai dengan aplikasi klien Anda
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*"); // Atur origin sesuai dengan aplikasi klien Anda
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.setHeader("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
