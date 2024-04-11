@@ -44,7 +44,7 @@ export default function LoginPage() {
       dispatch(setCredentials({ ...response.data.data }));
       localStorage.setItem("userInfo", JSON.stringify(response.data.data));
       navigate("/");
-    } catch (error) {
+      } catch (error) {
       console.error("Error login", error);
       const errorMessage =
         error.response && error.response.data && error.response.data.message
