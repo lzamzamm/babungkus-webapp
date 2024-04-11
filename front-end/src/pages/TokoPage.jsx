@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import config from "../utils/config";
 import CardToko from "../components/card/CardToko";
 import { IoIosSearch } from "react-icons/io";
+import axios from "axios";
 
 function TokoPage() {
   const [tokoData, setTokoData] = useState([]);
@@ -13,12 +14,9 @@ function TokoPage() {
   const [showMoreCount, setShowMoreCount] = useState(6);
 
   useEffect(() => {
-    fetch(`${config.BASE_URL}/api/toko/`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Filter toko yang memiliki status "Active"
-        // const activeToko = data.data.filter((toko) => toko.status === "Active");
-        const activeToko = data.data;
+    axios.get(`${config.BASE_URL}/api/toko/`)
+      .then((response) => {
+        const activeToko = response.data.data;
         setTokoData(activeToko);
         setSearchResults(activeToko);
         setIsLoading(false);

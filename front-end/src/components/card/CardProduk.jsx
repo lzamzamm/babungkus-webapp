@@ -1,44 +1,43 @@
 import React, { useState, useEffect } from "react";
 import config from "../../utils/config";
-import { Link } from "react-router-dom"; // Impor Link dari react-router-dom
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function CardProduk({ data }) {
   const { image, nama, toko_id, harga } = data;
   const [tokoNama, setTokoNama] = useState("");
-  const [imageExists, setImageExists] = useState(true); // State untuk menandai apakah file gambar ada atau tidak
+  const [imageLoaded, setImageLoaded] = useState(false); // State untuk menandai apakah file gambar telah terload dengan benar
 
   useEffect(() => {
-    fetch(`${config.BASE_URL}/api/toko/${toko_id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setTokoNama(data.data[0].nama);
+    axios.get(`${config.BASE_URL}/api/toko/${toko_id}`)
+      .then((response) => {
+        const tokoData = response.data.data[0];
+        setTokoNama(tokoData.nama);
         const img = new Image();
         img.onload = () => {
-          setImageExists(true);
+          setImageLoaded(true);
         };
         img.onerror = () => {
-          setImageExists(false);
+          setImageLoaded(false);
         };
-        img.src = `${config.IMAGE_BASE_URL}/produk/${data.data[0].info_produk[0].image}`;
-    })
+        img.src = `${config.BASE_URL}/produk/${tokoData.info_produk[0].image}`;
+      })
       .catch((error) => console.error("Error fetching toko data:", error));
   }, [toko_id]);
 
   return (
     <div className="max-w-full overflow-hidden rounded-2xl border shadow-md transition duration-300 ease-in-out hover:-translate-y-2 md:max-w-[400px]">
       <div className="relative flex">
-        {imageExists ? (
-          <img
-            className="h-[180px] w-full bg-gray-300 object-cover brightness-75 filter md:w-[400px]"
-            src={`../assets/images/produk/${image}`}
-            alt={`Gambar ${nama}`}
-          />
-        ) : (
-          <img
-            className="h-[180px] w-full bg-gray-300 object-cover brightness-75 filter md:w-[400px]"
-            src="../assets/images/image-not-available.jpg"
-            alt="Gambar tidak tersedia"
-          />
+        <img
+          className="h-[180px] w-full bg-gray-300 object-cover md:w-[400px]"
+          src={`${config.BASE_URL}/produk/${image}`}
+          alt={`Gambar ${image}`}
+          onLoad={() => setImageLoaded(true)}
+        />
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-300">
+            <p className="text-sm text-gray-600">Gambar Tidak Tersedia</p>
+          </div>
         )}
         <Link
           to={`/toko/${toko_id}`}

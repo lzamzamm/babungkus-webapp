@@ -1,37 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import config from "../../utils/config";
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function CardToko({ data }) {
   const { nama, image, toko_id, lokasi, deskripsi } = data;
-  const [imageExists, setImageExists] = useState(true);
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => {
-      setImageExists(true);
-    };
-    img.onerror = () => {
-      setImageExists(false);
-    };
-    img.src = `${config.IMAGE_BASE_URL}/toko/${image}`;
-  }, [image]);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <div className="max-w-full overflow-hidden rounded-2xl border shadow-md transition duration-300 ease-in-out hover:-translate-y-2 md:max-w-[400px]">
       <div className="relative flex">
-      {imageExists ? (
-          <img
-            className="h-[180px] w-full bg-gray-300 object-cover md:w-[400px]"
-            src={`./src/assets/images/toko/${image}`}
-            alt={`Gambar ${image}`}
-          />
-        ) : (
-          <img
-            className="h-[180px] w-full bg-gray-300 object-cover md:w-[400px]"
-            src="../assets/images/image-not-available.jpg"
-            alt="Gambar tidak tersedia"
-          />
+        <img
+          className="h-[180px] w-full bg-gray-300 object-cover md:w-[400px]"
+          src={`${config.BASE_URL}/toko/${image}`}
+          alt={`Gambar ${image}`}
+          onLoad={() => setImageLoaded(true)}
+        />
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-300">
+            <p className="text-sm text-gray-600">Gambar Tidak Tersedia</p>
+          </div>
         )}
       </div>
       <div className="flex flex-col items-start bg-tertiary px-5">

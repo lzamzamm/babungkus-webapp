@@ -23,6 +23,10 @@ function App() {
         <Route path="/" element={<BerandaPage />} />
         <Route path="/masuk" element={<LoginPage />} />
         <Route path="/daftar" element={<RegisPage />} />
+        <Route path="/toko" element={<TokoPage />} />
+        <Route path="/toko/:id" element={<DetailTokoPage />} />
+        <Route path="/produk" element={<ProdukPage />} />
+        <Route path="/produk/:kategori" element={<ProdukPage />} />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/404" />} />
         <Route element={<PrivateRoute />}>
@@ -31,10 +35,6 @@ function App() {
           <Route path="/detail-product" element={<DetailProductPage />} />
           <Route path="/riwayat-pembelian" element={<RiwayatPembelianPage />} />
           <Route path="/riwayat-penjualan" element={<RiwayatPenjualanPage />} />
-          <Route path="/toko" element={<TokoPage />} />
-          <Route path="/produk" element={<ProdukPage />} />
-          <Route path="/produk/:kategori" element={<ProdukPage />} />
-          <Route path="/toko/:id" element={<DetailTokoPage />} />
           <Route path="/admin/dashboard/*" element={<DashboardPage />} />
           <Route path="/edit-produk" element={<UpdateProductPage />} />
         </Route>
