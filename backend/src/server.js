@@ -11,7 +11,7 @@ import "dotenv/config";
 
 import cors from "cors";
 
-export const app = express();
+const app = express();
 
 app.use(express.static("../backend/public/assets/images"));
 const corsOptions = {
