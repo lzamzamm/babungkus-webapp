@@ -30,6 +30,7 @@ function BerandaPage() {
           <img
             src={Hero}
             className="h-full w-full object-cover brightness-50"
+            alt="Gambar sisa makanan"
           ></img>
           <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-8 lg:px-16">
             <p className="text-3xl font-semibold md:text-5xl">Babungkus</p>
@@ -41,11 +42,13 @@ function BerandaPage() {
             <img
               src={Food_1}
               className="w-full bg-slate-300 object-cover hp:h-[17.5vmax] lg:h-[15.5vmax] lg:rounded-[1.5vmax]"
+              alt="Gambar sisa makanan"
             />
             <div className="w-full bg-white hp:h-[1vmax] lg:h-[2vmax]" />
             <img
               src={Food_2}
               className="w-full bg-slate-600 object-cover hp:h-[17.5vmax] lg:h-[15.5vmax] lg:rounded-[1.5vmax]"
+              alt="Gambar jangan menyisakan makanan"
             />
           </div>
           <div class="hp:w-[full] hp:pt-[5%] lg:w-[49vmax] lg:pl-[5%] lg:pt-[0] ">
@@ -68,7 +71,7 @@ function BerandaPage() {
                   <p className="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all ">
                     Pakan
                   </p>
-                  <img className="h-full w-full object-cover " src={Food_1} />
+                  <img className="h-full w-full object-cover " src={Food_1} alt="Gambar sisa makanan" />
                 </div>
               </div>
             </div>
@@ -78,7 +81,7 @@ function BerandaPage() {
                   <p className="absolute z-10 flex h-full w-full -rotate-90 items-center justify-center duration-700 ease-in-out hover:rotate-0 hover:transition-all">
                     Minuman
                   </p>
-                  <img className="h-full w-full object-cover" src={Food_1} />
+                  <img className="h-full w-full object-cover" src={Food_1} alt="Gambar sisa makanan"/>
                 </div>
               </div>
             </div>
@@ -102,7 +105,7 @@ function BerandaPage() {
                 <p className="z-10">Kedai</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
-                  src={Food_1}
+                  src={Food_1} alt="Gambar sisa makanan"
                 />
               </div>
               {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
@@ -112,7 +115,7 @@ function BerandaPage() {
                 <p className="z-10">Restoran</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
-                  src={Food_1}
+                  src={Food_1} alt="Gambar sisa makanan"
                 />
               </div>
             </div>
@@ -123,7 +126,7 @@ function BerandaPage() {
                 <p className="z-10">Toko</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
-                  src={Food_1}
+                  src={Food_1} alt="Gambar sisa makanan"
                 />
               </div>
             </div>
@@ -133,6 +136,7 @@ function BerandaPage() {
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
                   src={Food_1}
+                  alt="Gambar sisa makanan"
                 />
               </div>
             </div>

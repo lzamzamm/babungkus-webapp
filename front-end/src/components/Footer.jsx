@@ -58,13 +58,13 @@ export default function Footer() {
               +6281510972178
             </a>
             <div className="flex justify-center gap-4 lg:justify-start">
-              <a href="#" className="text-xl">
+              <a href="/" className="text-xl">
                 <FaFacebook className="text-[#3b5998]" />
               </a>
-              <a href="#" className="text-xl">
+              <a href="/" className="text-xl">
                 <FaInstagram className="text-[#E4405F]" />
               </a>
-              <a href="#" className="text-xl">
+              <a href="/" className="text-xl">
                 <FaTwitter className="text-[#1DA1F2]" />
               </a>
             </div>
