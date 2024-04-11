@@ -123,7 +123,7 @@ const StoreUpdateForm = () => {
           )}
           <div className="relative mt-4 h-32 w-32">
           <img
-                src={`http://localhost:5555/toko/${imageToko}`}
+                src={`${config.BASE_URL}/toko/${imageToko}`}
                 alt="Preview"
                 className="h-full w-full object-cover"
               />

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "../components/privateRoute";
 import BerandaPage from "../pages/BerandaPage";
 import LoginPage from "../pages/LoginPage";
@@ -16,7 +15,6 @@ import LaporPage from "../pages/LaporPage";
 import DashboardPage from "../pages/Dashboard";
 import DetailTokoPage from "../pages/DetailTokoPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import { checkUserRole } from "../utils/middleware";
 
 function App() {
   return (
