@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const ProductUpdateForm = () => {
-    // const { id } = useParams();
     const [productImagePreview, setProductImagePreview] = useState("");
     const [nama, setNama] = useState('');
     const [deskripsi, setDeskripsi] = useState('');
@@ -18,7 +17,7 @@ const ProductUpdateForm = () => {
     const [inputImage, setInputImage] = useState();
 
     const formData = new FormData();
-    const id = 5;
+    const { id } = useParams(); 
 
     useEffect(() => {
         const getProduct = async () => {
