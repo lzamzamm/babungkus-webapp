@@ -4,6 +4,7 @@ import { FaUserAlt, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LogoLogin from "/assets/images/logoLogin.jpeg";
+import config from "../utils/config";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/auth.slice";
@@ -35,13 +36,13 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5555/api/user/",
+        `${config.BASE_URL}/api/user/`,        
         userData,
         { withCredentials: true },
       );
       console.log("Login berhasil", response.data);
       dispatch(setCredentials({ ...response.data.data }));
-      // localStorage.setItem("userInfo", JSON.stringify(response.data.data));
+      localStorage.setItem("userInfo", JSON.stringify(response.data.data));
       navigate("/");
     } catch (error) {
       console.error("Error login", error);
@@ -57,7 +58,7 @@ export default function LoginPage() {
 
   return (
     <div style={{ fontFamily: "Poppins, sans-serif" }}>
-      <Navbar />
+      <Navbar/>
       <div className="flex min-h-screen flex-col items-center bg-white pt-16 text-gray-700 sm:justify-center">
         <a href="#" className="mt-16 text-center">
           <img src={LogoLogin} alt="Babungkus Logo" className="h-60" />
