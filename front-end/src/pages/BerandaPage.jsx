@@ -23,7 +23,7 @@ function BerandaPage() {
   }, []);
 
   return (
-    <div className="font-poppins">
+    <>
       <Navbar />
       <div className="pt-20">
         <div className="relative flex h-[50vh] overflow-hidden text-white lg:h-[80vh]">
@@ -141,7 +141,7 @@ function BerandaPage() {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 }
 
