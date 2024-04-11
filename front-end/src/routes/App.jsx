@@ -25,6 +25,8 @@ function App() {
         <Route path="/" element={<BerandaPage />} />
         <Route path="/masuk" element={<LoginPage />} />
         <Route path="/daftar" element={<RegisPage />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" />} />
         <Route element={<PrivateRoute />}>
           <Route path="/akun/*" element={<AccountPage />} />
           <Route path="/lapor" element={<LaporPage />} />

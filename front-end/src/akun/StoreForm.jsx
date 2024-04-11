@@ -67,7 +67,7 @@ const StoreUpdateForm = () => {
       formData.append("file", imageData);
       formData.get("file")
     
-      await axios.put(`http://localhost:5555/api/toko/${id}`, formData, { withCredentials: true, credentials: 'include' });
+      await axios.put(`${config.BASE_URL}/api/toko/${id}`, formData, { withCredentials: true, credentials: 'include' });
       window.location.reload();
       alert('Data berhasil diperbarui');
     } catch (err) {
@@ -209,7 +209,7 @@ const StoreUpdateForm = () => {
             id="deskripsi"
             name="deskripsi"
             rows="5"
-            onChange={(e) => setDeskripso(e.target.value)}
+            onChange={(e) => setDeskripsi(e.target.value)}
             value={deskripsi}
             required
           ></textarea>
