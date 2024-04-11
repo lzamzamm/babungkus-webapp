@@ -41,8 +41,13 @@ export default function LoginPage() {
       );
       console.log("Login berhasil", response.data);
       dispatch(setCredentials({ ...response.data.data }));
+      if (response.data.data.role == 'Admin') {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
       // localStorage.setItem("userInfo", JSON.stringify(response.data.data));
-      navigate("/");
+      
     } catch (error) {
       console.error("Error login", error);
       const errorMessage =

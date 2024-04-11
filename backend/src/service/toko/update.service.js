@@ -21,12 +21,12 @@ export const updateTokoService = asyncHandler(
       res.status(400);
       throw new Error("Tidak ada data yang terisi");
     }
+    var tokoUser = await findWithId(id);
 
     if (files["file"]) {
       const file = files["file"][0];
       produkNew.image = file.filename;
-      const result = await findWithId(id);
-      var filePath = `../backend/public/assets/images/toko/${result.image}`;
+      var filePath = `../backend/public/assets/images/toko/${tokoUser.image}`;
       fs.unlink(filePath, (err) => {
         if (err) {
           console.error("Error deleting file:", err);
