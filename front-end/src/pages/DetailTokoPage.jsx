@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import config from "../utils/config";
 import { IoIosArrowForward } from "react-icons/io";
 import CardProduk from "../components/card/CardProduk";
+import axios from "axios";
 
 function DetailTokoPage() {
   const { id } = useParams();
@@ -14,34 +15,48 @@ function DetailTokoPage() {
   const [error, setError] = useState(null);
   const [imageExists, setImageExists] = useState(true); // State untuk menandai apakah file gambar ada atau tidak
 
+  const getTokoDetail = async () => {
+    try {
+  
+      const res = await axios.get(`${config.BASE_URL}/api/toko/${id}`, { withCredentials: true, credentials: 'include' });
+      setToko(res.data.data[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     setLoading(true);
-    fetch(`${config.BASE_URL}/api/toko/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Gagal mengambil data dari server");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setToko(data.data[0]); // Ambil objek pertama dari array data
-        setLoading(false);
+    getTokoDetail();
+    setLoading(false);
+    // const res = await axios.get(`${config.BASE_URL}/api/toko/${id}`,{ withCredentials: true, credentials: 'include' });
+    // setToko(res);
+    // console.log(res)
+      // .then((response) => {
+      //   if (!response) {
+      //     throw new Error("Gagal mengambil data dari server");
+      //   }
+      //   return response.json();
+      // })
+      // .then((data) => {
+      //   setToko(data.data[0]); // Ambil objek pertama dari array data
+      //   setLoading(false);
 
-        const img = new Image();
-        img.onload = () => {
-          setImageExists(true);
-        };
-        img.onerror = () => {
-          setImageExists(false);
-        };
-        img.src = `${config.BASE_URL}/toko/${data.data[0].image}`;
-      })
-      .catch((error) => {
-        console.error("Error fetching toko data:", error);
-        setError(error.message);
-        setLoading(false);
-      });
-  }, [id]);
+      //   const img = new Image();
+      //   img.onload = () => {
+      //     setImageExists(true);
+      //   };
+      //   img.onerror = () => {
+      //     setImageExists(false);
+      //   };
+      //   img.src = `${config.BASE_URL}/toko/${data.data[0].image}`;
+      // })
+      // .catch((error) => {
+      //   console.error("Error fetching toko data:", error);
+      //   setError(error.message);
+      //   setLoading(false);
+      // });
+  }, []);
 
   if (loading) {
     return (

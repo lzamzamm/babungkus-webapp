@@ -4,7 +4,7 @@ import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function CardToko({ data }) {
-  const { nama, image, toko_id, lokasi, deskripsi } = data;
+  const { nama, image, user_id, lokasi, deskripsi } = data;
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ function CardToko({ data }) {
       </div>
       <div className="flex flex-col items-start bg-tertiary px-5">
         <Link
-          to={`/toko/${toko_id}`}
+          to={`/toko/${user_id}`}
           className="flex truncate pt-5 text-xl font-semibold hover:text-primary"
         >
           {nama}

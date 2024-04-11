@@ -58,7 +58,7 @@ Process Failed:
 
 ## get toko all
 
-Endpoint: GET /api/toko/all
+Endpoint: GET /api/toko/
 
 Response Body Success:
 
