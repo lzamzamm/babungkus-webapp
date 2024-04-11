@@ -48,7 +48,8 @@ function BerandaPage() {
               className="w-full bg-slate-600 object-cover hp:h-[17.5vmax] lg:h-[15.5vmax] lg:rounded-[1.5vmax]"
             />
           </div>
-          <div className="hp:w-[full] hp:pt-[5%] lg:w-[49vmax] lg:pl-[5%] lg:pt-[0] ">
+          <div class="hp:w-[full] hp:pt-[5%] lg:w-[49vmax] lg:pl-[5%] lg:pt-[0] ">
+          Food waste, atau limbah makanan, adalah masalah global yang serius. Menurut FAO, hanya di Amerika Serikat, limbah makanan mencapai 30% dari total produksi makanan. Hal ini juga mengakibatkan kehilangan sumber daya yang berharga.  <br /> <br />
             Puluhan bahkan ribuan makanan terbuang begitu saja setiap harinya...
             Kita tidak boleh biarkan itu terjadi, mari olah makanan sisa dengan
             baik dan benar <br /> <br />
@@ -97,7 +98,7 @@ function BerandaPage() {
           <p className="text-center lg:text-[3vmax]">Berbagai Outlet</p>
           <div className="flex h-[50%] gap-[5%] text-[2vmax] text-white hp:w-[60%] hp:flex-col lg:flex-row lg:justify-center">
             <div className=" hover:(apa gitu disini) flex h-[50%] items-center justify-center bg-slate-200 duration-500 ease-in-out hover:transition-all lg:h-full lg:w-[50%]">
-              <div className="relative flex h-full w-full items-center justify-center">
+              <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Kedai</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
@@ -107,7 +108,7 @@ function BerandaPage() {
               {/* <p className='duration-500 hover:transition-all hover:rotate-[360deg]  text-center'>Kedai</p> */}
             </div>
             <div className="flex h-[50%] items-center justify-center bg-amber-200 lg:h-full lg:w-[50%]">
-              <div className="relative flex h-full w-full items-center justify-center ">
+              <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Restoran</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
@@ -118,7 +119,7 @@ function BerandaPage() {
           </div>
           <div className="flex h-[50%] gap-[5%] text-[2vmax] text-white hp:w-[60%] hp:flex-col lg:flex-row lg:justify-center">
             <div className="hover:(apa gitu disini) flex h-[50%] items-center justify-center bg-stone-600 duration-500 ease-in-out hover:transition-all lg:h-full lg:w-[50%]">
-              <div className="relative flex h-full w-full items-center justify-center">
+              <div className="relative flex items-center justify-center w-full h-full">
                 <p className="z-10">Toko</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"
@@ -127,7 +128,7 @@ function BerandaPage() {
               </div>
             </div>
             <div className="flex h-[50%] items-center justify-center bg-amber-200 lg:h-full lg:w-[50%]">
-              <div className="relative flex h-full w-full items-center justify-center ">
+              <div className="relative flex items-center justify-center w-full h-full ">
                 <p className="z-10">Warung</p>
                 <img
                   className="absolute h-full w-full blur-[2px] duration-500 hover:blur-none hover:transition-all"

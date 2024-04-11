@@ -10,7 +10,6 @@ import CreateStoreForm from "../akun/CreateStore";
 
 function AccountPage() {
   const [isNavVisible, setIsNavVisible] = useState(false);
-
   return (
     <>
     <Navbar />

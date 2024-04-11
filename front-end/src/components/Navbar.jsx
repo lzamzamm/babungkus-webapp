@@ -79,20 +79,22 @@ function Navbar() {
       <div className="mx-auto flex flex-col px-[5%] md:flex-row md:items-center md:justify-between">
         <div className="flex flex-row items-center justify-between py-4">
           <div className="flex w-[50px] items-center justify-center">
-            <img
-              src={LogoBabungkus}
-              className="h-full w-full"
-              alt="Logo Babungkus"
-            />
+            <Link to='/'>
+              <img
+                src={LogoBabungkus}
+                className="w-full h-full"
+                alt="Logo Babungkus"
+              />
+            </Link>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="focus:shadow-outline rounded-lg focus:outline-none md:hidden"
+            className="rounded-lg focus:shadow-outline focus:outline-none md:hidden"
           >
             {isOpen ? (
-              <HiOutlineX className="h-6 w-6" />
+              <HiOutlineX className="w-6 h-6" />
             ) : (
-              <HiOutlineMenuAlt3 className="h-6 w-6" />
+              <HiOutlineMenuAlt3 className="w-6 h-6" />
             )}
           </button>
         </div>
