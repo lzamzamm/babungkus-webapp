@@ -47,7 +47,7 @@ export default function Footer() {
               href="mailto:kontak@babungkus.com"
               className="inline-flex items-center text-primary hover:text-green-500"
             >
-              <FaEnvelope className="mr-2" />
+              <FaEnvelope className="mr-2 py-2" />
               kontak@babungkus.com
             </a>
             <a
@@ -58,13 +58,13 @@ export default function Footer() {
               +6281510972178
             </a>
             <div className="flex justify-center gap-4 lg:justify-start">
-              <a href="#" className="text-xl">
+              <a href="/" className="text-2xl">
                 <FaFacebook className="text-[#3b5998]" />
               </a>
-              <a href="#" className="text-xl">
+              <a href="/" className="text-2xl">
                 <FaInstagram className="text-[#E4405F]" />
               </a>
-              <a href="#" className="text-xl">
+              <a href="/" className="text-2xl">
                 <FaTwitter className="text-[#1DA1F2]" />
               </a>
             </div>

@@ -14,7 +14,7 @@ function RiwayatPenjualan() {
   const [produk, setProd] = useState({});
 
   const getData = async () => {
-    const response = await axios.get('http://localhost:5555/api/pesanan/current/user'); // ini BELOMMM
+    const response = await axios.get(`${config.BASE_URL}/api/pesanan/current/user`); // ini BELOMMM
     setData(response.data.data);
     console.log(response.data.data)
   };
@@ -26,7 +26,7 @@ function RiwayatPenjualan() {
   // };
 
   const getToko = async () => {
-    const response = await axios.get('http://localhost:5555/api/toko');
+    const response = await axios.get(`${config.BASE_URL}/api/toko`);
     setToko(response.data.data);
     console.log(response.data.data)
   }

@@ -25,7 +25,7 @@ const StoreVerification = () => {
         status: 'Freeze' 
       };
   
-      await axios.put(`http://localhost:5555/api/toko/status`, freeze, {
+      await axios.put(`${config.BASE_URL}/api/toko/status`, freeze, {
         withCredentials: true,
         credentials: 'include'
       });
@@ -42,7 +42,7 @@ const StoreVerification = () => {
         status: 'Active' 
       };
   
-      await axios.put(`http://localhost:5555/api/toko/status`, active, {
+      await axios.put(`${config.BASE_URL}/api/toko/status`, active, {
         withCredentials: true,
         credentials: 'include'
       });
@@ -61,7 +61,7 @@ const StoreVerification = () => {
         status: 'Banned' 
       };
   
-      await axios.put(`http://localhost:5555/api/toko/status`, banned, {
+      await axios.put(`${config.BASE_URL}/api/toko/status`, banned, {
         withCredentials: true,
         credentials: 'include'
       });
