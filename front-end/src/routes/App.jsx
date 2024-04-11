@@ -27,6 +27,7 @@ function App() {
         <Route path="/toko/:id" element={<DetailTokoPage />} />
         <Route path="/produk" element={<ProdukPage />} />
         <Route path="/produk/:kategori" element={<ProdukPage />} />
+        <Route path="/tentangkami" element={<BerandaPage />} />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/404" />} />
         <Route element={<PrivateRoute />}>
