@@ -34,7 +34,7 @@ function DetailTokoPage() {
         img.onerror = () => {
           setImageExists(false);
         };
-        img.src = `../assets/images/toko/${data.data[0].image}`;
+        img.src = `${config.BASE_URL}/toko/${data.data[0].image}`;
       })
       .catch((error) => {
         console.error("Error fetching toko data:", error);
@@ -77,7 +77,7 @@ function DetailTokoPage() {
         {imageExists ? (
           <img
             className="h-[350px] w-full rounded-lg border border-gray-300 object-cover"
-            src={`../assets/images/toko/${toko.image}`}
+            src={`${config.BASE_URL}/toko/${toko.image}`}
             alt={`Gambar ${toko.nama}`}
           />
         ) : (
