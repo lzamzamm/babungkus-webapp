@@ -4,6 +4,10 @@
     {
       "src": "backend/src/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "backend/public/assets/images",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
